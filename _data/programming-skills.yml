@@ -1,0 +1,16 @@
+- name: HTML/CSS
+  percentage: 90
+  color: danger
+
+- name: Javascript
+  percentage: 70
+  color: dark
+
+- name: C#
+  percentage: 60
+  color: info
+
+- name: Ruby
+  percentage: 80
+  color: danger
+
