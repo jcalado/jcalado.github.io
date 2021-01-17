@@ -1,13 +1,15 @@
 ---
 name: OBS.Ninja invite generator
 tools: [Javascript, HTML, CSS]
-image: https://github.com/jcalado/cgtimer/raw/master/screenshots/Standby.png
+image: https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png
 description: Advanced invite generator via toggles
 ---
 
 # OBSN-invite
 
 Generates OBS.Ninja invites tailored to the user preferences by toggling switches on or off. 
+
+{% include elements/figure.html image="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png" caption="OBSN-invite as of Jan 17th 2021" %}
 
 # Features
 
