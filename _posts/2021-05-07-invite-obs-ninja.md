@@ -48,6 +48,11 @@ You can just drag and drop this url on the **Scenes** panel of OBS and it will t
 
 In any case, **make sure that browser source has “Control audio via OBS” active**.
 
+### Video tutorial
+
+{% include elements/video.html id="5dU28ycxo4E" %}
+
+
 There's a whole lot more that can be done with [invite.obs.ninja][invite ninja].
 
 Explore the site, learn ninja, be the ninja!
