@@ -6,6 +6,9 @@ color: primary
 description: This site helps you generate custom OBS.ninja links
 ---
 
+{% include elements/figure.html image="/blogassets/1/invite.obs.ninja.png" caption="Ninja invite page UI" %}
+
+
 ### What is [OBS.ninja][ninja]?
 
 > Bring live video from your smartphone, remote computer, or friends directly into OBS or other studio software.
