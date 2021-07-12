@@ -7,8 +7,9 @@ description: Public CML sensor data datatable in react
 
 # Environmental quality sensors - Câmara Municipal de Lisboa
 
-## Demo
-Live deployment is accessible here: https://jcalado.com/sensores-qa-cml
+<p class="text-center">
+{% include elements/button.html link="https://jcalado.com/sensores-qa-cml" text="Launch app" %}
+</p>
 
 ## Screenshot
 ![Screenshot](https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg)
