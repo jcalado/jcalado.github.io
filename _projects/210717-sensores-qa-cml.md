@@ -23,7 +23,7 @@ description: Public CML sensor data datatable in react
 
 ## Notes
 
-Requests are proxied through http://allorigins.win/, since the original url (http://opendata-cml.qart.pt:8080/lastmeasurements) has CORS issues.
+Requests are proxied through [allorigins.win](http://allorigins.win/), since the [original API url](http://opendata-cml.qart.pt:8080/lastmeasurements) has CORS issues.
 
 ## Metadata info
-There's some information about the API published here: http://dados.cm-lisboa.pt/dataset/e7f31452-7d21-4b26-9eb5-1db62737a12d/resource/d8837f32-1f7e-4a61-bb8a-a2333f822edb/download/metadadosdadosabertos.pdf
+There's some information about the API published here: [Metadata](http://dados.cm-lisboa.pt/dataset/e7f31452-7d21-4b26-9eb5-1db62737a12d/resource/d8837f32-1f7e-4a61-bb8a-a2333f822edb/download/metadadosdadosabertos.pdf)
