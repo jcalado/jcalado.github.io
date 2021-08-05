@@ -1,0 +1,122 @@
+---
+---
+/* Add your custom style here */
+@import "portfolYOU";
+
+$yellow: #F9F871;
+$orange: #FFC65F;
+$coral: #FF917E;
+
+#attribution {
+    display: none;
+}
+
+.post h1 {
+    font-size: 2.2rem;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.post h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1em;
+    margin-top: 2em;
+    font-weight: bold;
+}
+
+.post h3 {
+    font-size: 1.3rem;
+    width: fit-content;
+    text-decoration: underline 2px solid $orange;
+}
+
+.post h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.post blockquote {
+    margin: 2em 0;
+    padding: 1.2em;
+}
+
+.post blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+p + h3 {
+    margin-top: 2em;
+}
+
+.post .box span {
+    font-weight: bold;
+}
+
+.post .box {
+    color: #4f575f;
+    padding: 1.5em;
+    border-radius: 12px;
+    display: block;
+    text-align: center;
+    font-weight: normal;
+    width: fit-content;
+    margin: 2em auto;
+}
+
+
+$boxes: 'yellow', 'purple', 'blue', 'pink', 'coral', 'orange';
+$boxesColors: ($yellow,
+               #D36BE7,
+               #007BFF,
+               #FF6BB3,
+               $coral,
+               $orange,
+               );
+
+@for $i from 1 to (length($boxes)+1) {
+    .post .box.#{nth($boxes, $i)} {
+        $accent: nth($boxesColors, $i);
+        
+        background-color: $accent;
+        box-shadow: 0 0.7px 1.7px rgba($accent ,0.05),
+    0 1.8px 4.1px rgba($accent, 0.07),
+    0 3.4px 7.6px rgba($accent, 0.08),
+    0 6px 13.6px rgba($accent, 0.09),
+    0 11.3px 25.5px rgba($accent, 0.01),
+    0 27px 61px rgba($accent, 0.014);
+    }
+}
+
+.post .box.blue {
+    color: white;
+}
+
+.post pre {
+    padding: 2em;
+    margin: 2em 0;
+    border: none;
+    border-radius: 8px;
+}
+
+.post .step {
+    display: inline-flex;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    background: #ed9d1359;
+    justify-content: center;
+    align-items: center;
+    color: #74531b;
+    margin-right: 0.5em;
+}
+
+.post hr{
+    background-color: rgba($coral, 0.5);
+    border: 0;
+    height: 1px;
+    width: 50%;
+    position: relative;
+    margin: 2em auto;
+}
