@@ -2,7 +2,7 @@
 title: QMK on the Anne Pro on Windows
 tags: [Anne Pro, QMK]
 style: fill
-color: primary
+color: dark
 description: Flash a better firmware on your original Anne Pro
 ---
 
@@ -120,6 +120,15 @@ make anne_pro:jcalado
 
 ./keyboards/anne_pro/dfuse-pack.py -b 0x08004000:anne_pro_jcalado.bin anne_pro_jcalado.dfu
 ```
+
+
+### Extra
+
+
+My current keymap retains all anne pro functionality (layer 3 is bluetooth configuration, layer 2 has RGB controls, page down / home / etc).
+
+{% include elements/button.html link="/blogassets/2/Anne_Pro_QMK.pdf" text="Download PDF" style="primary" size="sm" %}
+
 
 
 [qmk]: https://qmk.fm/
