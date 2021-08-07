@@ -150,9 +150,9 @@ My current keymap is also available on github (layer 3 is bluetooth configuratio
 
 I also had it change colors when switching layers to highlight special functions, and layers other than 0 had a bliking red number corresponding to active layer, but it seems the lighting goes out of sync easily. Board issue, I'm sure. 
 
-{% include elements/button.html link="/blogassets/2/Anne_Pro_QMK.pdf" text="Download PDF" style="primary" size="sm" %}
+{% include elements/button.html link="https://github.com/jcalado/anne-pro-qmk-keymap" text="Keymap" style="primary" size="sm" %}
 
-
+<span class="box orange"><span>Attention:</span> Layer 2's media, volume and Fs only work when connected via USB.</span>
 
 [qmk]: https://qmk.fm/
 [fork]: https://github.com/msvisser/qmk_firmware/tree/anne_pro/keyboards/anne_pro
