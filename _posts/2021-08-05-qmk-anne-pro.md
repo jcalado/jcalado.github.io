@@ -121,10 +121,34 @@ make anne_pro:jcalado
 ```
 
 
-#### Extra info
+#### My keymap
 
+My current keymap is also available on github (layer 3 is bluetooth configuration, layer 2 has RGB controls, page down / home / etc).
 
-My current keymap retains all anne pro functionality (layer 3 is bluetooth configuration, layer 2 has RGB controls, page down / home / etc).
+**Layer 0** - Tweaked Anne Pro Portuguese layout.  
+- Mod tap for left shift: Types `<`. You can hold right shift and tap left shift to type `>`. I usually type with an ISO keyboard and do lots of coding. I wanted to keep this key next to the left shift, so mod-tap was an option.
+- Mod tap for left shift: Hold for regular behavior, tap types `\`. Left shift + right shift tap types `|`. Another ISO layout adaptation.
+
+**Layer 1** - Anne pro keycap printed functions
+- Pagedown, Page up, RGB lighting controls, F1-F12, etc.
+
+**Layer 2** - Media Controls
+-  Media Play, Next, Previous
+-  Volume Up, down, mute
+-  F13 - F21
+-  Board reset
+
+**Layer 3** - Anne Pro Bluetooth configuration
+
+- `ESC` - Exit Bluetooth layer
+- `1, 2, 3, 4` - Connect to saved profile
+- `Q, W, E, R` - Save connection to profile
+- `A, S, D, F` - Delete saved connection
+- `0` - Toggle legacy Bluetooth mode
+- `-` - Disable Bluetooth
+- `+` - Enable Bluetooth
+
+I also had it change colors when switching layers to highlight special functions, and layers other than 0 had a bliking red number corresponding to active layer, but it seems the lighting goes out of sync easily. Board issue, I'm sure. 
 
 {% include elements/button.html link="/blogassets/2/Anne_Pro_QMK.pdf" text="Download PDF" style="primary" size="sm" %}
 
