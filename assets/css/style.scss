@@ -120,3 +120,7 @@ $boxesColors: ($yellow,
     position: relative;
     margin: 2em auto;
 }
+
+.bg-dark .text-dark {
+    color: #343a40 !important;
+}
