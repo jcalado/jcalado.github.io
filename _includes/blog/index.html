@@ -1,0 +1,11 @@
+<div class="card-group mt-2">
+
+    {% for post in site.posts %}
+    {% if post.external_url %}
+    <a href="{{ post.external_url }}" target="_blank">{{ post.title }}</a>
+    {% else %}
+    {% include blog/post-card.html %}
+    {% endif %}
+    {% endfor %}
+
+</div>
