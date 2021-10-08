@@ -11,50 +11,50 @@ $coral: #FF917E;
     display: none;
 }
 
-.post h1 {
+.markdown-body h1 {
     font-size: 2.2rem;
     margin-top: 2em;
     margin-bottom: 1em;
 }
 
-.post h2 {
+.markdown-body h2 {
     font-size: 1.8rem;
     margin-bottom: 1em;
     margin-top: 2em;
     font-weight: bold;
 }
 
-.post h3 {
+.markdown-body h3 {
     font-size: 1.3rem;
     width: fit-content;
     text-decoration: underline 2px solid $orange;
 }
 
-.post h4 {
+.markdown-body h4 {
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 2em;
     margin-bottom: 1em;
 }
 
-.post blockquote {
+.markdown-body blockquote {
     margin: 2em 0;
     padding: 1.2em;
 }
 
-.post blockquote p:last-child {
+.markdown-body blockquote p:last-child {
     margin-bottom: 0;
 }
 
-p + h3 {
+markdown-body p + h3 {
     margin-top: 2em;
 }
 
-.post .box span {
+.markdown-body .box span {
     font-weight: bold;
 }
 
-.post .box {
+.markdown-body .box {
     color: #4f575f;
     padding: 1.5em;
     border-radius: 12px;
@@ -76,7 +76,7 @@ $boxesColors: ($yellow,
                );
 
 @for $i from 1 to (length($boxes)+1) {
-    .post .box.#{nth($boxes, $i)} {
+    .markdown-body .box.#{nth($boxes, $i)} {
         $accent: nth($boxesColors, $i);
         
         background-color: $accent;
@@ -89,18 +89,18 @@ $boxesColors: ($yellow,
     }
 }
 
-.post .box.blue {
+.markdown-body .box.blue {
     color: white;
 }
 
-.post pre {
+.markdown-body pre {
     padding: 2em;
     margin: 2em 0;
     border: none;
     border-radius: 8px;
 }
 
-.post .step {
+.markdown-body .step {
     display: inline-flex;
     width: 2em;
     height: 2em;
@@ -112,7 +112,7 @@ $boxesColors: ($yellow,
     margin-right: 0.5em;
 }
 
-.post hr{
+.markdown-body hr{
     background-color: rgba($coral, 0.5);
     border: 0;
     height: 1px;
