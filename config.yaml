@@ -1,5 +1,5 @@
 baseurl: https://jcalado.com
-languageCode: pt-pt
+languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
 title: jcalado.com
@@ -9,10 +9,9 @@ languages:
         languageName: English
         title: jcalado.com
         weight: 1
-    pt-pt:
+    pt:
         languageName: Portuguese
         title: jcalado.com
-        weight: 2
 
 # Change it to your Disqus shortname before using
 disqusShortname: jcalado
@@ -29,14 +28,12 @@ DefaultContentLanguage: en
 hasCJKLanguage: false
 
 permalinks:
-    posts: /p/:slug/
+    post: /p/:slug/
     page: /:slug/
-    project: /project/:slug
 
 params:
     mainSections:
-        - posts
-        - projects
+        - post
     featuredImageField: image
     rssFullContent: true
     favicon:
@@ -50,8 +47,8 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 😄
-        subtitle: Ai, mau.
+        emoji: 💻
+        subtitle: pushing code
         avatar:
             enabled: true
             local: false
@@ -191,14 +188,16 @@ menu:
     main:
         - identifier: home
           name: Home
+          weight: -90
           url: /
           params:
             icon: home
         - identifier: projects
           name: Projects
-          url: /projects
+          weight: -90
+          url: /project
           params:
-            icon: code
+            icon: home
 
     social:
         - identifier: github
@@ -241,7 +240,3 @@ markup:
         lineNos: true
         lineNumbersInTable: true
         tabWidth: 4
-
-module:
-    imports:
-    - path: github.com/CaiJimmy/hugo-theme-stack
