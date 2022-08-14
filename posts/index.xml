@@ -169,16 +169,16 @@ They&amp;rsquo;re inside &lt;code>keyboards/anne_pro/keymaps&lt;/code>.&lt;/p>
 &lt;p>I also had it change colors when switching layers to highlight special functions, and layers other than 0 had a bliking red number corresponding to active layer, but it seems the lighting goes out of sync easily. Board issue, I&amp;rsquo;m sure.&lt;/p>
 &lt;p>&lt;a class="link" href="https://github.com/jcalado/anne-pro-qmk-keymap" target="_blank" rel="noopener"
 >https://github.com/jcalado/anne-pro-qmk-keymap&lt;/a>&lt;/p>
-&lt;p>&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->Attention:&lt;!-- raw HTML omitted --> Layer 2&amp;rsquo;s media, volume and Fs only work when connected via USB.&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>invite.vdo.ninja</title><link>https://jcalado.com/p/invite.vdo.ninja/</link><pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/p/invite.vdo.ninja/</guid><description>&lt;p>&lt;img src="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja.png"
+&lt;p>&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->Attention:&lt;!-- raw HTML omitted --> Layer 2&amp;rsquo;s media, volume and Fs only work when connected via USB.&lt;!-- raw HTML omitted -->&lt;/p></description></item><item><title>invite.vdo.ninja</title><link>https://jcalado.com/p/invite.vdo.ninja/</link><pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/p/invite.vdo.ninja/</guid><description>&lt;p>&lt;figure style="flex-grow: 177; flex-basis: 426px">
+&lt;a href="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja.png" data-size="1920x1080">&lt;img src="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja.png"
+srcset="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja_hu6dadff3e5eb79c200b781c08fe201ef1_470950_480x0_resize_box_3.png 480w, https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja_hu6dadff3e5eb79c200b781c08fe201ef1_470950_1024x0_resize_box_3.png 1024w"
 width="1920"
 height="1080"
-srcset="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja_hu6dadff3e5eb79c200b781c08fe201ef1_470950_480x0_resize_box_3.png 480w, https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja_hu6dadff3e5eb79c200b781c08fe201ef1_470950_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="Screenshot of the page as of 2021"
-class="gallery-image"
-data-flex-grow="177"
-data-flex-basis="426px"
->&lt;/p>
+alt="Screenshot of the page as of 2021">
+&lt;/a>
+&lt;figcaption>Screenshot of the page as of 2021&lt;/figcaption>
+&lt;/figure>&lt;/p>
 &lt;h3 id="what-is-vdoninjaninja">What is &lt;a class="link" href="https://vdo.ninja" target="_blank" rel="noopener"
 >VDO.ninja&lt;/a>?&lt;/h3>
 &lt;blockquote>

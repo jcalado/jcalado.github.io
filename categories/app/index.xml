@@ -3,25 +3,25 @@
 &lt;h1 id="app-download">App download&lt;/h1>
 &lt;p>&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;!-- raw HTML omitted -->&lt;/p>
 &lt;h2 id="screenshot">Screenshot&lt;/h2>
-&lt;p>&lt;img src="https://jcalado.com/projects/apod/image1.png"
-width="1080"
-height="2220"
+&lt;p>&lt;figure style="flex-grow: 48; flex-basis: 116px">
+&lt;a href="https://jcalado.com/projects/apod/image1.png" data-size="1080x2220">&lt;img src="https://jcalado.com/projects/apod/image1.png"
 srcset="https://jcalado.com/projects/apod/image1_hu3c330ea22e05b68f378c2e30d5a14b70_1383830_480x0_resize_box_3.png 480w, https://jcalado.com/projects/apod/image1_hu3c330ea22e05b68f378c2e30d5a14b70_1383830_1024x0_resize_box_3.png 1024w"
-loading="lazy"
-alt="Detail page"
-class="gallery-image"
-data-flex-grow="48"
-data-flex-basis="116px"
-> &lt;img src="https://jcalado.com/projects/apod/image2.png"
 width="1080"
 height="2220"
-srcset="https://jcalado.com/projects/apod/image2_huf475de68338332b76e442709b377570a_2762438_480x0_resize_box_3.png 480w, https://jcalado.com/projects/apod/image2_huf475de68338332b76e442709b377570a_2762438_1024x0_resize_box_3.png 1024w"
 loading="lazy"
-alt="Archive of previous APODs"
-class="gallery-image"
-data-flex-grow="48"
-data-flex-basis="116px"
->&lt;/p>
+alt="Detail page">
+&lt;/a>
+&lt;figcaption>Detail page&lt;/figcaption>
+&lt;/figure> &lt;figure style="flex-grow: 48; flex-basis: 116px">
+&lt;a href="https://jcalado.com/projects/apod/image2.png" data-size="1080x2220">&lt;img src="https://jcalado.com/projects/apod/image2.png"
+srcset="https://jcalado.com/projects/apod/image2_huf475de68338332b76e442709b377570a_2762438_480x0_resize_box_3.png 480w, https://jcalado.com/projects/apod/image2_huf475de68338332b76e442709b377570a_2762438_1024x0_resize_box_3.png 1024w"
+width="1080"
+height="2220"
+loading="lazy"
+alt="Archive of previous APODs">
+&lt;/a>
+&lt;figcaption>Archive of previous APODs&lt;/figcaption>
+&lt;/figure>&lt;/p>
 &lt;h2 id="features">Features&lt;/h2>
 &lt;ul>
 &lt;li>Today&amp;rsquo;s &lt;a class="link" href="https://apod.nasa.gov/apod/" target="_blank" rel="noopener"
@@ -34,10 +34,7 @@ data-flex-basis="116px"
 &lt;p>&lt;a class="link" href="https://jcalado.com/sensores-qa-cml" target="_blank" rel="noopener"
 >https://jcalado.com/sensores-qa-cml&lt;/a>&lt;/p>
 &lt;h2 id="screenshot">Screenshot&lt;/h2>
-&lt;p>&lt;img src="https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg"
-loading="lazy"
-alt="Screenshot"
->&lt;/p>
+&lt;p>&lt;img src="https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg" alt="Screenshot" />&lt;/p>
 &lt;h2 id="features">Features&lt;/h2>
 &lt;ul>
 &lt;li>Search by Sensor name&lt;/li>
@@ -68,31 +65,13 @@ It is my first react-native app, so some things might not be 100% up to standard
 &lt;p>&lt;a class="link" href="https://github.com/jcalado/semaforodevacinacao" target="_blank" rel="noopener"
 >https://github.com/jcalado/semaforodevacinacao&lt;/a>&lt;/p>
 &lt;h1 id="screenshots">Screenshots&lt;/h1>
-&lt;p>&lt;img src="https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png"
-loading="lazy"
-alt="Main page"
->
-&lt;img src="https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png"
-loading="lazy"
-alt="Details page"
->
-&lt;img src="https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png"
-loading="lazy"
-alt="More details"
->
-&lt;img src="https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png"
-loading="lazy"
-alt="Map"
->
-&lt;img src="https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png"
-loading="lazy"
-alt="Searching centers"
->&lt;/p></description></item><item><title>VDO.Ninja invite generator</title><link>https://jcalado.com/projects/vdon-invite/</link><pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/projects/vdon-invite/</guid><description>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png" alt="Featured image of post VDO.Ninja invite generator" />&lt;h1 id="vdon-invite">VDON-invite&lt;/h1>
+&lt;p>&lt;img src="https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png" alt="Main page" />
+&lt;img src="https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png" alt="Details page" />
+&lt;img src="https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png" alt="More details" />
+&lt;img src="https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png" alt="Map" />
+&lt;img src="https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png" alt="Searching centers" />&lt;/p></description></item><item><title>VDO.Ninja invite generator</title><link>https://jcalado.com/projects/vdon-invite/</link><pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/projects/vdon-invite/</guid><description>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png" alt="Featured image of post VDO.Ninja invite generator" />&lt;h1 id="vdon-invite">VDON-invite&lt;/h1>
 &lt;p>Generates VDO.Ninja invites tailored to the user preferences by toggling switches on or off.&lt;/p>
-&lt;p>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png"
-loading="lazy"
-alt="VDON-invite as of 2021-01-17"
->&lt;/p>
+&lt;p>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png" alt="VDON-invite as of 2021-01-17" />&lt;/p>
 &lt;h1 id="features">Features&lt;/h1>
 &lt;ul>
 &lt;li>Expanding panel UI&lt;/li>
@@ -113,16 +92,10 @@ alt="VDON-invite as of 2021-01-17"
 &lt;li>Warns about video being looped, via a red &amp;ldquo;L&amp;rdquo; on the clip time panel&lt;/li>
 &lt;li>When CasparCG is issued a STOP command to the ffmpeg producer, everything is reset&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://github.com/jcalado/cgtimer/raw/master/screenshots/Standby.png"
-loading="lazy"
-alt="preview"
->&lt;/p>
+&lt;p>&lt;img src="https://github.com/jcalado/cgtimer/raw/master/screenshots/Standby.png" alt="preview" />&lt;/p>
 &lt;p>&lt;a class="link" href="https://github.com/jcalado/cgtimer" target="_blank" rel="noopener"
 >https://github.com/jcalado/cgtimer&lt;/a>&lt;/p></description></item><item><title>Hyperdeckctl</title><link>https://jcalado.com/projects/hyperdeckctl/</link><pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/projects/hyperdeckctl/</guid><description>&lt;img src="https://raw.githubusercontent.com/jcalado/hyperdeckctl/main/screenshots/screenshot01.png" alt="Featured image of post Hyperdeckctl" />&lt;h1 id="hyperdeckctl">Hyperdeckctl&lt;/h1>
 &lt;p>hyperdeckctl allows you to trigger common functions of your Blackmagic Design Hyperdeck recorders from a single interface.&lt;/p>
-&lt;p>&lt;img src="https://raw.githubusercontent.com/jcalado/hyperdeckctl/main/screenshots/screenshot01.png"
-loading="lazy"
-alt="preview"
->&lt;/p>
+&lt;p>&lt;img src="https://raw.githubusercontent.com/jcalado/hyperdeckctl/main/screenshots/screenshot01.png" alt="preview" />&lt;/p>
 &lt;p>&lt;a class="link" href="https://github.com/jcalado/hyperdeckctl" target="_blank" rel="noopener"
 >https://github.com/jcalado/hyperdeckctl&lt;/a>&lt;/p></description></item></channel></rss>

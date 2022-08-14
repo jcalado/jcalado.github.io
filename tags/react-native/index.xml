@@ -14,23 +14,8 @@ It is my first react-native app, so some things might not be 100% up to standard
 &lt;p>&lt;a class="link" href="https://github.com/jcalado/semaforodevacinacao" target="_blank" rel="noopener"
 >https://github.com/jcalado/semaforodevacinacao&lt;/a>&lt;/p>
 &lt;h1 id="screenshots">Screenshots&lt;/h1>
-&lt;p>&lt;img src="https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png"
-loading="lazy"
-alt="Main page"
->
-&lt;img src="https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png"
-loading="lazy"
-alt="Details page"
->
-&lt;img src="https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png"
-loading="lazy"
-alt="More details"
->
-&lt;img src="https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png"
-loading="lazy"
-alt="Map"
->
-&lt;img src="https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png"
-loading="lazy"
-alt="Searching centers"
->&lt;/p></description></item></channel></rss>
+&lt;p>&lt;img src="https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png" alt="Main page" />
+&lt;img src="https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png" alt="Details page" />
+&lt;img src="https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png" alt="More details" />
+&lt;img src="https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png" alt="Map" />
+&lt;img src="https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png" alt="Searching centers" />&lt;/p></description></item></channel></rss>
