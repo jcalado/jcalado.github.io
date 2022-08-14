@@ -1,4 +1,4 @@
-baseurl: https://jcalado.com
+baseurl: https://jcalado.github.io
 languageCode: pt-pt
 theme: hugo-theme-stack
 paginate: 5
