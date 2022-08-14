@@ -15,7 +15,7 @@ languages:
         weight: 2
 
 # Change it to your Disqus shortname before using
-disqusShortname: hugo-theme-stack
+disqusShortname: jcalado
 
 # GA Tracking ID
 googleAnalytics:
@@ -255,3 +255,7 @@ markup:
         lineNos: true
         lineNumbersInTable: true
         tabWidth: 4
+
+module:
+    imports:
+    - path: github.com/CaiJimmy/hugo-theme-stack
