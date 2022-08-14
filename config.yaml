@@ -143,6 +143,10 @@ params:
             host:
             id:
     widgets:
+        enabled:
+            - search
+            - archives
+            - tag-cloud
         homepage:
             - type: search
             - type: archives
