@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>app on jcalado.com</title>
+        <link>https://jcalado.com/categories/app/</link>
+        <description>Recent content in app on jcalado.com</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>pt-pt</language>
+        <lastBuildDate>Tue, 17 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/categories/app/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>APOD</title>
+        <link>https://jcalado.com/projects/apod/</link>
+        <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/apod/</guid>
+        <description>&lt;img src="https://user-images.githubusercontent.com/26873/129795578-1adbdebe-b3a6-4fef-a24b-f26aceac1fe1.png" alt="Featured image of post APOD" /&gt;&lt;h1 id=&#34;apod&#34;&gt;APOD&lt;/h1&gt;
+&lt;p&gt;APOD stands for &amp;ldquo;Astronomy Picture Of the Day&amp;rdquo;.&lt;/p&gt;
+&lt;h1 id=&#34;app-download&#34;&gt;App download&lt;/h1&gt;
+&lt;p&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;Screenshot&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://jcalado.com/projects/apod/image1.png&#34;
+	width=&#34;1080&#34;
+	height=&#34;2220&#34;
+	srcset=&#34;https://jcalado.com/projects/apod/image1_hu3c330ea22e05b68f378c2e30d5a14b70_1383830_480x0_resize_box_3.png 480w, https://jcalado.com/projects/apod/image1_hu3c330ea22e05b68f378c2e30d5a14b70_1383830_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Detail page&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt; &lt;img src=&#34;https://jcalado.com/projects/apod/image2.png&#34;
+	width=&#34;1080&#34;
+	height=&#34;2220&#34;
+	srcset=&#34;https://jcalado.com/projects/apod/image2_huf475de68338332b76e442709b377570a_2762438_480x0_resize_box_3.png 480w, https://jcalado.com/projects/apod/image2_huf475de68338332b76e442709b377570a_2762438_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Archive of previous APODs&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;48&#34;
+		data-flex-basis=&#34;116px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Today&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://apod.nasa.gov/apod/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;APOD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Last 90 days worth of APODs&lt;/li&gt;
+&lt;li&gt;Get a random APOD&lt;/li&gt;
+&lt;li&gt;Share&lt;/li&gt;
+&lt;li&gt;Support for videos and other web content&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Environmental quality sensors - CML</title>
+        <link>https://jcalado.com/projects/sensores-qa-cml/</link>
+        <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/sensores-qa-cml/</guid>
+        <description>&lt;img src="https://user-images.githubusercontent.com/26873/125345226-2e621200-e350-11eb-8010-dea55b723a5a.png" alt="Featured image of post Environmental quality sensors - CML" /&gt;&lt;h1 id=&#34;environmental-quality-sensors---câmara-municipal-de-lisboa&#34;&gt;Environmental quality sensors - Câmara Municipal de Lisboa&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://jcalado.com/sensores-qa-cml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://jcalado.com/sensores-qa-cml&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;Screenshot&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Search by Sensor name&lt;/li&gt;
+&lt;li&gt;Search by Category name&lt;/li&gt;
+&lt;li&gt;Search by Station&lt;/li&gt;
+&lt;li&gt;Some sensors have colored tresholds in place: low, medium, high, danger, extreme&lt;/li&gt;
+&lt;li&gt;Every column is sortable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+&lt;p&gt;Requests are proxied through &lt;a class=&#34;link&#34; href=&#34;http://allorigins.win/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;allorigins.win&lt;/a&gt;, since the &lt;a class=&#34;link&#34; href=&#34;http://opendata-cml.qart.pt:8080/lastmeasurements&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;original API url&lt;/a&gt; has CORS issues.&lt;/p&gt;
+&lt;h2 id=&#34;metadata-info&#34;&gt;Metadata info&lt;/h2&gt;
+&lt;p&gt;There&amp;rsquo;s some information about the API published here: &lt;a class=&#34;link&#34; href=&#34;http://dados.cm-lisboa.pt/dataset/e7f31452-7d21-4b26-9eb5-1db62737a12d/resource/d8837f32-1f7e-4a61-bb8a-a2333f822edb/download/metadadosdadosabertos.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Metadata&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Semáforo de Vacinação COVID</title>
+        <link>https://jcalado.com/projects/semaforo/</link>
+        <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/semaforo/</guid>
+        <description>&lt;img src="https://i.postimg.cc/FKpftPKv/App.png" alt="Featured image of post Semáforo de Vacinação COVID" /&gt;&lt;h1 id=&#34;semáforo-de-vacinação-covid---mobile-app&#34;&gt;Semáforo de Vacinação COVID - Mobile app&lt;/h1&gt;
+&lt;p&gt;This react-native app will consume the same data as &lt;a class=&#34;link&#34; href=&#34;https://covid19.min-saude.pt/cvc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://covid19.min-saude.pt/cvc&lt;/a&gt; and present it in a friendly manner.
+It is my first react-native app, so some things might not be 100% up to standard.&lt;/p&gt;
+&lt;h1 id=&#34;features&#34;&gt;Features&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Downloads realtime data from the API endpoint&lt;/li&gt;
+&lt;li&gt;Searches by location or center name&lt;/li&gt;
+&lt;li&gt;Shows a map with API provided markers so you can have a sense of scale. There are a lot of centers!&lt;/li&gt;
+&lt;li&gt;Displays how old the API provided data is, so the user is not mislead.&lt;/li&gt;
+&lt;li&gt;Provides undocumented stats such as &amp;ldquo;Pessoas em recobro&amp;rdquo;, &amp;ldquo;Pessoas em espera&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Pull down to refresh data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jcalado/semaforodevacinacao&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jcalado/semaforodevacinacao&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;screenshots&#34;&gt;Screenshots&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Main page&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Details page&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;More details&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Map&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Searching centers&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>VDO.Ninja invite generator</title>
+        <link>https://jcalado.com/projects/vdon-invite/</link>
+        <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/vdon-invite/</guid>
+        <description>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png" alt="Featured image of post VDO.Ninja invite generator" /&gt;&lt;h1 id=&#34;vdon-invite&#34;&gt;VDON-invite&lt;/h1&gt;
+&lt;p&gt;Generates VDO.Ninja invites tailored to the user preferences by toggling switches on or off.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;VDON-invite as of 2021-01-17&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;features&#34;&gt;Features&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Expanding panel UI&lt;/li&gt;
+&lt;li&gt;Popover information&lt;/li&gt;
+&lt;li&gt;Loads data from external json file, allowing for complete reorder of toggles.&lt;/li&gt;
+&lt;li&gt;Generates additional VDO.Ninja director page URL when appropriate&lt;/li&gt;
+&lt;li&gt;Generates custom view links&lt;/li&gt;
+&lt;li&gt;Click to copy urls&lt;/li&gt;
+&lt;li&gt;Optionally obfuscates links via invite.cam&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- raw HTML omitted --&gt;
+</description>
+        </item>
+        <item>
+        <title>CGTimer</title>
+        <link>https://jcalado.com/projects/cgtimer/</link>
+        <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/cgtimer/</guid>
+        <description>&lt;img src="https://github.com/jcalado/cgtimer/raw/master/screenshots/Standby.png" alt="Featured image of post CGTimer" /&gt;&lt;h1 id=&#34;cgtimer&#34;&gt;CGTimer&lt;/h1&gt;
+&lt;p&gt;CGTimer is an electron app to display current video time from a CasparCG server instance.&lt;/p&gt;
+&lt;h1 id=&#34;features&#34;&gt;Features&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Displays active clip current time&lt;/li&gt;
+&lt;li&gt;Displays remaining clip time&lt;/li&gt;
+&lt;li&gt;Starts flashing red at less than 5 seconds to clip end&lt;/li&gt;
+&lt;li&gt;Warns about video being looped, via a red &amp;ldquo;L&amp;rdquo; on the clip time panel&lt;/li&gt;
+&lt;li&gt;When CasparCG is issued a STOP command to the ffmpeg producer, everything is reset&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://github.com/jcalado/cgtimer/raw/master/screenshots/Standby.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;preview&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jcalado/cgtimer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jcalado/cgtimer&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Hyperdeckctl</title>
+        <link>https://jcalado.com/projects/hyperdeckctl/</link>
+        <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/hyperdeckctl/</guid>
+        <description>&lt;img src="https://raw.githubusercontent.com/jcalado/hyperdeckctl/main/screenshots/screenshot01.png" alt="Featured image of post Hyperdeckctl" /&gt;&lt;h1 id=&#34;hyperdeckctl&#34;&gt;Hyperdeckctl&lt;/h1&gt;
+&lt;p&gt;hyperdeckctl allows you to trigger common functions of your Blackmagic Design Hyperdeck recorders from a single interface.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/jcalado/hyperdeckctl/main/screenshots/screenshot01.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;preview&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jcalado/hyperdeckctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jcalado/hyperdeckctl&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

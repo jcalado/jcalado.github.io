@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>react on jcalado.com</title>
+        <link>https://jcalado.com/tags/react/</link>
+        <description>Recent content in react on jcalado.com</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>pt-pt</language>
+        <lastBuildDate>Sat, 17 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/react/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Environmental quality sensors - CML</title>
+        <link>https://jcalado.com/projects/sensores-qa-cml/</link>
+        <pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/sensores-qa-cml/</guid>
+        <description>&lt;img src="https://user-images.githubusercontent.com/26873/125345226-2e621200-e350-11eb-8010-dea55b723a5a.png" alt="Featured image of post Environmental quality sensors - CML" /&gt;&lt;h1 id=&#34;environmental-quality-sensors---câmara-municipal-de-lisboa&#34;&gt;Environmental quality sensors - Câmara Municipal de Lisboa&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://jcalado.com/sensores-qa-cml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://jcalado.com/sensores-qa-cml&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;screenshot&#34;&gt;Screenshot&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Screenshot&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Search by Sensor name&lt;/li&gt;
+&lt;li&gt;Search by Category name&lt;/li&gt;
+&lt;li&gt;Search by Station&lt;/li&gt;
+&lt;li&gt;Some sensors have colored tresholds in place: low, medium, high, danger, extreme&lt;/li&gt;
+&lt;li&gt;Every column is sortable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+&lt;p&gt;Requests are proxied through &lt;a class=&#34;link&#34; href=&#34;http://allorigins.win/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;allorigins.win&lt;/a&gt;, since the &lt;a class=&#34;link&#34; href=&#34;http://opendata-cml.qart.pt:8080/lastmeasurements&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;original API url&lt;/a&gt; has CORS issues.&lt;/p&gt;
+&lt;h2 id=&#34;metadata-info&#34;&gt;Metadata info&lt;/h2&gt;
+&lt;p&gt;There&amp;rsquo;s some information about the API published here: &lt;a class=&#34;link&#34; href=&#34;http://dados.cm-lisboa.pt/dataset/e7f31452-7d21-4b26-9eb5-1db62737a12d/resource/d8837f32-1f7e-4a61-bb8a-a2333f822edb/download/metadadosdadosabertos.pdf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Metadata&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>react-native on jcalado.com</title>
+        <link>https://jcalado.com/tags/react-native/</link>
+        <description>Recent content in react-native on jcalado.com</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>pt-pt</language>
+        <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/react-native/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Semáforo de Vacinação COVID</title>
+        <link>https://jcalado.com/projects/semaforo/</link>
+        <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://jcalado.com/projects/semaforo/</guid>
+        <description>&lt;img src="https://i.postimg.cc/FKpftPKv/App.png" alt="Featured image of post Semáforo de Vacinação COVID" /&gt;&lt;h1 id=&#34;semáforo-de-vacinação-covid---mobile-app&#34;&gt;Semáforo de Vacinação COVID - Mobile app&lt;/h1&gt;
+&lt;p&gt;This react-native app will consume the same data as &lt;a class=&#34;link&#34; href=&#34;https://covid19.min-saude.pt/cvc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://covid19.min-saude.pt/cvc&lt;/a&gt; and present it in a friendly manner.
+It is my first react-native app, so some things might not be 100% up to standard.&lt;/p&gt;
+&lt;h1 id=&#34;features&#34;&gt;Features&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Downloads realtime data from the API endpoint&lt;/li&gt;
+&lt;li&gt;Searches by location or center name&lt;/li&gt;
+&lt;li&gt;Shows a map with API provided markers so you can have a sense of scale. There are a lot of centers!&lt;/li&gt;
+&lt;li&gt;Displays how old the API provided data is, so the user is not mislead.&lt;/li&gt;
+&lt;li&gt;Provides undocumented stats such as &amp;ldquo;Pessoas em recobro&amp;rdquo;, &amp;ldquo;Pessoas em espera&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Pull down to refresh data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jcalado/semaforodevacinacao&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jcalado/semaforodevacinacao&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;screenshots&#34;&gt;Screenshots&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Main page&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Details page&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;More details&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Map&#34;
+	
+	
+&gt;
+&lt;img src=&#34;https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Searching centers&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
