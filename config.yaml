@@ -143,10 +143,6 @@ params:
             host:
             id:
     widgets:
-        enabled:
-            - search
-            - archives
-            - tag-cloud
         homepage:
             - type: search
             - type: archives
@@ -198,16 +194,6 @@ menu:
           url: /
           params:
             icon: home
-        - identifier: archive
-          name: Archive
-          url: /archives
-          params:
-            icon: archives
-        - identifier: search
-          name: Search
-          url: /search
-          params:
-            icon: search
         - identifier: projects
           name: Projects
           url: /projects
