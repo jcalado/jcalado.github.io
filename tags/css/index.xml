@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>css on jcalado.com</title><link>https://jcalado.com/tags/css/</link><description>Recent content in css on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>pt-pt</language><lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/css/index.xml" rel="self" type="application/rss+xml"/><item><title>VDO.Ninja invite generator</title><link>https://jcalado.com/projects/vdon-invite/</link><pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/projects/vdon-invite/</guid><description>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png" alt="Featured image of post VDO.Ninja invite generator" />&lt;h1 id="vdon-invite">VDON-invite&lt;/h1>
+&lt;p>Generates VDO.Ninja invites tailored to the user preferences by toggling switches on or off.&lt;/p>
+&lt;p>&lt;img src="https://i.ibb.co/8B3Q0VV/Screenshot-2021-01-17-100752.png"
+loading="lazy"
+alt="VDON-invite as of 2021-01-17"
+>&lt;/p>
+&lt;h1 id="features">Features&lt;/h1>
+&lt;ul>
+&lt;li>Expanding panel UI&lt;/li>
+&lt;li>Popover information&lt;/li>
+&lt;li>Loads data from external json file, allowing for complete reorder of toggles.&lt;/li>
+&lt;li>Generates additional VDO.Ninja director page URL when appropriate&lt;/li>
+&lt;li>Generates custom view links&lt;/li>
+&lt;li>Click to copy urls&lt;/li>
+&lt;li>Optionally obfuscates links via invite.cam&lt;/li>
+&lt;/ul>
+&lt;!-- raw HTML omitted --></description></item></channel></rss>

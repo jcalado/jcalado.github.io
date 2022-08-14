@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>react-native on jcalado.com</title><link>https://jcalado.com/tags/react-native/</link><description>Recent content in react-native on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>pt-pt</language><lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/react-native/index.xml" rel="self" type="application/rss+xml"/><item><title>Semáforo de Vacinação COVID</title><link>https://jcalado.com/projects/semaforo/</link><pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/projects/semaforo/</guid><description>&lt;img src="https://i.postimg.cc/FKpftPKv/App.png" alt="Featured image of post Semáforo de Vacinação COVID" />&lt;h1 id="semáforo-de-vacinação-covid---mobile-app">Semáforo de Vacinação COVID - Mobile app&lt;/h1>
+&lt;p>This react-native app will consume the same data as &lt;a class="link" href="https://covid19.min-saude.pt/cvc" target="_blank" rel="noopener"
+>https://covid19.min-saude.pt/cvc&lt;/a> and present it in a friendly manner.
+It is my first react-native app, so some things might not be 100% up to standard.&lt;/p>
+&lt;h1 id="features">Features&lt;/h1>
+&lt;ul>
+&lt;li>Downloads realtime data from the API endpoint&lt;/li>
+&lt;li>Searches by location or center name&lt;/li>
+&lt;li>Shows a map with API provided markers so you can have a sense of scale. There are a lot of centers!&lt;/li>
+&lt;li>Displays how old the API provided data is, so the user is not mislead.&lt;/li>
+&lt;li>Provides undocumented stats such as &amp;ldquo;Pessoas em recobro&amp;rdquo;, &amp;ldquo;Pessoas em espera&amp;rdquo;&lt;/li>
+&lt;li>Pull down to refresh data&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a class="link" href="https://github.com/jcalado/semaforodevacinacao" target="_blank" rel="noopener"
+>https://github.com/jcalado/semaforodevacinacao&lt;/a>&lt;/p>
+&lt;h1 id="screenshots">Screenshots&lt;/h1>
+&lt;p>&lt;img src="https://i.postimg.cc/kMxCY2YN/Screenshot-1625991749.png"
+loading="lazy"
+alt="Main page"
+>
+&lt;img src="https://i.postimg.cc/Dy6TFtT8/Screenshot-1625991778.png"
+loading="lazy"
+alt="Details page"
+>
+&lt;img src="https://i.postimg.cc/pXRHwP3w/Screenshot-1625991789.png"
+loading="lazy"
+alt="More details"
+>
+&lt;img src="https://i.postimg.cc/MprJfVXw/Screenshot-1625991824.png"
+loading="lazy"
+alt="Map"
+>
+&lt;img src="https://i.postimg.cc/sg2R2wjK/Screenshot-1625991858.png"
+loading="lazy"
+alt="Searching centers"
+>&lt;/p></description></item></channel></rss>
