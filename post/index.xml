@@ -1,4 +1,86 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on jcalado.com</title><link>https://jcalado.com/post/</link><description>Recent content in Posts on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 08 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/post/index.xml" rel="self" type="application/rss+xml"/><item><title>Paralell Youtube-DL downloads with powershell on windows</title><link>https://jcalado.com/p/paralell-youtube-dl-downloads-with-powershell-on-windows/</link><pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/p/paralell-youtube-dl-downloads-with-powershell-on-windows/</guid><description>&lt;p>Youtube-dl playlist downloads are done sequentially. However you can speed things up by running multiple youtube-dl processes in paralell.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on jcalado.com</title><link>https://jcalado.com/post/</link><description>Recent content in Posts on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 16 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/post/index.xml" rel="self" type="application/rss+xml"/><item><title>ACF to REST API update options pages</title><link>https://jcalado.com/p/acf-to-rest-api-update-options-pages/</link><pubDate>Tue, 16 Aug 2022 00:00:00 +0000</pubDate><guid>https://jcalado.com/p/acf-to-rest-api-update-options-pages/</guid><description>&lt;h1 id="acf-to-rest-api">ACF to REST API&lt;/h1>
+&lt;p>Available here: &lt;a class="link" href="https://github.com/airesvsg/acf-to-rest-api" target="_blank" rel="noopener"
+>https://github.com/airesvsg/acf-to-rest-api&lt;/a>&lt;/p>
+&lt;p>Exposes ACF endpoints that would be otherwise missing.&lt;/p>
+&lt;h2 id="get-values-from-options-pages">Get values from options pages&lt;/h2>
+&lt;p>&lt;code>GET https://example.com/wp-json/acf/v3/options/page_settings/&lt;/code>&lt;/p>
+&lt;p>where &lt;code>page_settings&lt;/code> identifies the options page in question.&lt;/p>
+&lt;p>Returns:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;acf&amp;#34;&lt;/span>&lt;span class="p">:{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;address&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;Address&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_fb&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;https:\/\/www.facebook.com\/example\/&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_instagram&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_twitter&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_youtube&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;https:\/\/www.youtube.com\/example&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="to-update-values">To update values&lt;/h2>
+&lt;p>&lt;code>POST https://example.com/wp-json/acf/v3/options/page_settings/&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;fields&amp;#34;&lt;/span>&lt;span class="p">:{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;address&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;Address&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_fb&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;https:\/\/www.facebook.com\/example\/&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_instagram&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_twitter&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;social_youtube&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="s2">&amp;#34;https:\/\/www.youtube.com\/example&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>Attention:&lt;/strong> The json key is actually &amp;ldquo;fields&amp;rdquo; here, not the &amp;ldquo;acf&amp;rdquo; that is returned with the &lt;code>GET&lt;/code> call. 🤷‍♂️&lt;/p>
+&lt;h3 id="doesnt-work-returns-error-500">Doesn&amp;rsquo;t work, returns error 500!&lt;/h3>
+&lt;p>Add this to your functions.php, as stated in &lt;a class="link" href="https://github.com/airesvsg/acf-to-rest-api/issues/56" target="_blank" rel="noopener"
+>https://github.com/airesvsg/acf-to-rest-api/issues/56&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-php" data-lang="php">&lt;span class="line">&lt;span class="cl">&lt;span class="nx">add_filter&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="s1">&amp;#39;acf/location/rule_match/options_page&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">function&lt;/span>&lt;span class="p">(&lt;/span> &lt;span class="nv">$visibility&lt;/span> &lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span> &lt;span class="o">!&lt;/span> &lt;span class="nx">is_admin&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="k">true&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nv">$visibility&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span> &lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Paralell Youtube-DL downloads with powershell on windows</title><link>https://jcalado.com/p/paralell-youtube-dl-downloads-with-powershell-on-windows/</link><pubDate>Fri, 08 Oct 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/p/paralell-youtube-dl-downloads-with-powershell-on-windows/</guid><description>&lt;p>Youtube-dl playlist downloads are done sequentially. However you can speed things up by running multiple youtube-dl processes in paralell.&lt;/p>
 &lt;h2 id="requirements">Requirements&lt;/h2>
 &lt;p>This will only work with PowerShell 7, not PowerShell 5.* which comes bundled with windows 10/11.&lt;/p>
 &lt;p>&lt;strong>Check your Powershell version&lt;/strong> with&lt;/p>
