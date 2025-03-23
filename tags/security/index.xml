@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Security on jcalado.com</title><link>https://jcalado.com/tags/security/</link><description>Recent content in Security on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 23 Mar 2025 09:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>HeidiSQL Password Decoder: A Secure Client-Side Recovery Tool</title><link>https://jcalado.com/post/2025/03/23/</link><pubDate>Sun, 23 Mar 2025 09:00:00 +0000</pubDate><guid>https://jcalado.com/post/2025/03/23/</guid><description>&lt;h1 id="-heidisql-password-decoder">🔐 HeidiSQL Password Decoder
+&lt;/h1>&lt;p>I&amp;rsquo;m excited to share a new tool I&amp;rsquo;ve built that solves a common problem for database administrators who use HeidiSQL. Have you ever found yourself in a situation where you need to recover a database password from your HeidiSQL connection settings? Maybe you&amp;rsquo;re migrating to a new system or just need to share credentials with a colleague. That&amp;rsquo;s exactly why I created the HeidiSQL Password Decoder.&lt;/p>
+&lt;p>&lt;img src="https://github.com/user-attachments/assets/60fe0ca5-0207-4311-8df3-bfe2cb76e479"
+loading="lazy"
+alt="HeidiSQL Password Decoder Screenshot"
+>&lt;/p>
+&lt;h2 id="the-problem">The Problem
+&lt;/h2>&lt;p>HeidiSQL is a fantastic database management tool, but it stores your passwords in an encoded format in its settings file. While this isn&amp;rsquo;t true encryption (and isn&amp;rsquo;t meant to be), it does prevent casual viewing of your passwords. When you need those passwords outside of HeidiSQL, you&amp;rsquo;re typically out of luck.&lt;/p>
+&lt;h2 id="the-solution">The Solution
+&lt;/h2>&lt;p>This browser-based tool uses the same algorithm that HeidiSQL employs to encode/decode passwords but runs entirely in your browser. No data ever leaves your computer, making it a secure way to retrieve those passwords when you need them.&lt;/p>
+&lt;h2 id="-key-features">✨ Key Features
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>🔒 100% Client-side Processing&lt;/strong>: All decoding happens in your browser - no data is ever sent to a server&lt;/li>
+&lt;li>&lt;strong>🖥️ Clean Modern Interface&lt;/strong>: Intuitive design with visual feedback&lt;/li>
+&lt;li>&lt;strong>📋 Easy Copy Functionality&lt;/strong>: One-click copy for decoded passwords&lt;/li>
+&lt;li>&lt;strong>🔍 Smart Detection&lt;/strong>: Automatically finds password entries in your settings file&lt;/li>
+&lt;li>&lt;strong>🌐 Works Offline&lt;/strong>: No internet connection required after initial page load&lt;/li>
+&lt;/ul>
+&lt;h2 id="-how-to-use-it">📋 How to Use It
+&lt;/h2>&lt;p>The tool is designed to be as simple as possible:&lt;/p>
+&lt;ol>
+&lt;li>Export your HeidiSQL connection settings or copy from your sessions file&lt;/li>
+&lt;li>Paste the contents into the text area&lt;/li>
+&lt;li>Click &amp;ldquo;Decode Passwords&amp;rdquo;&lt;/li>
+&lt;li>View all your server connections and their decoded passwords&lt;/li>
+&lt;li>Copy any password with a single click&lt;/li>
+&lt;/ol>
+&lt;h2 id="-behind-the-scenes">🔍 Behind the Scenes
+&lt;/h2>&lt;p>HeidiSQL&amp;rsquo;s password encoding is relatively straightforward. The encoded password format ends with a digit that indicates the shift value used in the encoding. Here&amp;rsquo;s the JavaScript function that powers the decoding:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">heidiDecode&lt;/span>(&lt;span style="color:#a6e22e">hex&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">str&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">shift&lt;/span> &lt;span style="color:#f92672">=&lt;/span> parseInt(&lt;span style="color:#a6e22e">hex&lt;/span>.&lt;span style="color:#a6e22e">substr&lt;/span>(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">hex&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">hex&lt;/span>.&lt;span style="color:#a6e22e">substr&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#a6e22e">hex&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">hex&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">str&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> String.&lt;span style="color:#a6e22e">fromCharCode&lt;/span>(parseInt(&lt;span style="color:#a6e22e">hex&lt;/span>.&lt;span style="color:#a6e22e">substr&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>), &lt;span style="color:#ae81ff">16&lt;/span>) &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">shift&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">str&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The algorithm works like this:&lt;/p>
+&lt;ol>
+&lt;li>It takes the last character of the encoded string as a &amp;ldquo;shift&amp;rdquo; value&lt;/li>
+&lt;li>It processes the rest of the string in pairs of characters, treating them as hexadecimal values&lt;/li>
+&lt;li>It converts each hex pair to a character code, subtracts the shift value, and converts to the corresponding character&lt;/li>
+&lt;li>The resulting string is the original password&lt;/li>
+&lt;/ol>
+&lt;h2 id="-privacy-considerations">🔒 Privacy Considerations
+&lt;/h2>&lt;p>When dealing with passwords, security is paramount. This tool was built with privacy as the top priority:&lt;/p>
+&lt;ul>
+&lt;li>No data is ever sent to any server&lt;/li>
+&lt;li>All processing happens directly in your browser&lt;/li>
+&lt;li>No cookies or local storage used&lt;/li>
+&lt;li>No analytics or tracking&lt;/li>
+&lt;li>No external requests after page load&lt;/li>
+&lt;/ul>
+&lt;h2 id="why-build-this">Why Build This?
+&lt;/h2>&lt;p>As a developer who works with databases frequently, I&amp;rsquo;ve encountered situations where I needed to recover a HeidiSQL password. Rather than writing a quick script each time, I decided to build a proper tool that others might find useful as well.&lt;/p>
+&lt;p>The project also gave me a chance to practice creating a focused, security-conscious web application that respects user privacy while solving a specific problem.&lt;/p>
+&lt;h2 id="whats-next">What&amp;rsquo;s Next?
+&lt;/h2>&lt;p>While the tool is fully functional as is, I&amp;rsquo;m considering adding support for additional database tools that use similar encoding methods. If you have suggestions or feature requests, feel free to reach out or contribute to the project.&lt;/p>
+&lt;h2 id="try-it-yourself">Try It Yourself
+&lt;/h2>&lt;p>The tool is available online &lt;a class="link" href="https://jcalado.com/heidisql_password_decoder/" target="_blank" rel="noopener"
+>here&lt;/a> and the source code is &lt;a class="link" href="https://github.com/jcalado/heidisql_password_decoder" target="_blank" rel="noopener"
+>available on GitHub&lt;/a> under the MIT license.&lt;/p></description></item></channel></rss>

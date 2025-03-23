@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>react on jcalado.com</title><link>https://jcalado.com/tags/react/</link><description>Recent content in react on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 17 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/react/index.xml" rel="self" type="application/rss+xml"/><item><title>Environmental quality sensors - CML</title><link>https://jcalado.com/project/sensores-qa-cml/</link><pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/project/sensores-qa-cml/</guid><description>&lt;img src="https://user-images.githubusercontent.com/26873/125345226-2e621200-e350-11eb-8010-dea55b723a5a.png" alt="Featured image of post Environmental quality sensors - CML" />&lt;h1 id="environmental-quality-sensors---câmara-municipal-de-lisboa">Environmental quality sensors - Câmara Municipal de Lisboa&lt;/h1>
-&lt;p>&lt;a class="link" href="https://jcalado.com/sensores-qa-cml" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>React on jcalado.com</title><link>https://jcalado.com/tags/react/</link><description>Recent content in React on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 17 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/react/index.xml" rel="self" type="application/rss+xml"/><item><title>Environmental quality sensors - CML</title><link>https://jcalado.com/project/sensores-qa-cml/</link><pubDate>Sat, 17 Jul 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/project/sensores-qa-cml/</guid><description>&lt;img src="https://user-images.githubusercontent.com/26873/125345226-2e621200-e350-11eb-8010-dea55b723a5a.png" alt="Featured image of post Environmental quality sensors - CML" />&lt;h1 id="environmental-quality-sensors---câmara-municipal-de-lisboa">Environmental quality sensors - Câmara Municipal de Lisboa
+&lt;/h1>&lt;p>&lt;a class="link" href="https://jcalado.com/sensores-qa-cml" target="_blank" rel="noopener"
 >https://jcalado.com/sensores-qa-cml&lt;/a>&lt;/p>
-&lt;h2 id="screenshot">Screenshot&lt;/h2>
-&lt;p>&lt;img src="https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg"
+&lt;h2 id="screenshot">Screenshot
+&lt;/h2>&lt;p>&lt;img src="https://user-images.githubusercontent.com/26873/125344050-b9420d00-e34e-11eb-9f8c-e449889aa01a.jpeg"
 loading="lazy"
 alt="Screenshot"
 >&lt;/p>
-&lt;h2 id="features">Features&lt;/h2>
-&lt;ul>
+&lt;h2 id="features">Features
+&lt;/h2>&lt;ul>
 &lt;li>Search by Sensor name&lt;/li>
 &lt;li>Search by Category name&lt;/li>
 &lt;li>Search by Station&lt;/li>
 &lt;li>Some sensors have colored tresholds in place: low, medium, high, danger, extreme&lt;/li>
 &lt;li>Every column is sortable&lt;/li>
 &lt;/ul>
-&lt;h2 id="notes">Notes&lt;/h2>
-&lt;p>Requests are proxied through &lt;a class="link" href="http://allorigins.win/" target="_blank" rel="noopener"
+&lt;h2 id="notes">Notes
+&lt;/h2>&lt;p>Requests are proxied through &lt;a class="link" href="http://allorigins.win/" target="_blank" rel="noopener"
 >allorigins.win&lt;/a>, since the &lt;a class="link" href="http://opendata-cml.qart.pt:8080/lastmeasurements" target="_blank" rel="noopener"
 >original API url&lt;/a> has CORS issues.&lt;/p>
-&lt;h2 id="metadata-info">Metadata info&lt;/h2>
-&lt;p>There&amp;rsquo;s some information about the API published here: &lt;a class="link" href="http://dados.cm-lisboa.pt/dataset/e7f31452-7d21-4b26-9eb5-1db62737a12d/resource/d8837f32-1f7e-4a61-bb8a-a2333f822edb/download/metadadosdadosabertos.pdf" target="_blank" rel="noopener"
+&lt;h2 id="metadata-info">Metadata info
+&lt;/h2>&lt;p>There&amp;rsquo;s some information about the API published here: &lt;a class="link" href="http://dados.cm-lisboa.pt/dataset/e7f31452-7d21-4b26-9eb5-1db62737a12d/resource/d8837f32-1f7e-4a61-bb8a-a2333f822edb/download/metadadosdadosabertos.pdf" target="_blank" rel="noopener"
 >Metadata&lt;/a>&lt;/p></description></item></channel></rss>

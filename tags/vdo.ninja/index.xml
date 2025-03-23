@@ -1,27 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VDO.Ninja on jcalado.com</title><link>https://jcalado.com/tags/vdo.ninja/</link><description>Recent content in VDO.Ninja on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 17 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/vdo.ninja/index.xml" rel="self" type="application/rss+xml"/><item><title>invite.vdo.ninja</title><link>https://jcalado.com/p/invite.vdo.ninja/</link><pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/p/invite.vdo.ninja/</guid><description>&lt;p>&lt;img src="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja.png"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>VDO.Ninja on jcalado.com</title><link>https://jcalado.com/tags/vdo.ninja/</link><description>Recent content in VDO.Ninja on jcalado.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 17 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://jcalado.com/tags/vdo.ninja/index.xml" rel="self" type="application/rss+xml"/><item><title>invite.vdo.ninja</title><link>https://jcalado.com/post/2021/05/07/invite.obs.ninja/</link><pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate><guid>https://jcalado.com/post/2021/05/07/invite.obs.ninja/</guid><description>&lt;p>&lt;img src="https://jcalado.com/post/2021/05/07/invite.obs.ninja/images/invite.obs.ninja.png"
 width="1920"
 height="1080"
-srcset="https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja_hu6dadff3e5eb79c200b781c08fe201ef1_470950_480x0_resize_box_3.png 480w, https://jcalado.com/p/invite.vdo.ninja/images/invite.obs.ninja_hu6dadff3e5eb79c200b781c08fe201ef1_470950_1024x0_resize_box_3.png 1024w"
+srcset="https://jcalado.com/post/2021/05/07/invite.obs.ninja/images/invite.obs.ninja_hu_d0214e0cd8a41119.png 480w, https://jcalado.com/post/2021/05/07/invite.obs.ninja/images/invite.obs.ninja_hu_e80f395624f436fe.png 1024w"
 loading="lazy"
 alt="Screenshot of the page as of 2021"
 class="gallery-image"
 data-flex-grow="177"
 data-flex-basis="426px"
 >&lt;/p>
-&lt;h3 id="what-is-vdoninjaninja">What is &lt;a class="link" href="https://vdo.ninja" target="_blank" rel="noopener"
->VDO.ninja&lt;/a>?&lt;/h3>
-&lt;blockquote>
-&lt;p>Bring live video from your smartphone, remote computer, or friends directly into OBS or other studio software.&lt;/p>
-&lt;/blockquote>
+&lt;h3 id="what-is-vdoninja">What is &lt;a class="link" href="https://vdo.ninja" target="_blank" rel="noopener"
+>VDO.ninja&lt;/a>?
+&lt;/h3>&lt;blockquote>
+&lt;p>Bring live video from your smartphone, remote computer, or friends directly into OBS or other studio software.&lt;/p>&lt;/blockquote>
 &lt;p>&lt;a class="link" href="https://vdo.ninja" target="_blank" rel="noopener"
 >VDO.ninja&lt;/a> uses &lt;a class="link" href="https://webrtc.org" target="_blank" rel="noopener"
 >WebRTC&lt;/a> to send and receive video and audio streams over the public internet, while keeping the latency as low as possible. There are no servers involved in bouncing the video around, apart from very specific cases.&lt;/p>
-&lt;h3 id="what-is-invitevdoninja">What is invite.vdo.ninja?&lt;/h3>
-&lt;p>&lt;a class="link" href="https://invite.vdo.ninja" target="_blank" rel="noopener"
+&lt;h3 id="what-is-invitevdoninja">What is invite.vdo.ninja?
+&lt;/h3>&lt;p>&lt;a class="link" href="https://invite.vdo.ninja" target="_blank" rel="noopener"
 >Invite.vdo.ninja&lt;/a> is a way to generate custom invite urls for, well, vdo.ninja.&lt;br>
 If you are only starting your ninja journey, it can help you extract more from it without needing to dive too deep onto the documentation.&lt;/p>
-&lt;h3 id="example-use-case">Example use case&lt;/h3>
-&lt;p>Want to generate a ninja invite with:&lt;/p>
+&lt;h3 id="example-use-case">Example use case
+&lt;/h3>&lt;p>Want to generate a ninja invite with:&lt;/p>
 &lt;ul>
 &lt;li>Auto-selected &amp;amp; auto-started webcam&lt;/li>
 &lt;li>Use a password&lt;/li>
@@ -30,8 +29,8 @@ If you are only starting your ninja journey, it can help you extract more from i
 &lt;/ul>
 &lt;p>Say no more.&lt;/p>
 &lt;hr>
-&lt;h3 id="make-it-so">Make it so&lt;/h3>
-&lt;ol>
+&lt;h3 id="make-it-so">Make it so
+&lt;/h3>&lt;ol>
 &lt;li>Visit &lt;a class="link" href="https://invite.vdo.ninja" target="_blank" rel="noopener"
 >invite.vdo.ninja&lt;/a>&lt;/li>
 &lt;li>Set a custom push ID inside the &lt;strong>Invite&lt;/strong> panel, under &lt;strong>Custom Push ID&lt;/strong>. In this case I chose &lt;code>thisISmycustomLink&lt;/code>. Pick a password and set it up as well. I chose &lt;code>passwordisSafe&lt;/code>.&lt;/li>
@@ -45,8 +44,8 @@ If you are only starting your ninja journey, it can help you extract more from i
 Replace &lt;em>PASSWORD&lt;/em> with your password, in my case: &lt;code>passwordisSafe&lt;/code>.&lt;/p>
 &lt;p>You can just drag and drop this url on the &lt;strong>Scenes&lt;/strong> panel of OBS and it will take care of everything for you. You can also manually set it up by adding a new browser source and pasting in the link.&lt;/p>
 &lt;p>In any case, &lt;strong>make sure that browser source has “Control audio via OBS” active&lt;/strong>.&lt;/p>
-&lt;h3 id="video-tutorial">Video tutorial&lt;/h3>
-&lt;div class="video-wrapper">
+&lt;h3 id="video-tutorial">Video tutorial
+&lt;/h3>&lt;div class="video-wrapper">
 &lt;iframe loading="lazy"
 src="https://www.youtube.com/embed/5dU28ycxo4E"
 allowfullscreen
