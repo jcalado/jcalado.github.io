@@ -1,0 +1,4 @@
+baseURL = 'https://jcalado.com/'
+languageCode = 'en-us'
+title = 'jcalado.com'
+theme = 'hugo-theme-stack'

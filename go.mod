@@ -1,5 +1,5 @@
 module github.com/jcalado/jcalado.github.io
 
-go 1.19
+go 1.17
 
-require github.com/CaiJimmy/hugo-theme-stack v2.6.0+incompatible // indirect
+require github.com/CaiJimmy/hugo-theme-stack/v3 v3.30.0 // indirect
