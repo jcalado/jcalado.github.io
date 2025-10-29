@@ -1,0 +1,133 @@
+---
+title: RT4D Codeplug Editor - A Modern, Open-Source Tool for Your Radtel RT-4D Radio
+published: 2025-10-28
+draft: false
+description: Modern, open-source alternative to the official CPS for programming Radtel RT-4D dual-mode radios
+tags: ['python', 'qt', 'amateur-radio', 'project', 'open-source', 'radio-programming', 'dmr']
+---
+
+# RT4D Codeplug Editor: A Modern, Open-Source Tool for Your RT-4D/Retevis RT84 Radio
+
+## What is RT4D Codeplug Editor?
+
+If you own a Radtel RT-4D (analog/DMR) radio, you know that programming it with the official Chinese Programming Software (CPS) can be... challenging. That's where RT4D Codeplug Editor comes in - a modern, open-source alternative built from the ground up to make radio programming straightforward and reliable.
+
+## Why Use RT4D Editor?
+
+### 🎯 Built for Accuracy
+
+Unlike guesswork-based editors, RT4D Editor was developed through careful reverse-engineering of the official CPS. Every setting, every byte offset, every dropdown value has been verified against the official software to ensure your radio configuration is exactly what you expect.
+
+### 🖥️ Clean, Modern Interface
+
+- Tabbed interface for organized access to Channels, Contacts, Zones, and Settings
+- Real-time editing with immediate visual feedback
+- Advanced settings dialog for power users who want full control
+- Cross-platform support - works on Windows, Linux, and macOS
+
+### 📡 Complete Feature Support
+
+**Channel Management:**
+- Supports all 1024 channels
+- Both analog (FM/AM/SSB) and DMR digital modes
+- Full CTCSS/DCS sub-tone support (all 210+ codes)
+- Scrambler, encryption, and privacy features
+- Talkaround, scan, and alarm settings
+
+**Contact & Zone Organization:**
+- Manage up to 1000 DMR contacts
+- Group lists for organized contact groups
+- Zone-based channel organization
+- All Call, Group Call, and Private Call support
+
+**Radio Settings:**
+- **Identity:** Radio name, DMR ID, startup messages
+- **Audio:** Separate controls for analog and DMR audio
+  - TX Mic Gain (0-31) and RX Speaker Volume (0-63)
+  - DMR Call audio with independent gain controls (0-24)
+  - Beep settings for various events
+- **Display:** LCD contrast, brightness, display modes
+- **Power management** and dual-watch settings
+- **4 programmable clock/timers**
+- **Frequency lock ranges** for band limiting
+- **Scan settings** (direction, dwell time, modes)
+- **Function key programming** (40 different actions)
+- **DMR enhancements:** hang times, remote control, call display
+- **Advanced:** NOAA weather channels, spectrum scan, detection range
+
+## How It Works
+
+The editor reads and writes `.4rdmf` files - the binary codeplug format used by the RT-4D radio. The file structure includes:
+
+- **CFG Section** (4096 bytes): Radio settings, identity, audio, display
+- **Channels** (1024 × 48 bytes): All channel data
+- **Contacts** (1000 × 32 bytes): DMR contact directory
+- **Group Lists** (250 × 288 bytes): Contact groupings
+- **Zones** (250 × 512 bytes): Channel organization
+- **Encryption Keys** (256 × 40 bytes): Privacy keys
+
+Every field has been mapped to its exact byte offset through careful analysis of the official CPS software, ensuring 100% compatibility with your radio.
+
+## Technical Details
+
+For the technically curious:
+
+**Built With:**
+- Python 3.x
+- PySide6 (Qt6) for the GUI
+- Binary parsing with struct module
+- GBK text encoding for Chinese character support
+- BCD encoding for DMR IDs
+
+**Key Architecture:**
+- `models.py` - Data structures for all codeplug entities
+- `parser.py` - Binary file reading and conversion to Python objects
+- `serializer.py` - Python objects back to binary format
+- `dropdowns.py` - All valid values for radio settings
+- `gui/` - Qt-based user interface
+
+**File Format Documentation:**
+Complete documentation of the `.4rdmf` binary format is included in `CODEPLUG_FORMAT.md`, making it easy for other developers to build compatible tools.
+
+## Getting Started
+
+1. **Read from Radio:** Use the official CPS to read your current config and save as `.4rdmf`
+2. **Open in RT4D Editor:** Load the file and make your changes
+3. **Save:** Export back to `.4rdmf` format
+4. **Write to Radio:** Use the official CPS to write the modified file back
+
+## Settings Organization
+
+The Advanced Settings dialog logically groups related settings:
+
+- **📻 Analog Audio Settings** - Squelch, mic gain, speaker volume, beeps for FM/AM/SSB operation
+- **🔊 DMR Audio Settings** - Separate controls optimized for digital voice with call-specific audio levels
+- **🖥️ Display Settings** - Screen brightness, contrast, display modes
+- **📡 DMR Operation Settings** - Remote control, hang times, call display
+- **⚙️ Advanced Features** - NOAA, spectrum scan, detection settings
+
+## Open Source & Community Driven
+
+RT4D Codeplug Editor is open-source software, developed through reverse-engineering the official CPS to provide accurate, reliable radio programming. The project welcomes contributions, bug reports, and feature requests.
+
+**Key Benefits of Open Source:**
+- **Transparent code** - see exactly what's happening with your radio data
+- **Community improvements** - bugs get fixed quickly
+- **Cross-platform** - not locked to Windows
+- **Future-proof** - won't become abandonware
+
+## What's Next?
+
+Future enhancements on the roadmap:
+- DTMF programming system UI (data structure complete)
+- Import/export from CSV for bulk editing
+
+## Conclusion
+
+Whether you're a ham radio operator, professional radio user, or just someone who wants reliable control over your RT-4D radio programming, RT4D Codeplug Editor offers a modern, accurate, and user-friendly alternative to the official CPS.
+
+Download and try it today - your radio will thank you!
+
+---
+
+*RT4D Codeplug Editor is not affiliated with or endorsed by the radio manufacturer. It's an independent, community-driven project created through reverse-engineering for compatibility and educational purposes.*
