@@ -1,0 +1,15 @@
+---
+title: Remmina RDP Protocol Missing After Installing freerdp on Arch Linux
+published: 2026-03-13
+draft: false
+description: After installing freerdp for RDP support in Remmina on Arch Linux, the RDP protocol won't appear until you reboot
+tags: ['linux', 'arch-linux', 'remmina', 'rdp', 'troubleshooting']
+---
+
+Installed Remmina on Arch Linux but RDP isn't in the protocol list? Install `freerdp`:
+
+```bash
+sudo pacman -S freerdp
+```
+
+**Then reboot.** Restarting Remmina alone won't do it — the RDP plugin only appears after a full system reboot.
