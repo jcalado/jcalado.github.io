@@ -1,0 +1,93 @@
+---
+title: Ulanzi Stream Controller D200 as a Bitfocus Companion surface
+published: 2026-04-20
+draft: false
+description: A Bitfocus Companion surface plugin for the Ulanzi D200, with notes on reverse-engineering the wire protocol and making it work on Linux.
+tags: ['bitfocus-companion', 'ulanzi', 'stream-deck', 'usb', 'typescript', 'reverse-engineering', 'linux']
+---
+
+Bitfocus Companion's new surface plugin system (shipped in 4.3.0) makes it
+possible to add support for new control surfaces without touching Companion
+itself. I used that to plug in the **[Ulanzi Stream Controller
+D200](https://www.ulanzi.com/products/stream-controller-d200)**, a 13-button,
+5×3 grid Stream-Deck-alike that's cheaper than the Elgato but wasn't
+supported out of the box.
+
+Project: [github.com/jcalado/companion-surface-d200](https://github.com/jcalado/companion-surface-d200)
+
+## What it does
+
+- 13 Companion-controlled buttons, each with a 196×196 icon
+- Brightness, button events, press/release
+- Small-window status display (clock / system stats), selectable per surface
+- Drop-in installable as a developer module in Companion 4.3.0+
+
+## The reverse-engineering rabbit hole
+
+[redphx/strmdck](https://github.com/redphx/strmdck) had the wire protocol in
+Python: 1024-byte HID packets framed as
+`0x7c 0x7c [cmd:u16] [length:u32] [data...]`, with full button uploads
+pushed as ZIP archives containing a JSON manifest plus per-button PNGs. That
+gave me a head start, but a few things were out of date or wrong:
+
+- strmdck targets VID/PID `2207:0019`. On my Linux box, the D200 enumerated as
+  `18d1:d002`, Google's ADB-style VID/PID. Standard USB control transfers to
+  it failed with `EPROTO`, `adb devices` hit the same wall.
+- My first port used `node-hid`, which couldn't see the device at all.
+  Switching to `node-usb` and bulk transfers got further but still failed with
+  `LIBUSB_TRANSFER_ERROR`.
+
+A USBPcap capture of Ulanzi Studio on Windows cleared everything up: the D200
+actually exposes **two USB devices** simultaneously through an internal hub.
+The `18d1:d002` one is an abandoned/bootloader interface, dead on arrival
+from the host's point of view. The real device is `2207:0019`, a proper HID
+composite with two interrupt endpoints at `wMaxPacketSize = 1024` plus a
+keyboard interface for the standalone hotkey buttons.
+
+Windows enumerates both cleanly. Linux, connected directly, gives up after
+three tries:
+
+```
+usb 3-1: can't read configurations, error -22
+usb 3-1: can't read configurations, error -22
+usb usb3-port1: attempt power cycle
+usb 3-1: New USB device found, idVendor=18d1, idProduct=d002
+```
+
+Only the useless one survives. The fix turned out to be stupidly simple:
+**a USB 2.0 hub between the D200 and the host**. With the extra hub layer,
+both child devices enumerate, `usbhid` binds to the HID interface, and
+`node-hid` just works.
+
+That one detail burned a couple hours.
+
+## The ZIP manifest was wrong in strmdck too
+
+The captured ZIPs from Ulanzi Studio use:
+
+```
+manifest.json
+Images/<uuid>.png
+```
+
+(flat, no `page/` prefix) and require a per-button `Font` object inside
+each `ViewParam[0]`. Getting icons to render required matching that structure
+exactly, including declaring the small-window slot `3_2` (which spans two
+cells) with `SmallViewMode: 1`.
+
+Plus a lovely firmware bug: the byte at file offsets `1016 + 1024·N` in the
+ZIP payload must not be `0x00` or `0x7c`, or the upload is silently
+corrupted. strmdck's workaround (retry compression with a random-length
+dummy file appended) ports over directly.
+
+## Writeup
+
+The full wire protocol and ZIP format are documented in
+[PROTOCOL.md](https://github.com/jcalado/companion-surface-d200/blob/main/PROTOCOL.md);
+Linux-specific setup (hub requirement, udev rule, the diagnosis of the
+enumeration failure) is in
+[SETUP.md](https://github.com/jcalado/companion-surface-d200/blob/main/SETUP.md).
+
+## Support
+
+If this is useful to you: [ko-fi.com/jcalado](https://ko-fi.com/jcalado).
