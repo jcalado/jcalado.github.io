@@ -1,5 +1,6 @@
 ---
 import CompletionsData from '~/components/CompletionsData.astro'
+import BootSequence from '~/components/BootSequence.astro'
 interface Props {
   path: string
 }
@@ -9,6 +10,7 @@ const displayPath = path === '/' ? '~' : `~${path}`
 
 <div class="terminal-frame border border-accent/40 bg-background flex flex-col min-h-screen">
   <CompletionsData />
+  <BootSequence />
   <div class="terminal-titlebar flex items-center gap-2 border-b border-accent/30 px-3 py-1.5 text-xs">
     <span class="flex gap-1.5">
       <span class="size-2.5 rounded-full bg-red/70"></span>
