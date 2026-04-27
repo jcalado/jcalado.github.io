@@ -216,12 +216,9 @@ article img {
         }
 
         span.title {
-          @apply !text-foreground/80 !bg-accent/8 text-center !border-b !border-t-0 !border-r-0 !border-l-0 !border-accent/30;
-          width: 100%;
+          @apply !text-foreground/80 text-center !bg-transparent !border-none;
           font-family: var(--theme-font);
           font-size: var(--ec-codeFontSize);
-          border-radius: 0 !important;
-          border-bottom-width: 0 !important;
           padding: 0 12px !important;
 
           &::after,
