@@ -46,25 +46,30 @@ const displayPath = path === '/' ? '~' : `~${path}`
     }
   </style>
 
-  <div class="terminal-prompt-row sticky top-0 z-10 bg-background border-b border-accent/20 px-3 py-1 flex items-center gap-2 text-sm">
-    <span class="text-green shrink-0">visitor@jcalado</span>
-    <span class="text-foreground/60 shrink-0">:</span>
-    <span class="text-blue shrink-0" data-prompt-path>{displayPath}</span>
-    <span class="text-foreground/60 shrink-0">$</span>
-    <input
-      id="terminal-input"
-      type="text"
-      autocomplete="off"
-      autocapitalize="off"
-      spellcheck="false"
-      class="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-foreground/30"
-      placeholder="type `help`"
-      aria-label="Terminal command input"
-    />
+  <div class="terminal-prompt-stack sticky top-0 z-10 bg-background border-b border-accent/20">
+    <div class="terminal-prompt-row px-3 py-1 flex items-center gap-2 text-sm">
+      <span class="text-green shrink-0">visitor@jcalado</span>
+      <span class="text-foreground/60 shrink-0">:</span>
+      <span class="text-blue shrink-0" data-prompt-path>{displayPath}</span>
+      <span class="text-foreground/60 shrink-0">$</span>
+      <input
+        id="terminal-input"
+        type="text"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        class="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-foreground/30"
+        placeholder="type `help`"
+        aria-label="Terminal command input"
+      />
+    </div>
+    <div
+      id="terminal-output"
+      class="font-mono text-sm px-3 max-h-[40vh] overflow-y-auto empty:hidden"
+    ></div>
   </div>
 
   <main class="terminal-body flex-1 px-3 py-4">
-    <div id="terminal-output" class="font-mono text-sm"></div>
     <slot />
   </main>
 

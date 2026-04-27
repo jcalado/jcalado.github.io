@@ -27,9 +27,10 @@ function saveHistory(h: string[]) {
 
 function appendLine(output: HTMLElement, html: string) {
   const pre = document.createElement('div')
-  pre.className = 'whitespace-pre-wrap text-foreground/80 my-1'
+  pre.className = 'whitespace-pre-wrap text-foreground/80 py-1'
   pre.innerHTML = html
   output.appendChild(pre)
+  output.scrollTop = output.scrollHeight
 }
 
 function applyAction(action: Action, output: HTMLElement) {
