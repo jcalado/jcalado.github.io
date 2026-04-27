@@ -223,6 +223,11 @@ article img {
     a {
       @apply underline-offset-3 text-inherit no-underline;
     }
+
+    a.heading-anchor {
+      @apply text-foreground/30 text-base font-normal whitespace-pre hover:text-accent;
+      font-family: var(--theme-font);
+    }
   }
 
   h1 {
