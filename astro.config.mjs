@@ -85,6 +85,7 @@ export default defineConfig({
       defaultProps: {
         showLineNumbers: false,
         wrap: false,
+        frame: 'terminal',
       },
       plugins: [pluginLineNumbers()],
     }), // Must come after expressive-code integration
