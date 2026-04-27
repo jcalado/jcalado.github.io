@@ -153,6 +153,48 @@ article img {
       }
     }
 
+    figure.is-terminal .header {
+      justify-content: space-between !important;
+      padding-inline: 0.75rem !important;
+      border-bottom: var(--ec-brdWd) solid var(--ec-frm-trmTtbBrdBtmCol) !important;
+    }
+
+    figure.is-terminal .header::before {
+      content: 'bash' !important;
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      line-height: 1 !important;
+      font-family: var(--default-mono-font-family) !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0 !important;
+      color: var(--ec-frm-trmTtbFg) !important;
+      opacity: 0.7 !important;
+    }
+
+    figure.is-terminal .header::after {
+      content: '_  □  ✕' !important;
+      position: static !important;
+      inset: auto !important;
+      border: none !important;
+      font-family: var(--default-mono-font-family) !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.15em !important;
+      color: var(--ec-frm-trmTtbFg) !important;
+      opacity: 0.5 !important;
+      line-height: 1 !important;
+      pointer-events: none !important;
+    }
+
+    figure.is-terminal .title {
+      flex: 1 !important;
+      text-align: center !important;
+    }
+
     figure {
       @apply border border-accent/30 !rounded-none;
       box-shadow: none !important;
@@ -160,13 +202,6 @@ article img {
       &.has-title div.copy,
       &.is-terminal div.copy {
         --button-spacing: 28px;
-      }
-
-      &.has-title.is-terminal {
-        span.title {
-          @apply !px-15;
-        }
-        --button-spacing: 30px !important;
       }
 
       figcaption {
