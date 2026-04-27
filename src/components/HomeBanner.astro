@@ -1,37 +1,24 @@
 ---
-import { Image } from 'astro:assets'
+import AsciiBanner from '~/components/AsciiBanner.astro'
 import GitHubActivityCalendar from '~/components/GitHubActivityCalendar.astro'
-import type { FrontmatterImage } from '~/types'
 
 interface Props {
-  avatarImage?: FrontmatterImage
   githubCalendar?: string
 }
-const { avatarImage, githubCalendar } = Astro.props
+const { githubCalendar } = Astro.props
+const today = new Date().toUTCString()
 ---
 
-<div class="my-6 md:mx-2">
-  <div
-    class="flex flex-col sm:flex-row items-center justify-around sm:gap-5 max-w-full mb-6"
-  >
-    {
-      avatarImage && (
-        <Image
-          priority
-          src={avatarImage.src}
-          alt={avatarImage.alt}
-          class="rounded-full border-8 border-accent/15 size-36 aspect-square box-content shrink-0"
-          widths={[288]}
-          height={144}
-          width={144}
-        />
-      )
-    }
-    <div>
-      <div class:list={['m-4 max-w-full prose']}>
-        <slot />
-      </div>
-    </div>
+<section class="my-4">
+  <AsciiBanner />
+  <pre class="text-foreground/60 text-xs sm:text-sm whitespace-pre-wrap mt-3">
+Last login: {today} on tty1
+Welcome to jcalado.com — pushing code, ham radio, side projects.
+
+Type `help` for commands, `posts` to browse, `about` for more.
+</pre>
+  <div class="prose mt-6">
+    <slot />
   </div>
-  {githubCalendar && <GitHubActivityCalendar username={githubCalendar} />}
-</div>
+  {githubCalendar && <div class="mt-6"><GitHubActivityCalendar username={githubCalendar} /></div>}
+</section>
