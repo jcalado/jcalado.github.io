@@ -184,18 +184,23 @@ article img {
     }
 
     figure.is-terminal .header::after {
-      content: '[ _ ]  [ □ ]  [ ✕ ]' !important;
+      content: '' !important;
       position: static !important;
       inset: auto !important;
       border: none !important;
-      font-family: var(--default-mono-font-family) !important;
-      font-size: 0.7rem !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.05em !important;
-      color: var(--ec-frm-trmTtbFg) !important;
+      width: 64px !important;
+      height: 14px !important;
+      background-color: var(--ec-frm-trmTtbFg) !important;
       opacity: 0.55 !important;
-      line-height: 1 !important;
       pointer-events: none !important;
+      mask-repeat: no-repeat !important;
+      mask-position: center !important;
+      mask-size: contain !important;
+      -webkit-mask-repeat: no-repeat !important;
+      -webkit-mask-position: center !important;
+      -webkit-mask-size: contain !important;
+      mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 14' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'><path d='M5 10h8'/><rect x='25.5' y='3.5' width='7' height='7'/><path d='M46 4l6 6M52 4l-6 6'/></svg>") !important;
+      -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 14' fill='none' stroke='black' stroke-width='1.2' stroke-linecap='round'><path d='M5 10h8'/><rect x='25.5' y='3.5' width='7' height='7'/><path d='M46 4l6 6M52 4l-6 6'/></svg>") !important;
     }
 
     figure.is-terminal .title {

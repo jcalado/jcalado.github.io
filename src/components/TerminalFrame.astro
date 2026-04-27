@@ -12,17 +12,39 @@ const displayPath = path === '/' ? '~' : `~${path}`
   <CompletionsData />
   <BootSequence />
   <div
-    class="terminal-titlebar flex items-center gap-2 px-3 py-1.5 text-xs font-mono"
+    class="terminal-titlebar flex items-center gap-3 px-3 py-1.5 text-xs font-mono"
     style="box-shadow: inset 0 -2px 0 0 var(--theme-accent), inset 0 -3px 0 0 color-mix(in oklab, var(--theme-accent) 40%, transparent);"
   >
-    <span class="text-foreground/55 tracking-wider whitespace-nowrap select-none">
-      [ _ ]&nbsp;&nbsp;[ □ ]&nbsp;&nbsp;[ ✕ ]
-    </span>
+    <span class="text-foreground/50 whitespace-nowrap shrink-0" data-theme-indicator></span>
     <span class="flex-1 text-center text-foreground/70 truncate">
       visitor@jcalado: {displayPath}
     </span>
-    <span class="text-foreground/50 whitespace-nowrap" data-theme-indicator></span>
+    <span class="window-controls flex items-center gap-1.5 shrink-0" aria-hidden="true">
+      <span class="wc-btn"><svg viewBox="0 0 14 14" class="size-3"><path d="M3 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></span>
+      <span class="wc-btn"><svg viewBox="0 0 14 14" class="size-3"><rect x="3.5" y="3.5" width="7" height="7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg></span>
+      <span class="wc-btn wc-close"><svg viewBox="0 0 14 14" class="size-3"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></span>
+    </span>
   </div>
+
+  <style>
+    .window-controls .wc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      color: color-mix(in oklab, var(--theme-foreground) 60%, transparent);
+      transition: color 120ms ease, background-color 120ms ease;
+    }
+    .window-controls .wc-btn:hover {
+      color: var(--theme-foreground);
+      background: color-mix(in oklab, var(--theme-foreground) 10%, transparent);
+    }
+    .window-controls .wc-close:hover {
+      color: #ffffff;
+      background: var(--theme-red);
+    }
+  </style>
 
   <div class="terminal-prompt-row sticky top-0 z-10 bg-background border-b border-accent/20 px-3 py-1 flex items-center gap-2 text-sm">
     <span class="text-green shrink-0">visitor@jcalado</span>
