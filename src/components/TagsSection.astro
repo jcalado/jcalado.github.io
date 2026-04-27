@@ -8,20 +8,20 @@ interface Props {
 
 const { posts } = Astro.props
 const tagsGroup = await TagsGroup.build(posts)
+const tags = tagsGroup.sortCollationsLargest()
+const maxLen = tags.reduce((m, t) => Math.max(m, t.title.length), 0)
 ---
 
-<ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
+<ul class="font-mono text-sm my-5">
   {
-    tagsGroup.sortCollationsLargest().map((tag) => (
+    tags.map((tag) => (
       <li>
         <a
           href={tag.url}
-          class="flex items-start gap-2.5 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
+          class="block py-1 hover:bg-accent/10 -mx-2 px-2 no-underline"
         >
-          {tag.title}
-          <span class="rounded-full bg-foreground/7 text-foreground/90 px-2 py-1 text-xs font-semibold">
-            {tag.entries.length}
-          </span>
+          <span class="text-magenta">--tag={tag.title.padEnd(maxLen, ' ')}</span>
+          <span class="text-foreground/40 ml-3">{`# ${tag.entries.length} ${tag.entries.length === 1 ? 'post' : 'posts'}`}</span>
         </a>
       </li>
     ))
