@@ -143,6 +143,11 @@ export function init() {
   })
 
   input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      e.preventDefault()
+      input.blur()
+      return
+    }
     if (e.key === 'Enter') {
       const line = input.value
       if (line.trim()) {
