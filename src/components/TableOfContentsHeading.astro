@@ -19,10 +19,11 @@ const indent = parentPipes
 const branch = depth === 1 ? '' : isLast ? '└─ ' : '├─ '
 ---
 
-<li class="flex items-baseline whitespace-pre font-mono text-sm">
-  <span class="text-foreground/30 select-none">{indent}{branch}</span>
+<li class="flex items-baseline font-mono text-sm min-w-0">
+  <span class="text-foreground/30 select-none whitespace-pre shrink-0">{indent}{branch}</span>
   <a
-    class="line-clamp-1 hover:text-accent text-foreground/85 no-underline"
+    class="hover:text-accent text-foreground/85 no-underline truncate min-w-0 flex-1"
+    title={text}
     href={`#${slug}`}>{text}</a>
 </li>
 
