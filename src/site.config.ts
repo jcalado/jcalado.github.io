@@ -163,13 +163,7 @@ const config: SiteConfig = {
   // Take the values from the generated script tag at https://giscus.app and fill them in here.
   // IMPORTANT: Update giscus.json in the root of the project with your own website URL
   // If you don't want to use Giscus, set this to undefined.
-  giscus: {
-    repo: 'jcalado/jcalado.github.io',
-    repoId: 'MDEwOlJlcG9zaXRvcnkzMjYyNDYwODA=',
-    category: 'Giscus',
-    categoryId: 'DIC_kwDOE3IewM4Cw_IT',
-    reactionsEnabled: true, // Enable reactions on post itself
-  },
+  giscus: undefined,
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)
