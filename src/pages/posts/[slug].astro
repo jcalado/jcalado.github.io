@@ -39,22 +39,15 @@ function dateISO(d?: Date | string) {
   return date.toISOString().split('T')[0]
 }
 
-const tagList = postData.tags && postData.tags.length > 0
-  ? `[${postData.tags.join(', ')}]`
-  : '[]'
 const fmRows: [string, string][] = [
-  ['title', postData.title],
-  ['date',  dateISO(postData.published)],
+  ['date', dateISO(postData.published)],
 ]
 if (postData.author) fmRows.push(['author', String(postData.author)])
 if (minutesRead)     fmRows.push(['reading_time', minutesRead])
-fmRows.push(['tags', tagList])
 const keyWidth = fmRows.reduce((m, [k]) => Math.max(m, k.length), 0)
-const frontmatterText = [
-  '---',
-  ...fmRows.map(([k, v]) => `${k.padEnd(keyWidth, ' ')}: ${v}`),
-  '---',
-].join('\n')
+const metaText = fmRows
+  .map(([k, v]) => `# ${k.padEnd(keyWidth, ' ')} : ${v}`)
+  .join('\n')
 
 const coverFile = postData.coverImage?.src?.src?.split('/').pop() ?? ''
 const addendum = await getCollection('addendum')
@@ -98,10 +91,12 @@ if (postData.tags && postData.tags.length > 0) {
   tags={postData.tags}
 >
   <article class="max-w-full py-7.5" data-pagefind-body>
-    <h1 id={post.id} class="sr-only">{postData.title}</h1>
-    <pre class="font-mono text-sm leading-6 my-6 text-foreground/80 whitespace-pre-wrap">{frontmatterText}</pre>
+    <h1 id={post.id} class="text-[1.75rem] text-heading1 font-semibold mt-2 mb-3">
+      {postData.title}
+    </h1>
+    <pre class="font-mono text-xs leading-5 mb-3 text-foreground/45 whitespace-pre-wrap">{metaText}</pre>
     {tags && (
-      <div class="mb-6 -mt-2">
+      <div class="mb-6">
         <Tags tags={tags} />
       </div>
     )}
