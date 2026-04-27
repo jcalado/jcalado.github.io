@@ -125,12 +125,8 @@ article img {
   @apply text-base/7;
 
   code:not(.expressive-code code) {
-    @apply text-sm text-accent/90 px-1.5 py-0.5 whitespace-nowrap;
-    border: 1px solid color-mix(in oklab, var(--theme-accent) 25%, transparent);
-    background: color-mix(in oklab, var(--theme-accent) 6%, transparent);
+    @apply text-sm text-foreground/90 bg-foreground/5 px-2 py-1 rounded-lg whitespace-nowrap;
   }
-  code:not(.expressive-code code)::before { content: '`'; @apply text-accent/40 mr-0.5; }
-  code:not(.expressive-code code)::after  { content: '`'; @apply text-accent/40 ml-0.5; }
 
   & > *:not(div.expressive-code, img, figure, video, hr, blockquote, aside),
   figcaption {
