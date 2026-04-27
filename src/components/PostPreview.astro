@@ -1,46 +1,28 @@
 ---
-import IconChevronsRight from '~/icons/chevrons-right.svg'
 import type { CollectionEntry } from 'astro:content'
 import { render } from 'astro:content'
-import Tags from '~/components/Tags.astro'
-import PostInfo from '~/components/PostInfo.astro'
-import type { Collation } from '~/types'
-import { TagsGroup } from '~/utils'
+import { format } from 'date-fns'
 
 interface Props {
   post: CollectionEntry<'posts'>
 }
-
 const { post } = Astro.props
-
 const { remarkPluginFrontmatter } = await render(post)
 const description = remarkPluginFrontmatter.description || post.data.description
-let tags: Collation<'posts'>[] | undefined
-if (post.data.tags && post.data.tags.length > 0) {
-  const tagsGroup = await TagsGroup.build()
-  tags = tagsGroup.matchMany(post.data.tags)
-}
-const samePage = Astro.url.pathname === `/posts/${post.id}`
-const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
+const words = remarkPluginFrontmatter.words ?? 0
+const sizeKb = Math.max(1, Math.round((words * 6) / 102.4) / 10)
+const sizeStr = `${sizeKb.toFixed(1)}K`.padStart(6, ' ')
+const date = post.data.date ? format(post.data.date, 'MMM dd') : '      '
+const link = `/posts/${post.id}`
 ---
 
-<article class="w-full py-5 my-1 md:my-4 border-accent/10">
-  <h1 class="mb-3 text-2xl text-heading1 font-semibold">
-    <a href={articleLink}># {post.data.title}</a>
-  </h1>
-  <PostInfo post={post} class="mb-3 mt-4" />
-  {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>}
-  {
-    tags && (
-      <div class="mb-6">
-        <Tags tags={tags} />
-      </div>
-    )
-  }
-  <div>
-    <a class="button flex items-center !pl-3.5" href={articleLink}>
-      {samePage ? 'Continue' : 'Read'}
-      <IconChevronsRight class="size-5 ml-2" />
-    </a>
-  </div>
-</article>
+<a href={link} class="block font-mono text-sm py-2 hover:bg-accent/10 -mx-2 px-2 no-underline">
+  <span class="text-foreground/50">-rw-r--r--</span>
+  <span class="text-foreground/40 mx-2">1 jcalado users</span>
+  <span class="text-yellow">{sizeStr}</span>
+  <span class="text-foreground/60 mx-2">{date}</span>
+  <span class="text-link font-semibold">{post.id}.md</span>
+  {description && (
+    <div class="text-foreground/70 mt-1 ml-[14ch] text-xs">{description}</div>
+  )}
+</a>
