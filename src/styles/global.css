@@ -93,7 +93,15 @@ a {
 }
 
 a.button {
-  @apply inline-flex text-accent border-3 border-accent/30 border-double py-1.5 px-3 whitespace-nowrap hover:bg-accent/8 rounded-xl transition-colors;
+  @apply inline-flex text-accent py-1 px-2 whitespace-nowrap hover:bg-accent/10 transition-colors;
+}
+a.button::before {
+  content: '[';
+  @apply mr-1 text-accent/60;
+}
+a.button::after {
+  content: ']';
+  @apply ml-1 text-accent/60;
 }
 
 header button,
