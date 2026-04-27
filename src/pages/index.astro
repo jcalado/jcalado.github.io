@@ -46,14 +46,6 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
     )
   }
   {
-    postsHaveTags && (
-      <section>
-        <BlockHeader>Tags</BlockHeader>
-        <TagsSection posts={sortedPosts} />
-      </section>
-    )
-  }
-  {
     sortedPosts.length > 0 && (
       <section>
         <BlockHeader>Latest Posts</BlockHeader>
@@ -64,6 +56,14 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
             <PostPreview post={post} />
           ))}
         <Pagination nextLink="/posts" nextText="Archive" />
+      </section>
+    )
+  }
+  {
+    postsHaveTags && (
+      <section>
+        <BlockHeader>Tags</BlockHeader>
+        <TagsSection posts={sortedPosts} />
       </section>
     )
   }
