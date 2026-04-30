@@ -150,6 +150,24 @@ article img {
   &[data-pixelated] {
     image-rendering: pixelated;
   }
+
+  /* Author with `![{phone} alt](./shot.png)` for a portrait-screenshot width. */
+  &.size-phone {
+    max-width: 280px;
+  }
+
+  /* Author with `![{small} alt](./shot.png)` for a medium UI shot. */
+  &.size-small {
+    max-width: 480px;
+  }
+}
+
+/* Markdown image titles render as captions below the image. */
+article figure {
+  @apply my-6;
+}
+article figure figcaption {
+  @apply mt-2 text-center text-sm italic text-foreground/60;
 }
 
 .prose {
