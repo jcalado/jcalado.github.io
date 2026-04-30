@@ -8,15 +8,23 @@ interface Props {
 const { tags } = Astro.props
 ---
 
-<div class="flex flex-wrap gap-x-3 gap-y-1 font-mono text-sm">
-  {
-    tags.map((tag) => (
-      <a
-        href={tag.url}
-        class="text-magenta hover:underline no-underline"
-      >
-        --tag={tag.title}
-      </a>
-    ))
-  }
-</div>
+<section class="font-mono text-sm">
+  <div
+    class="flex justify-between text-foreground/50 tracking-widest text-xs uppercase mb-2"
+  >
+    <span>TAGS</span>
+    <span>TAGS</span>
+  </div>
+  <div class="flex flex-wrap gap-x-4 gap-y-1 pl-4">
+    {
+      tags.map((tag) => (
+        <a
+          href={tag.url}
+          class="text-magenta hover:underline no-underline whitespace-nowrap"
+        >
+          {tag.title}
+        </a>
+      ))
+    }
+  </div>
+</section>

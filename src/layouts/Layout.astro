@@ -4,7 +4,6 @@ import Header from '~/components/Header.astro'
 import Footer from '~/components/Footer.astro'
 import TerminalFrame from '~/components/TerminalFrame.astro'
 import LightDarkAutoThemeLoader from '~/components/LightDarkAutoThemeLoader.astro'
-import SelectThemeLoader from '~/components/SelectThemeLoader.astro'
 import siteConfig from '~/site.config'
 import { pick, resolveThemeColorStyles } from '~/utils'
 import crypto from 'crypto'
@@ -153,7 +152,6 @@ let generatedCss: string = cssLines.join('\n')
     <style is:global define:vars={baseCssVars}></style>
     <style is:inline set:html={generatedCss}></style>
     {themeMode === 'light-dark-auto' && <LightDarkAutoThemeLoader />}
-    {themeMode === 'select' && <SelectThemeLoader />}
   </head>
   <body class="w-full m-0 bg-background text-foreground">
     <TerminalFrame path={Astro.url.pathname}>

@@ -15,6 +15,19 @@
     U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Terminal-style font for headings */
+@font-face {
+  font-family: 'Share Tech Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(@fontsource/share-tech-mono/files/share-tech-mono-latin-400-normal.woff2)
+    format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 @theme {
   --color-accent: var(--theme-accent);
   --color-foreground: var(--theme-foreground);
@@ -86,6 +99,14 @@ button:active {
 a,
 button {
   @apply hover:cursor-pointer;
+}
+
+h1 {
+  font-family: 'Share Tech Mono', var(--theme-font), monospace;
+  font-size: 2.25rem;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  font-weight: 400;
 }
 
 a {
@@ -286,7 +307,7 @@ article img {
   }
 
   h1 {
-    @apply text-[1.75rem] text-heading1 mt-8;
+    @apply text-heading1 mt-8;
 
     .heading-anchor svg {
       @apply size-5.5;

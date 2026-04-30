@@ -7,24 +7,18 @@ interface Props {
 }
 
 const { posts } = Astro.props
-
 const seriesGroup = await SeriesGroup.build(posts)
 ---
 
-<ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
+<div class="flex flex-wrap gap-x-4 gap-y-1 pl-4 font-mono text-sm">
   {
     seriesGroup.sortCollationsMostRecent().map((series) => (
-      <li>
-        <a
-          href={series.url}
-          class="flex items-start gap-2.5 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
-        >
-          {series.title}
-          <span class="rounded-full bg-foreground/7 text-foreground/90 px-2 py-1 text-xs font-semibold">
-            {series.entries.length}
-          </span>
-        </a>
-      </li>
+      <a
+        href={series.url}
+        class="text-magenta hover:underline no-underline whitespace-nowrap"
+      >
+        {series.title}<span class="text-foreground/40">({series.entries.length})</span>
+      </a>
     ))
   }
-</ul>
+</div>

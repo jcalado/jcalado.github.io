@@ -1,54 +1,39 @@
 ---
 import Layout from '~/layouts/Layout.astro'
 import { getSortedPosts } from '~/utils'
-import { getCollection, render } from 'astro:content'
 import PostPreview from '~/components/PostPreview.astro'
 import Pagination from '~/components/Pagination.astro'
-import BlockHeader from '~/components/BlockHeader.astro'
-import HomeBanner from '~/components/HomeBanner.astro'
+import SectionHeader from '~/components/SectionHeader.astro'
 import siteConfig from '~/site.config'
 import TagsSection from '~/components/TagsSection.astro'
 import SeriesSection from '~/components/SeriesSection.astro'
 
-const home = await getCollection('home')
-let HomeContent
-let homeAvatarImage
-let homeGithubCalendar
-if (home.length > 0) {
-  const homeEntry = home[0]
-  const { Content } = await render(homeEntry)
-  HomeContent = Content
-  homeAvatarImage = homeEntry.data.avatarImage
-  homeGithubCalendar = homeEntry.data.githubCalendar
-}
 const sortedPosts = await getSortedPosts()
 const postsHaveTags = sortedPosts.some(
   (post) => post.data.tags && post.data.tags.length > 0,
 )
-
 const postsHaveSeries = sortedPosts.some((post) => post.data.series)
 ---
 
 <Layout>
-  {
-    HomeContent && (
-      <HomeBanner avatarImage={homeAvatarImage} githubCalendar={homeGithubCalendar}>
-        <HomeContent />
-      </HomeBanner>
-    )
-  }
+  <p class="text-foreground/45 text-xs sm:text-sm font-mono mt-2 mb-6">
+    Type <code class="text-accent">help</code> for commands,
+    <code class="text-accent">posts</code> to browse,
+    <code class="text-accent">about</code> for more.
+  </p>
+
   {
     postsHaveSeries && (
-      <section>
-        <BlockHeader>Series</BlockHeader>
+      <section class="my-5">
+        <SectionHeader title="Series" />
         <SeriesSection posts={sortedPosts} />
       </section>
     )
   }
   {
     sortedPosts.length > 0 && (
-      <section>
-        <BlockHeader>Latest Posts</BlockHeader>
+      <section class="my-5">
+        <SectionHeader title="Posts" />
         {sortedPosts
           .reverse()
           .slice(0, Math.floor(siteConfig.pageSize / 2))
@@ -59,14 +44,7 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
       </section>
     )
   }
-  {
-    postsHaveTags && (
-      <section>
-        <BlockHeader>Tags</BlockHeader>
-        <TagsSection posts={sortedPosts} />
-      </section>
-    )
-  }
+  {postsHaveTags && <TagsSection posts={sortedPosts} />}
 </Layout>
 
 <style is:global>

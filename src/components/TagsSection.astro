@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { TagsGroup } from '~/utils'
+import SectionHeader from '~/components/SectionHeader.astro'
 
 interface Props {
   posts: CollectionEntry<'posts'>[]
@@ -11,15 +12,18 @@ const tagsGroup = await TagsGroup.build(posts)
 const tags = tagsGroup.sortCollationsLargest()
 ---
 
-<div class="flex flex-wrap gap-x-4 gap-y-1 font-mono text-sm my-5">
-  {
-    tags.map((tag) => (
-      <a
-        href={tag.url}
-        class="text-magenta hover:underline no-underline whitespace-nowrap"
-      >
-        --tag={tag.title}<span class="text-foreground/40">({tag.entries.length})</span>
-      </a>
-    ))
-  }
-</div>
+<section class="font-mono text-sm my-5">
+  <SectionHeader title="Tags" />
+  <div class="flex flex-wrap gap-x-4 gap-y-1 pl-4">
+    {
+      tags.map((tag) => (
+        <a
+          href={tag.url}
+          class="text-magenta hover:underline no-underline whitespace-nowrap"
+        >
+          {tag.title}<span class="text-foreground/40">({tag.entries.length})</span>
+        </a>
+      ))
+    }
+  </div>
+</section>

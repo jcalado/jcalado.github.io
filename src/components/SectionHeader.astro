@@ -1,0 +1,27 @@
+---
+import siteConfig from '~/site.config'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+const upper = title.toUpperCase()
+---
+
+<div
+  class="section-header flex items-baseline gap-2 text-foreground/45 tracking-widest text-xs uppercase mb-2 font-mono"
+>
+  <span class="shrink-0">{upper}</span>
+  <span class="leader flex-1" aria-hidden="true"></span>
+  <span class="hidden sm:inline shrink-0 text-foreground/35">{siteConfig.title}</span>
+  <span class="leader flex-1 hidden sm:block" aria-hidden="true"></span>
+  <span class="shrink-0">{upper}</span>
+</div>
+
+<style>
+  .leader {
+    border-bottom: 1px dotted color-mix(in oklab, var(--theme-foreground) 25%, transparent);
+    transform: translateY(-2px);
+  }
+</style>
