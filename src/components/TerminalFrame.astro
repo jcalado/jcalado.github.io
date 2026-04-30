@@ -1,104 +1,15 @@
 ---
-import CompletionsData from '~/components/CompletionsData.astro'
 import BootSequence from '~/components/BootSequence.astro'
 interface Props {
   path: string
 }
 const { path } = Astro.props
-const displayPath = path === '/' ? '~' : `~${path}`
 ---
 
-<div class="terminal-frame border border-accent/40 bg-background flex flex-col min-h-screen">
-  <CompletionsData />
+<div class="page-frame flex flex-col min-h-screen">
   <BootSequence />
-  <div
-    class="terminal-titlebar flex items-center gap-3 px-3 py-1.5 text-xs font-mono"
-    style="box-shadow: inset 0 -2px 0 0 var(--theme-accent), inset 0 -3px 0 0 color-mix(in oklab, var(--theme-accent) 40%, transparent);"
-  >
-    <span class="text-foreground/50 whitespace-nowrap shrink-0" data-theme-indicator></span>
-    <span class="flex-1 text-center text-foreground/70 truncate">
-      visitor@jcalado: {displayPath}
-    </span>
-    <span class="window-controls flex items-center gap-1.5 shrink-0" aria-hidden="true">
-      <span class="wc-btn"><svg viewBox="0 0 14 14" class="size-3"><path d="M3 10h8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></span>
-      <span class="wc-btn"><svg viewBox="0 0 14 14" class="size-3"><rect x="3.5" y="3.5" width="7" height="7" stroke="currentColor" stroke-width="1.2" fill="none"/></svg></span>
-      <span class="wc-btn wc-close"><svg viewBox="0 0 14 14" class="size-3"><path d="M4 4l6 6M10 4l-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" fill="none"/></svg></span>
-    </span>
-  </div>
 
-  <style>
-    .window-controls .wc-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 18px;
-      height: 18px;
-      color: color-mix(in oklab, var(--theme-foreground) 60%, transparent);
-      transition: color 120ms ease, background-color 120ms ease;
-    }
-    .window-controls .wc-btn:hover {
-      color: var(--theme-foreground);
-      background: color-mix(in oklab, var(--theme-foreground) 10%, transparent);
-    }
-    .window-controls .wc-close:hover {
-      color: #ffffff;
-      background: var(--theme-red);
-    }
-  </style>
-
-  <div class="terminal-prompt-stack sticky top-0 z-10 bg-background border-b border-accent/20">
-    <div class="terminal-prompt-row px-3 py-1 flex items-center gap-2 text-sm">
-      <span class="text-green shrink-0">visitor@jcalado</span>
-      <span class="text-foreground/60 shrink-0">:</span>
-      <span class="text-blue shrink-0" data-prompt-path>{displayPath}</span>
-      <span class="text-foreground/60 shrink-0">$</span>
-      <input
-        id="terminal-input"
-        type="text"
-        autocomplete="off"
-        autocapitalize="off"
-        spellcheck="false"
-        class="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-foreground/30"
-        placeholder="type `help`"
-        aria-label="Terminal command input"
-      />
-    </div>
-    <div
-      id="terminal-output"
-      class="font-mono text-sm px-3 max-h-[40vh] overflow-y-auto empty:hidden"
-    ></div>
-  </div>
-
-  <main class="terminal-body flex-1 px-3 py-4">
+  <main class="flex-1 px-3 py-4">
     <slot />
   </main>
-
-  <div class="terminal-statusline border-t border-accent/30 px-3 py-1 text-xs flex items-center gap-4 text-foreground/60">
-    <span>[NORMAL]</span>
-    <span data-status-posts></span>
-    <span data-status-theme></span>
-    <span class="ml-auto"><kbd>?</kbd> help</span>
-  </div>
-
-  <div
-    id="terminal-help-overlay"
-    class="hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-6"
-  >
-    <div class="border border-accent/60 bg-background p-6 max-w-md font-mono text-sm">
-      <h2 class="text-accent mb-3 font-semibold">Keybindings</h2>
-      <ul class="space-y-1">
-        <li><kbd>/</kbd> &mdash; focus prompt</li>
-        <li><kbd>Esc</kbd> &mdash; blur prompt / close this</li>
-        <li><kbd>?</kbd> &mdash; toggle this overlay</li>
-        <li><kbd>↑</kbd> / <kbd>↓</kbd> &mdash; cycle history</li>
-        <li><kbd>Tab</kbd> &mdash; complete command or slug</li>
-        <li><kbd>Enter</kbd> &mdash; run</li>
-      </ul>
-      <p class="mt-4 text-foreground/60">Type <code>help</code> for commands.</p>
-    </div>
-  </div>
 </div>
-
-<script>
-  import '~/scripts/terminal'
-</script>

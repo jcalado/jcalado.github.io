@@ -5,25 +5,35 @@ import SectionHeader from '~/components/SectionHeader.astro'
 
 interface Props {
   posts: CollectionEntry<'posts'>[]
+  number?: number | string
 }
 
-const { posts } = Astro.props
+const { posts, number } = Astro.props
 const tagsGroup = await TagsGroup.build(posts)
 const tags = tagsGroup.sortCollationsLargest()
 ---
 
-<section class="font-mono text-sm my-5">
-  <SectionHeader title="Tags" />
-  <div class="flex flex-wrap gap-x-4 gap-y-1 pl-4">
+<section class="my-6">
+  <SectionHeader title="Index" number={number} />
+  <ul class="font-mono text-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
     {
       tags.map((tag) => (
-        <a
-          href={tag.url}
-          class="text-magenta hover:underline no-underline whitespace-nowrap"
-        >
-          {tag.title}<span class="text-foreground/40">({tag.entries.length})</span>
-        </a>
+        <li class="flex items-baseline">
+          <a
+            href={tag.url}
+            class="text-foreground hover:text-accent no-underline whitespace-nowrap"
+          >
+            {tag.title}
+          </a>
+          <span
+            class="flex-1 mx-2 border-b border-dotted border-foreground/25 -translate-y-[3px]"
+            aria-hidden="true"
+          />
+          <span class="text-foreground/50 tabular-nums shrink-0">
+            {tag.entries.length.toString().padStart(2, '0')}
+          </span>
+        </li>
       ))
     }
-  </div>
+  </ul>
 </section>

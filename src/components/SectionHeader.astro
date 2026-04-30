@@ -1,27 +1,28 @@
 ---
-import siteConfig from '~/site.config'
-
 interface Props {
   title: string
+  number?: number | string
 }
 
-const { title } = Astro.props
+const { title, number } = Astro.props
 const upper = title.toUpperCase()
+const num =
+  number !== undefined ? String(number).padStart(2, '0') : null
 ---
 
-<div
-  class="section-header flex items-baseline gap-2 text-foreground/45 tracking-widest text-xs uppercase mb-2 font-mono"
->
-  <span class="shrink-0">{upper}</span>
-  <span class="leader flex-1" aria-hidden="true"></span>
-  <span class="hidden sm:inline shrink-0 text-foreground/35">{siteConfig.title}</span>
-  <span class="leader flex-1 hidden sm:block" aria-hidden="true"></span>
-  <span class="shrink-0">{upper}</span>
+<div class="font-mono mb-3 mt-8" role="heading" aria-level="2">
+  <div class="flex items-baseline gap-3 text-sm">
+    {num && <span class="text-accent">[{num}]</span>}
+    <span class="text-accent font-semibold tracking-widest">{upper}</span>
+    <span
+      class="flex-1 border-b border-dotted border-foreground/30 -translate-y-[3px]"
+      aria-hidden="true"></span>
+    <span class="hidden sm:inline text-foreground/45 text-xs uppercase tracking-widest"
+      >{Astro.url.host || 'jcalado.com'}</span
+    >
+  </div>
+  <div
+    class="mt-1 h-1 border-y border-accent"
+    aria-hidden="true"
+  ></div>
 </div>
-
-<style>
-  .leader {
-    border-bottom: 1px dotted color-mix(in oklab, var(--theme-foreground) 25%, transparent);
-    transform: translateY(-2px);
-  }
-</style>

@@ -8,23 +8,24 @@ interface Props {
 const { tags } = Astro.props
 ---
 
-<section class="font-mono text-sm">
-  <div
-    class="flex justify-between text-foreground/50 tracking-widest text-xs uppercase mb-2"
-  >
-    <span>TAGS</span>
-    <span>TAGS</span>
+<aside class="font-mono text-xs">
+  <div class="flex items-baseline gap-2 text-foreground/45 uppercase tracking-widest mb-1">
+    <span>filed under</span>
+    <span
+      class="flex-1 border-b border-dotted border-foreground/25 -translate-y-[3px]"
+      aria-hidden="true"
+    ></span>
   </div>
-  <div class="flex flex-wrap gap-x-4 gap-y-1 pl-4">
+  <p class="text-foreground/85">
     {
-      tags.map((tag) => (
-        <a
-          href={tag.url}
-          class="text-magenta hover:underline no-underline whitespace-nowrap"
-        >
-          {tag.title}
-        </a>
+      tags.map((tag, i) => (
+        <>
+          {i > 0 && <span class="text-foreground/30">  ·  </span>}
+          <a href={tag.url} class="hover:text-accent no-underline">
+            {tag.title}
+          </a>
+        </>
       ))
     }
-  </div>
-</section>
+  </p>
+</aside>

@@ -9,6 +9,9 @@ import TagsSection from '~/components/TagsSection.astro'
 import SeriesSection from '~/components/SeriesSection.astro'
 
 const sortedPosts = await getSortedPosts()
+const headlinePosts = sortedPosts
+  .reverse()
+  .slice(0, Math.floor(siteConfig.pageSize / 2))
 const postsHaveTags = sortedPosts.some(
   (post) => post.data.tags && post.data.tags.length > 0,
 )
@@ -16,35 +19,39 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
 ---
 
 <Layout>
-  <p class="text-foreground/45 text-xs sm:text-sm font-mono mt-2 mb-6">
-    Type <code class="text-accent">help</code> for commands,
-    <code class="text-accent">posts</code> to browse,
-    <code class="text-accent">about</code> for more.
+  <p class="font-mono text-xs sm:text-sm text-foreground/55 my-4">
+    <span class="text-accent">&gt;</span>
+    <span class="text-foreground">{sortedPosts.length}</span> entries in the
+    archive, {headlinePosts.length} most recent below. Or browse the
+    <a href="/posts" class="text-accent hover:underline">archive</a>.
   </p>
 
   {
     postsHaveSeries && (
-      <section class="my-5">
-        <SectionHeader title="Series" />
+      <section>
+        <SectionHeader title="Running Series" number="00" />
         <SeriesSection posts={sortedPosts} />
       </section>
     )
   }
+
+  <section>
+    <SectionHeader title="Headlines" number="01" />
+    {
+      headlinePosts.map((post, i) => (
+        <PostPreview post={post} index={i} />
+      ))
+    }
+    <div class="mt-4">
+      <Pagination nextLink="/posts" nextText="Read the archive" />
+    </div>
+  </section>
+
   {
-    sortedPosts.length > 0 && (
-      <section class="my-5">
-        <SectionHeader title="Posts" />
-        {sortedPosts
-          .reverse()
-          .slice(0, Math.floor(siteConfig.pageSize / 2))
-          .map((post) => (
-            <PostPreview post={post} />
-          ))}
-        <Pagination nextLink="/posts" nextText="Archive" />
-      </section>
+    postsHaveTags && (
+      <TagsSection posts={sortedPosts} number="02" />
     )
   }
-  {postsHaveTags && <TagsSection posts={sortedPosts} />}
 </Layout>
 
 <style is:global>

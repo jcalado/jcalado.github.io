@@ -66,16 +66,48 @@ const config: SiteConfig = {
     // Their values can be either a literal color (hex, rgb, hsl) or another theme key.
     // See themeKeys list in src/types.ts for available keys to override and reference.
     overrides: {
-      // Tint neutrals toward the brand hue so the page never feels like
-      // un-styled white. Pure #fff / #000 don't appear in nature.
-      // Resolver only accepts hex/rgb/hsl, so use hex.
+      // Phrack/zine palette. Light = aged paper + ink + red headline accent.
+      // Dark = deep ink + amber/parchment + magenta accent. Flat ANSI, no glow.
+      // Resolver only accepts hex/rgb/hsl literals.
       'github-light': {
-        background: '#fafbfd',
-        foreground: '#1f2328',
+        background: '#f3ecd8',
+        foreground: '#1c2333',
+        accent: '#b6242a',
+        heading1: '#1c2333',
+        heading2: '#1c2333',
+        heading3: '#1c2333',
+        heading4: '#1c2333',
+        heading5: '#1c2333',
+        heading6: '#1c2333',
+        link: '#b6242a',
+        list: '#1c2333',
+        separator: '#1c2333',
+        magenta: '#8a1750',
+        red: '#b6242a',
+        yellow: '#8a6a00',
+        green: '#3d6630',
+        blue: '#1f4ea0',
+        cyan: '#0c6a73',
       },
       'github-dark': {
         background: '#0e1217',
-        foreground: '#e1e4ea',
+        foreground: '#dbc99a',
+        accent: '#f4c95d',
+        heading1: '#f4c95d',
+        heading2: '#f4c95d',
+        heading3: '#f4c95d',
+        heading4: '#f4c95d',
+        heading5: '#f4c95d',
+        heading6: '#f4c95d',
+        link: '#ff8d7a',
+        list: '#dbc99a',
+        separator: '#dbc99a',
+        magenta: '#ff5fc8',
+        red: '#ff8d7a',
+        yellow: '#f4c95d',
+        green: '#a3d977',
+        blue: '#7ab9ff',
+        cyan: '#7eddd8',
       },
     },
   },
