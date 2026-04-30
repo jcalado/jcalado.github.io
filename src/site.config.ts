@@ -49,10 +49,10 @@ const config: SiteConfig = {
   // The theming configuration for the site.
   themes: {
     // The theming mode. One of "single" | "select" | "light-dark-auto".
-    mode: 'select',
+    mode: 'light-dark-auto',
     // The default theme identifier, used when themeMode is "select" or "light-dark-auto".
     // Make sure this is one of the themes listed in `themes` or "auto" for "light-dark-auto" mode.
-    default: 'catppuccin-mocha',
+    default: 'auto',
     // Shiki themes to bundle with the site.
     // https://expressive-code.com/guides/themes/#using-bundled-themes
     // These will be used to theme the entire site along with syntax highlighting.
@@ -61,92 +61,54 @@ const config: SiteConfig = {
     //   'github-light',
     //   'github-dark',
     // ]
-    include: [
-      'andromeeda',
-      'aurora-x',
-      'ayu-dark',
-      'catppuccin-frappe',
-      'catppuccin-latte',
-      'catppuccin-macchiato',
-      'catppuccin-mocha',
-      'dark-plus',
-      'dracula',
-      'dracula-soft',
-      'everforest-dark',
-      'everforest-light',
-      'github-dark',
-      'github-dark-default',
-      'github-dark-dimmed',
-      'github-dark-high-contrast',
-      'github-light',
-      'github-light-default',
-      'github-light-high-contrast',
-      'gruvbox-dark-hard',
-      'gruvbox-dark-medium',
-      'gruvbox-dark-soft',
-      'gruvbox-light-hard',
-      'gruvbox-light-medium',
-      'gruvbox-light-soft',
-      'houston',
-      'kanagawa-dragon',
-      'kanagawa-lotus',
-      'kanagawa-wave',
-      'laserwave',
-      'light-plus',
-      'material-theme',
-      'material-theme-darker',
-      'material-theme-lighter',
-      'material-theme-ocean',
-      'material-theme-palenight',
-      'min-dark',
-      'min-light',
-      'monokai',
-      'night-owl',
-      'nord',
-      'one-dark-pro',
-      'one-light',
-      'plastic',
-      'poimandres',
-      'red',
-      'rose-pine',
-      'rose-pine-dawn',
-      'rose-pine-moon',
-      'slack-dark',
-      'slack-ochin',
-      'snazzy-light',
-      'solarized-dark',
-      'solarized-light',
-      'synthwave-84',
-      'tokyo-night',
-      'vesper',
-      'vitesse-black',
-      'vitesse-dark',
-      'vitesse-light',
-    ],
+    include: ['github-light', 'github-dark'],
     // Optional overrides for specific themes to customize colors.
     // Their values can be either a literal color (hex, rgb, hsl) or another theme key.
     // See themeKeys list in src/types.ts for available keys to override and reference.
     overrides: {
-      // Improve readability for aurora-x theme
-      // 'aurora-x': {
-      //   background: '#292929FF',
-      //   foreground: '#DDDDDDFF',
-      //   warning: '#FF7876FF',
-      //   important: '#FF98FFFF',
-      //   note: '#83AEFFFF',
-      // },
-      // Make the GitHub dark theme a little cuter
-      // 'github-light': {
-      //   accent: 'magenta',
-      //   heading1: 'magenta',
-      //   heading2: 'magenta',
-      //   heading3: 'magenta',
-      //   heading4: 'magenta',
-      //   heading5: 'magenta',
-      //   heading6: 'magenta',
-      //   separator: 'magenta',
-      //   link: 'list',
-      // },
+      // Phrack/zine palette. Light = aged paper + ink + red headline accent.
+      // Dark = deep ink + amber/parchment + magenta accent. Flat ANSI, no glow.
+      // Resolver only accepts hex/rgb/hsl literals.
+      'github-light': {
+        background: '#f3ecd8',
+        foreground: '#1c2333',
+        accent: '#b6242a',
+        heading1: '#1c2333',
+        heading2: '#1c2333',
+        heading3: '#1c2333',
+        heading4: '#1c2333',
+        heading5: '#1c2333',
+        heading6: '#1c2333',
+        link: '#b6242a',
+        list: '#1c2333',
+        separator: '#1c2333',
+        magenta: '#8a1750',
+        red: '#b6242a',
+        yellow: '#8a6a00',
+        green: '#3d6630',
+        blue: '#1f4ea0',
+        cyan: '#0c6a73',
+      },
+      'github-dark': {
+        background: '#0e1217',
+        foreground: '#dbc99a',
+        accent: '#f4c95d',
+        heading1: '#f4c95d',
+        heading2: '#f4c95d',
+        heading3: '#f4c95d',
+        heading4: '#f4c95d',
+        heading5: '#f4c95d',
+        heading6: '#f4c95d',
+        link: '#ff8d7a',
+        list: '#dbc99a',
+        separator: '#dbc99a',
+        magenta: '#ff5fc8',
+        red: '#ff8d7a',
+        yellow: '#f4c95d',
+        green: '#a3d977',
+        blue: '#7ab9ff',
+        cyan: '#7eddd8',
+      },
     },
   },
   // Social links to display in the footer.
@@ -163,13 +125,7 @@ const config: SiteConfig = {
   // Take the values from the generated script tag at https://giscus.app and fill them in here.
   // IMPORTANT: Update giscus.json in the root of the project with your own website URL
   // If you don't want to use Giscus, set this to undefined.
-  giscus: {
-    repo: 'jcalado/jcalado.github.io',
-    repoId: 'MDEwOlJlcG9zaXRvcnkzMjYyNDYwODA=',
-    category: 'Giscus',
-    categoryId: 'DIC_kwDOE3IewM4Cw_IT',
-    reactionsEnabled: true, // Enable reactions on post itself
-  },
+  giscus: undefined,
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)

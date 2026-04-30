@@ -8,15 +8,24 @@ interface Props {
 const { tags } = Astro.props
 ---
 
-<div class="flex flex-wrap gap-3 text-sm">
-  {
-    tags.map((tag) => (
-      <a
-        href={tag.url}
-        class="py-1 px-3 bg-accent/1 hover:bg-accent/8 border-1 border-accent/20 text-accent/90 rounded-2xl transition-colors"
-      >
-        {tag.title}
-      </a>
-    ))
-  }
-</div>
+<aside class="font-mono text-xs">
+  <div class="flex items-baseline gap-2 text-foreground/45 uppercase tracking-widest mb-1">
+    <span>filed under</span>
+    <span
+      class="flex-1 border-b border-dotted border-foreground/25 -translate-y-[3px]"
+      aria-hidden="true"
+    ></span>
+  </div>
+  <p class="text-foreground/85">
+    {
+      tags.map((tag, i) => (
+        <>
+          {i > 0 && <span class="text-foreground/30">  ·  </span>}
+          <a href={tag.url} class="hover:text-accent no-underline">
+            {tag.title}
+          </a>
+        </>
+      ))
+    }
+  </p>
+</aside>

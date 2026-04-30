@@ -1,46 +1,62 @@
 ---
-import IconChevronsRight from '~/icons/chevrons-right.svg'
 import type { CollectionEntry } from 'astro:content'
 import { render } from 'astro:content'
-import Tags from '~/components/Tags.astro'
-import PostInfo from '~/components/PostInfo.astro'
-import type { Collation } from '~/types'
-import { TagsGroup } from '~/utils'
+import { format } from 'date-fns'
 
 interface Props {
   post: CollectionEntry<'posts'>
+  index?: number
 }
-
-const { post } = Astro.props
-
+const { post, index } = Astro.props
 const { remarkPluginFrontmatter } = await render(post)
 const description = remarkPluginFrontmatter.description || post.data.description
-let tags: Collation<'posts'>[] | undefined
-if (post.data.tags && post.data.tags.length > 0) {
-  const tagsGroup = await TagsGroup.build()
-  tags = tagsGroup.matchMany(post.data.tags)
-}
-const samePage = Astro.url.pathname === `/posts/${post.id}`
-const articleLink = samePage ? `#${post.id}` : `/posts/${post.id}`
+const words = remarkPluginFrontmatter.words ?? 0
+const sizeKb = Math.max(1, Math.round((words * 6) / 102.4) / 10)
+const sizeStr = `${sizeKb.toFixed(1)}K`
+const date = post.data.published
+  ? format(post.data.published, 'dd MMM').toUpperCase()
+  : null
+const link = `/posts/${post.id}`
+const num = index !== undefined ? String(index + 1).padStart(2, '0') : null
+const tags = post.data.tags ?? []
 ---
 
-<article class="w-full py-5 my-1 md:my-4 border-accent/10">
-  <h1 class="mb-3 text-2xl text-heading1 font-semibold">
-    <a href={articleLink}># {post.data.title}</a>
-  </h1>
-  <PostInfo post={post} class="mb-3 mt-4" />
-  {description && <p class="pl-0.5 my-4 text-base/7 text-foreground">{description}</p>}
-  {
-    tags && (
-      <div class="mb-6">
-        <Tags tags={tags} />
-      </div>
-    )
-  }
-  <div>
-    <a class="button flex items-center !pl-3.5" href={articleLink}>
-      {samePage ? 'Continue' : 'Read'}
-      <IconChevronsRight class="size-5 ml-2" />
-    </a>
-  </div>
+<article
+  class="py-3 group [&+&]:border-t [&+&]:border-dashed [&+&]:border-foreground/15"
+>
+  <a href={link} class="block no-underline">
+    <div class="flex items-baseline gap-3 font-mono text-sm">
+      {num && <span class="text-accent shrink-0">[{num}]</span>}
+      <span class="text-foreground group-hover:text-accent font-semibold">
+        {post.data.title || post.id}
+      </span>
+      <span
+        class="flex-1 hidden sm:block border-b border-dotted border-foreground/25 -translate-y-[3px]"
+        aria-hidden="true"></span>
+      <span class="text-foreground/55 shrink-0 hidden sm:flex gap-3 text-xs uppercase tracking-wider">
+        {date && <span>{date}</span>}
+        <span class="text-yellow">{sizeStr}</span>
+      </span>
+    </div>
+    {
+      description && (
+        <p class="mt-1 text-foreground/75 text-sm sm:pl-[3.5ch] max-w-prose">
+          {description}
+        </p>
+      )
+    }
+    {
+      tags.length > 0 && (
+        <p class="mt-1 text-foreground/45 font-mono text-xs sm:pl-[3.5ch]">
+          <span class="text-accent/70">&gt;</span>{' '}
+          {tags.map((t, i) => (
+            <>
+              {i > 0 && <span class="text-foreground/25">  ·  </span>}
+              <span>{t}</span>
+            </>
+          ))}
+        </p>
+      )
+    }
+  </a>
 </article>

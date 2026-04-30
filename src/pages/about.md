@@ -1,7 +1,12 @@
 ---
 layout: '~/layouts/MarkdownLayout.astro'
 title: About Me
+githubCalendar: jcalado
 ---
+
+```text
+$ cat about.md
+```
 
 👋 Hi, I’m Joel — a software developer who loves building modern, user-focused web applications. I spend most of my coding hours exploring the possibilities of React, Node.js, and all things JavaScript, turning ideas into solutions that (hopefully!) make life a little easier.
 

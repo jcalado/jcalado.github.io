@@ -1,29 +1,39 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { TagsGroup } from '~/utils'
+import SectionHeader from '~/components/SectionHeader.astro'
 
 interface Props {
   posts: CollectionEntry<'posts'>[]
+  number?: number | string
 }
 
-const { posts } = Astro.props
+const { posts, number } = Astro.props
 const tagsGroup = await TagsGroup.build(posts)
+const tags = tagsGroup.sortCollationsLargest()
 ---
 
-<ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
-  {
-    tagsGroup.sortCollationsLargest().map((tag) => (
-      <li>
-        <a
-          href={tag.url}
-          class="flex items-start gap-2.5 py-2 pl-4 pr-3 bg-accent/7 rounded-3xl border-transparent hover:border-accent/20 border-1 text-foreground/90"
-        >
-          {tag.title}
-          <span class="rounded-full bg-foreground/7 text-foreground/90 px-2 py-1 text-xs font-semibold">
-            {tag.entries.length}
+<section class="my-6">
+  <SectionHeader title="Index" number={number} />
+  <ul class="font-mono text-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-1">
+    {
+      tags.map((tag) => (
+        <li class="flex items-baseline">
+          <a
+            href={tag.url}
+            class="text-foreground hover:text-accent no-underline whitespace-nowrap"
+          >
+            {tag.title}
+          </a>
+          <span
+            class="flex-1 mx-2 border-b border-dotted border-foreground/25 -translate-y-[3px]"
+            aria-hidden="true"
+          />
+          <span class="text-foreground/50 tabular-nums shrink-0">
+            {tag.entries.length.toString().padStart(2, '0')}
           </span>
-        </a>
-      </li>
-    ))
-  }
-</ul>
+        </li>
+      ))
+    }
+  </ul>
+</section>

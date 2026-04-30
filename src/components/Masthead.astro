@@ -1,0 +1,71 @@
+---
+import siteConfig from '~/site.config'
+import { getSortedPosts } from '~/utils'
+import Search from '~/components/Search.astro'
+import LightDarkAutoButton from '~/components/LightDarkAutoButton.astro'
+
+const posts = await getSortedPosts()
+const issue = posts.length.toString().padStart(2, '0')
+const issueDate = new Date().toLocaleDateString('en-GB', {
+  month: 'short',
+  year: 'numeric',
+}).toUpperCase()
+---
+
+<header class="masthead font-mono not-prose">
+  <div
+    class="border-double border-4 border-foreground px-4 py-4 sm:px-6 sm:py-6"
+    style="background: color-mix(in oklab, var(--theme-foreground) 3%, transparent);"
+  >
+    <h1
+      aria-label={siteConfig.title}
+      class="zine-title text-accent text-center m-0"
+    >jcalado</h1>
+
+    <p class="mt-3 text-center text-foreground/70 text-xs sm:text-sm uppercase tracking-widest">
+      an irregular zine on software · radio · side-projects
+    </p>
+
+    <p class="mt-2 text-center text-foreground text-xs sm:text-sm uppercase tracking-widest flex flex-wrap justify-center gap-x-3 gap-y-1">
+      <span><span class="text-foreground/45">entry</span> {issue}</span>
+      <span aria-hidden="true" class="text-foreground/30">·</span>
+      <span>{issueDate}</span>
+      <span aria-hidden="true" class="text-foreground/30">·</span>
+      <span class="text-accent">CS7BLE / PT</span>
+    </p>
+  </div>
+
+  <nav class="flex flex-wrap items-baseline gap-x-2 gap-y-2 mt-4 text-sm">
+    {
+      siteConfig.navLinks.map((link) => (
+        <a
+          href={link.url}
+          class="no-underline text-foreground hover:text-accent tracking-wide"
+        >
+          [{link.name.toLowerCase()}]
+        </a>
+      ))
+    }
+    <span
+      class="hidden sm:inline flex-1 mx-2 border-b border-dotted border-foreground/35 -translate-y-[3px]"
+      aria-hidden="true"></span>
+    <Search trailingSlashes={siteConfig.trailingSlashes} />
+    <LightDarkAutoButton />
+  </nav>
+
+  <div
+    class="mt-3 h-1 border-y border-foreground"
+    aria-hidden="true"
+  ></div>
+</header>
+
+<style>
+  .zine-title {
+    font-family: 'Departure Mono', var(--theme-font), monospace;
+    font-size: clamp(3rem, 11vw, 7rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 0.95;
+    text-transform: lowercase;
+  }
+</style>

@@ -43,7 +43,21 @@ export default defineConfig({
     ],
     rehypePlugins: [
       [rehypeHeadingIds, { headingIdCompat: true }],
-      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'append',
+          properties: {
+            className: ['heading-anchor'],
+            ariaHidden: 'true',
+            tabIndex: -1,
+          },
+          content: (node) => ({
+            type: 'text',
+            value: `  # ${node.properties.id}`,
+          }),
+        },
+      ],
       rehypeTitleFigure,
       [
         rehypeExternalLinks,
@@ -71,6 +85,7 @@ export default defineConfig({
       defaultProps: {
         showLineNumbers: false,
         wrap: false,
+        frame: 'terminal',
       },
       plugins: [pluginLineNumbers()],
     }), // Must come after expressive-code integration

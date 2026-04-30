@@ -1,0 +1,15 @@
+---
+import BootSequence from '~/components/BootSequence.astro'
+interface Props {
+  path: string
+}
+const { path } = Astro.props
+---
+
+<div class="page-frame flex flex-col min-h-screen">
+  <BootSequence />
+
+  <main class="flex-1 px-3 py-4">
+    <slot />
+  </main>
+</div>

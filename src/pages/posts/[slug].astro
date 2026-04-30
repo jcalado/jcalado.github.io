@@ -11,10 +11,8 @@ import { Image } from 'astro:assets'
 import GiscusLoader from '~/components/GiscusLoader.astro'
 import siteConfig from '~/site.config'
 import Tags from '~/components/Tags.astro'
-import PostInfo from '~/components/PostInfo.astro'
 import ScrollUpButton from '~/components/ScrollUpButton.astro'
 import type { Collation } from '~/types'
-import ChevronsRight from '~/icons/chevrons-right.svg'
 import { getPostSequenceContext } from '~/utils'
 
 export const getStaticPaths = (async () => {
@@ -31,7 +29,27 @@ export const getStaticPaths = (async () => {
 
 const { post, prev, next } = Astro.props
 const postData = post.data
-const { headings, Content: PostContent } = await render(post)
+const { headings, Content: PostContent, remarkPluginFrontmatter } = await render(post)
+const words: number = remarkPluginFrontmatter.words ?? 0
+const minutesRead: string | undefined = remarkPluginFrontmatter.minutesRead
+
+function dateISO(d?: Date | string) {
+  if (!d) return ''
+  const date = d instanceof Date ? d : new Date(d)
+  return date.toISOString().split('T')[0]
+}
+
+const fmRows: [string, string][] = [
+  ['date', dateISO(postData.published)],
+]
+if (postData.author) fmRows.push(['author', String(postData.author)])
+if (minutesRead)     fmRows.push(['reading_time', minutesRead])
+const keyWidth = fmRows.reduce((m, [k]) => Math.max(m, k.length), 0)
+const metaText = fmRows
+  .map(([k, v]) => `# ${k.padEnd(keyWidth, ' ')} : ${v}`)
+  .join('\n')
+
+const coverFile = postData.coverImage?.src?.src?.split('/').pop() ?? ''
 const addendum = await getCollection('addendum')
 let AddendumContent
 let addendumAvatarImage
@@ -73,48 +91,51 @@ if (postData.tags && postData.tags.length > 0) {
   tags={postData.tags}
 >
   <article class="max-w-full py-7.5" data-pagefind-body>
+    <h1 id={post.id} class="text-heading1 mt-2 mb-3">
+      {postData.title}
+    </h1>
+    <pre class="font-mono text-xs leading-5 mb-3 text-foreground/45 whitespace-pre-wrap">{metaText}</pre>
+    {tags && (
+      <div class="mb-6">
+        <Tags tags={tags} />
+      </div>
+    )}
+
     {
       postData.coverImage && (
-        <Image
-          priority
-          layout="constrained"
-          src={postData.coverImage.src}
-          alt={postData.coverImage.alt}
-          class="w-full rounded-xl mb-5"
-        />
+        <figure class="my-6">
+          <Image
+            priority
+            layout="constrained"
+            src={postData.coverImage.src}
+            alt={postData.coverImage.alt}
+            class="w-full mb-1 border border-accent/30"
+          />
+          <figcaption class="font-mono text-xs text-foreground/50">
+            inline image: {coverFile || postData.coverImage.alt}
+          </figcaption>
+        </figure>
       )
     }
-    <div class="md:mx-2">
-      <h1 id={post.id} class="mb-4 text-[1.75rem] text-heading1 font-semibold">
-        # {postData.title}
-      </h1>
-      <div class="my-2 border-l-2 border-accent/80 pl-4 py-2">
-        <PostInfo post={post} class="mb-1" />
-        {
-          tags && (
-            <div class="mt-4">
-              <Tags tags={tags} />
-            </div>
-          )
-        }
-      </div>
-    </div>
-    <!-- <hr class="border-accent/10 border-2 rounded-xl hidden lg:block" /> -->
+
     <div class="flex flex-col xl:gap-1 2xl:gap-18 xl:flex-row xl:items-start">
       {postData.toc && headings.length > 0 && <TableOfContents headings={headings} />}
       <div class="mb-5 xl:min-w-full 2xl:min-w-full prose">
         <PostContent />
       </div>
     </div>
+
+    <div class="font-mono text-xs text-foreground/40 mt-10 pt-4 border-t border-accent/15">
+      ── EOF ── ({words.toLocaleString()} words{minutesRead ? ' · ' + minutesRead : ''})
+    </div>
   </article>
   {
     nextPostInSeries && (
       <a
         href={`/posts/${nextPostInSeries.id}`}
-        class="button justify-center -mt-8 mb-8 !whitespace-normal text-center flex gap-2 sm:gap-3 items-center"
+        class="button font-mono text-sm mb-8 inline-flex"
       >
-        <span>Next: {nextPostInSeries.data.title}</span>
-        <ChevronsRight class="size-5 hidden sm:block" />
+        next: {nextPostInSeries.data.title} →
       </a>
     )
   }

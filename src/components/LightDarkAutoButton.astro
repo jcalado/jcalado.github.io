@@ -1,7 +1,6 @@
 ---
 import IconSun from '~/icons/sun.svg'
 import IconMoon from '~/icons/moon.svg'
-import IconSunMoon from '~/icons/sun-moon.svg'
 import siteConfig from '~/site.config'
 let lightTheme = siteConfig.themes.include[0]
 let darkTheme = siteConfig.themes.include[1]
@@ -9,13 +8,13 @@ let darkTheme = siteConfig.themes.include[1]
 
 <button
   id="theme-change-button"
-  class="block ml-auto"
+  class="block ml-auto cursor-pointer"
   data-light={lightTheme}
   data-dark={darkTheme}
+  aria-label="Toggle light/dark mode"
 >
   <IconSun id="icon-light" class="hidden size-6 text-accent" />
   <IconMoon id="icon-dark" class="hidden size-6 text-accent" />
-  <IconSunMoon id="icon-auto" class="hidden size-6 text-accent" />
 </button>
 
 <script>
@@ -24,48 +23,36 @@ let darkTheme = siteConfig.themes.include[1]
   const darkThemeId = themeButton?.getAttribute('data-dark')
   const sunIcon = themeButton?.querySelector('#icon-light')
   const moonIcon = themeButton?.querySelector('#icon-dark')
-  const sunMoonIcon = themeButton?.querySelector('#icon-auto')
-  const updateIcons = (theme: string) => {
-    if (theme === lightThemeId) {
-      sunIcon?.classList.remove('hidden')
-      moonIcon?.classList.add('hidden')
-      sunMoonIcon?.classList.add('hidden')
-    } else if (theme === darkThemeId) {
+
+  const resolveActive = () => {
+    const stored = localStorage.getItem('data-theme')
+    if (stored === lightThemeId) return lightThemeId
+    if (stored === darkThemeId) return darkThemeId
+    // 'auto' or unset — fall back to the actually-applied theme on <html>
+    return document.documentElement.getAttribute('data-theme') === lightThemeId
+      ? lightThemeId
+      : darkThemeId
+  }
+
+  // Show the icon for the theme you'd switch TO (sun when dark, moon when light)
+  const updateIcons = (active: string | null | undefined) => {
+    if (active === lightThemeId) {
       sunIcon?.classList.add('hidden')
       moonIcon?.classList.remove('hidden')
-      sunMoonIcon?.classList.add('hidden')
     } else {
-      sunIcon?.classList.add('hidden')
+      sunIcon?.classList.remove('hidden')
       moonIcon?.classList.add('hidden')
-      sunMoonIcon?.classList.remove('hidden')
     }
   }
-  let currentTheme = localStorage.getItem('data-theme') || 'auto'
-  updateIcons(currentTheme)
+
+  updateIcons(resolveActive())
+
   themeButton?.addEventListener('click', () => {
-    // Toggle between light, dark, and auto themes
-    // Only need to update localStorage because there should be a listener in Layout.astro
-    const currentTheme = localStorage.getItem('data-theme') || darkThemeId
-    let newTheme
-    if (currentTheme === lightThemeId) {
-      newTheme = darkThemeId
-    } else if (currentTheme === darkThemeId) {
-      newTheme = 'auto'
-    } else {
-      newTheme = lightThemeId
-    }
-    if (newTheme) {
-      updateIcons(newTheme)
-      localStorage.setItem('data-theme', newTheme)
-      if (newTheme === 'auto') {
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)')
-        document.documentElement.setAttribute(
-          'data-theme',
-          prefersDarkScheme.matches ? darkThemeId || 'auto' : lightThemeId || 'auto',
-        )
-      } else {
-        document.documentElement.setAttribute('data-theme', newTheme)
-      }
-    }
+    const active = resolveActive()
+    const newTheme = active === lightThemeId ? darkThemeId : lightThemeId
+    if (!newTheme) return
+    localStorage.setItem('data-theme', newTheme)
+    document.documentElement.setAttribute('data-theme', newTheme)
+    updateIcons(newTheme)
   })
 </script>
