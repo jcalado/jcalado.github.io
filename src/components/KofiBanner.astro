@@ -1,0 +1,48 @@
+---
+interface Props {
+  message?: string
+  username?: string
+  showIcon?: boolean
+}
+
+const {
+  message = "Enjoying the free software I build? Help keep it going.",
+  username = 'jcalado',
+  showIcon = false,
+} = Astro.props
+const href = `https://ko-fi.com/${username}`
+---
+
+<div
+  role="complementary"
+  class="not-prose font-mono text-xs sm:text-sm my-8 border border-red-500/50 bg-red-500/10 px-3 py-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3"
+  aria-label="Support free software"
+>
+  <span
+    class="text-red-500 font-semibold tracking-widest uppercase whitespace-nowrap inline-flex items-center gap-1.5"
+  >
+    {
+      showIcon && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+          class="w-4 h-4 animate-pulse"
+        >
+          <path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2 4.5 5.5 4.5c2 0 3.4 1.1 4.5 2.6 1.1-1.5 2.5-2.6 4.5-2.6 3.5 0 5.1 3.9 3.5 7.2C19.5 16.4 12 21 12 21z" />
+        </svg>
+      )
+    }
+    [SUPPORT]
+  </span>
+  <span class="text-foreground/80 flex-1">{message}</span>
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="text-red-500 hover:underline whitespace-nowrap"
+  >
+    ko-fi.com/{username} &rarr;
+  </a>
+</div>

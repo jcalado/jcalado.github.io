@@ -1,0 +1,115 @@
+---
+title: "VoxLink 1.3: APRS, accessibility, and a settings overhaul"
+published: 2026-05-12
+draft: false
+description: "VoxLink 1.3 brings full APRS-IS support (map, stations, messaging, beaconing), a stack of accessibility features, a reorganized settings area, Bluetooth audio routing fixes, on-screen monitor activity alerts, and a long run of audio reliability work for Android 16."
+tags: ["amateur-radio", "svxlink", "aprs", "android", "flutter", "open-source", "ptt", "voxlink"]
+---
+
+import KofiBanner from '~/components/KofiBanner.astro'
+
+# VoxLink 1.3: APRS, accessibility, and a settings overhaul
+
+VoxLink 1.3 is out. The headline is **APRS** — VoxLink now speaks APRS-IS, with a live map, station list, messaging, and configurable beaconing — but a lot has happened around it: a full set of accessibility features, a reorganized settings area, Bluetooth audio routing fixes, and on-screen alerts for monitored talkgroup activity.
+
+## APRS
+
+VoxLink is now an APRS client. Connect to APRS-IS with your callsign and passcode and you get:
+
+- A **live map** (OpenStreetMap) with stations as markers, callsigns labeled under each symbol, and common APRS symbols mapped to Material icons.
+- A **stations list** with a search box, sort by distance / last-heard / callsign, last-heard age pills, an inline movement chip for moving stations, category filter chips with a stale-fade, pull-to-refresh, dense rows, and persisted sort. Tapping a station opens a detail sheet with path, status, course/speed/altitude, and other metadata.
+- **Messaging** — send and receive APRS messages directly from the app.
+- **Beaconing** with two positioning modes: automatic from GPS (with tunable accuracy) or a manual map picker for fixed locations. Each mode has its own settings, and a smart-beacon fallback derives speed from distance/time when the GPS speed channel is unreliable.
+- **Background operation** — the APRS-IS connection (and position stream) is kept alive through the foreground service, so beacons keep going out and incoming traffic keeps flowing when the app isn't in front.
+- Parsing for **compressed positions, Mic-E, course/speed/altitude, objects, and items**.
+- VoxLink now identifies itself with the **officially-assigned `APVOXL` tocall** on the APRS-IS network.
+
+The whole feature lives behind a master toggle in Settings, so if you don't want it, it's not in your way. UI is localized in English and Portuguese.
+
+## Accessibility
+
+VoxLink 1.3 ships a dedicated accessibility section with options that make the app usable in tougher conditions:
+
+- **Outdoors mode** — a larger PTT button with a glanceable outer ring you can hit without looking.
+- **Huge talker display** — 56px callsign, 22px subtitle, for reading at a glance.
+- **Green screen flash** on RX talker start, so you know someone's transmitting without looking at the indicator.
+- **Reduce motion** — disables the pulsing connection indicator and other ambient animation.
+- **Haptic strength** — Off / Subtle / Strong, scaling all vibration durations across the app.
+- **TX start/stop vibration** cues — a short pulse on TX start, a double-tap on stop.
+- **High-contrast** state colors on the PTT button and talker display.
+
+## Monitor activity alerts
+
+Monitored talkgroups now surface activity directly in the app:
+
+- A **monitor activity banner** appears at the top of the PTT screen when a monitored TG goes active. Tap it to switch to that talkgroup.
+- **OS notifications** for talker activity on monitored TGs and for connection drops, with toggles to enable or disable each in the new Notifications section.
+- A 5-second idle-coalesce window keeps the banner stable through bursts of short transmissions.
+
+## Settings, reorganized
+
+The Settings screen had grown into a long scroll. It's now split into focused sub-screens, all reachable from a clean grouped-card index:
+
+- Transmission (PTT / VOX / TOT)
+- Audio
+- External PTT
+- Notifications
+- PTT screen controls
+- Accessibility
+- Connection
+- APRS
+
+Each row uses a right-chevron for navigation. Less hunting, more findability.
+
+Other small additions: a **Keep screen on** toggle (wired to wakelock), an **APRS server picker**, and a server **export/import** flow that uses your share sheet (with a visible warning about the secrets it contains).
+
+## Audio
+
+- **Bluetooth audio routing fix** — the comm-device session lifecycle is now handled properly, which resolves a long-standing class of routing issues with BT headsets. A live audio output picker enumerates devices in real time, auto-reroutes on connect/disconnect when set to *Auto*, and surfaces a fallback toast when a chosen device disappears.
+- **User-selectable BT audio mode** — pick whether the Bluetooth path uses the voice-call (SCO) profile or the media profile, depending on what your headset does well.
+- **48 kHz Opus** — the encoder and decoder now run at 48 kHz, improving audio quality.
+- **RX hardening for background and locked-screen wake-ups**, including keeping the RX path warm across QSOs and surviving fast keyup → keydown patterns without missing the start of the next over.
+- **Android 16 WiFi PSM mitigation** — the app holds a multicast lock and runs a 1 Hz UDP heartbeat so the radio doesn't park itself in power-save mode while backgrounded.
+- AudioTrack lifecycle work: recreated after long idle to avoid the stuck-slow-mixer bug, jitter-buffer tail drained on `talkerStop` to stop clipped overs, zombie playback timers prevented from double-draining, decoder + jitter buffer reset on foreground resume, audio channel taken off the main thread, FAST-mixer hint dropped.
+- Several stability fixes around mic leaks in VOX, decoder teardown, and AudioTrack underruns.
+
+## Playback improvements
+
+The audio file playback feature from 1.2 grew up:
+
+- **Playlist-based playback** with a strip UI for the active entry.
+- **Pause / resume** that preserves the absolute file offset.
+- **Manual-PTT interrupt** — keying up cleanly stops the file.
+
+## Nodes & talkgroups
+
+- The **Nodes** screen now splits the list by activity on the selected talkgroup, so you can tell who's actually using the channel right now.
+- **Scan** across talkgroups.
+- **Per-preset default** monitored TGs and arbitrary-TG monitoring.
+- **Chevron buttons** to step through presets on the PTT screen.
+
+## Other fixes & polish
+
+- Recordings: swipe-to-delete with a working Undo.
+- Servers: first server is auto-activated on add and on load, so the PTT picker always has presets to show.
+- Polished active-server hero card and servers dashboard.
+- Manage talkgroups directly from the active server menu, and onboard them when adding a new server.
+- RX is now torn down cleanly on talkgroup switch, and monitor/scan toggles are persisted across restarts.
+- `voxlink://` deep links continue to work for provisioning servers via URL or QR.
+- A grab bag of smaller stability and translation fixes.
+
+## 1.3.1
+
+A short follow-up patch shipped on top of 1.3.0 with a few requested PTT-screen options and one more reliability fix:
+
+- **Optional TX / TOT timer row** on the PTT screen.
+- **Optional Quit item** in the PTT-screen connection menu, for when you want to fully stop the app instead of backgrounding it.
+- Foreground service notification now **reflects RX state** (and the `mediaPlayback` FGS type was dropped now that audio routing is handled directly).
+
+## Get it
+
+VoxLink 1.3 is rolling out on the [Google Play Store](https://play.google.com/store/apps/details?id=com.jcalado.voxlink). More details at [voxlink.jcalado.com](https://voxlink.jcalado.com/).
+
+If you hit a bug or have an idea, drop into the [VoxLink Telegram community](https://t.me/+7eNqxZZsIrcwYzc0). 73.
+
+<KofiBanner showIcon message="VoxLink is free software. If it earned a spot on your radio bag, you can buy me a coffee." />
