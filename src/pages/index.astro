@@ -19,6 +19,26 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
 ---
 
 <Layout>
+  <aside
+    class="font-mono text-xs sm:text-sm my-4 border border-red-500/50 bg-red-500/5 px-3 py-2 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3"
+    aria-label="Support free software"
+  >
+    <span class="text-red-500 font-semibold tracking-widest uppercase whitespace-nowrap">
+      [SUPPORT]
+    </span>
+    <span class="text-foreground/75 flex-1">
+      Enjoying the free software I build? Help keep it going.
+    </span>
+    <a
+      href="https://ko-fi.com/jcalado"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-red-500 hover:underline whitespace-nowrap"
+    >
+      ko-fi.com/jcalado &rarr;
+    </a>
+  </aside>
+
   <p class="font-mono text-xs sm:text-sm text-foreground/55 my-4">
     <span class="text-accent">&gt;</span>
     <span class="text-foreground">{sortedPosts.length}</span> entries in the
