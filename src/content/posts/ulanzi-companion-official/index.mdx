@@ -1,0 +1,46 @@
+---
+title: The Ulanzi Stream Controller plugin is now an official Companion surface
+published: 2026-06-21
+draft: false
+description: My Ulanzi D200/D200X surface plugin for Bitfocus Companion is now in the official module store (pending approval), with the repo moved to the Bitfocus org and D200X support added.
+tags: ['bitfocus-companion', 'ulanzi', 'stream-deck', 'usb', 'typescript', 'release']
+---
+
+import KofiBanner from '~/components/KofiBanner.astro'
+
+Back in April I [reverse-engineered the Ulanzi Stream Controller D200 and
+wrote a Bitfocus Companion surface plugin](/posts/ulanzi-d200-companion/) for
+it. It started as a developer module you had to clone and side-load. It's now
+an **official Companion surface**: submitted to the Bitfocus module store and
+pending review, which means once approved it installs straight from inside
+Companion — no cloning, no build step.
+
+## What changed
+
+- **It's in the store.** Submitted as `ulanzi-stream-controller` v1.0.0 via the
+  Bitfocus developer portal. After a volunteer review it'll be a one-click
+  install for anyone on Companion 4.0+.
+- **The repo moved to the Bitfocus org:**
+  [github.com/bitfocus/companion-surface-ulanzi-stream-controller](https://github.com/bitfocus/companion-surface-ulanzi-stream-controller).
+  That's now the home for development, issues, and releases.
+- **D200X support.** The plugin now also drives the **D200X** (14 buttons —
+  the small-window slot becomes a regular button), alongside the original
+  D200, plus a screensaver mode and a pile of small-window rendering fixes.
+
+## How official surface modules work
+
+Companion's surface plugin system (4.3.0+) follows the same model as
+connection modules: you keep your own repo, tag a release, and submit the tag
+through [developer.bitfocus.io](https://developer.bitfocus.io/). The store
+references your tagged build — Bitfocus never forks your code. Releasing is
+just: bump the version, `yarn package` to verify the build, tag `vX.Y.Z`,
+push, and submit.
+
+## Get it
+
+Once it clears review it'll show up under **Surfaces** in Companion. Until
+then you can build from
+[the repo](https://github.com/bitfocus/companion-surface-ulanzi-stream-controller)
+— see SETUP.md for the Linux notes (the USB-2 hub requirement still applies).
+
+<KofiBanner showIcon message="This plugin is free and MIT-licensed. If it saved you the price of an Elgato, you can buy me a coffee." />
