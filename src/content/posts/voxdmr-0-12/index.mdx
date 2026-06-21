@@ -1,0 +1,85 @@
+---
+title: "VoxDMR 0.12: a software DMR radio for your phone and desktop"
+published: 2026-06-21
+draft: false
+description: "Meet VoxDMR, a free app that puts a DMR talkgroup on your phone or PC with nothing but an internet connection. Works with BrandMeister, FreeDMR, TGIF, ADN and other networks. The 0.12 release brings a redesigned connection screen, profile backup & restore, manual gain controls, half-duplex busy-channel lockout, support for cheap PoC radios, and a long run of audio and battery fixes."
+tags: ["amateur-radio", "dmr", "brandmeister", "freedmr", "tgif", "android", "flutter", "rust", "ptt", "voxdmr"]
+---
+
+import KofiBanner from '~/components/KofiBanner.astro'
+
+# VoxDMR 0.12: a software DMR radio for your phone and desktop
+
+If you've ever wanted to drop onto a DMR talkgroup but didn't have a radio, a hotspot, or line of sight to a repeater handy, this one's for you.
+
+## What is VoxDMR?
+
+**VoxDMR is a software DMR radio.** It runs on your Android phone and on your desktop (Linux and Windows now, macOS on the way), and it connects straight to the DMR network over the internet. It speaks to **BrandMeister** (over BrandMeister's ODTP protocol) and to the **Homebrew/MMDVM** networks like **FreeDMR**, **TGIF**, **ADN** and friends, so you can point it at whichever network your talkgroups live on. No hotspot, no physical radio, no RF: just your callsign, your DMR ID, and a data connection.
+
+Press the on-screen PTT, talk, and VoxDMR captures your microphone, encodes it into proper **AMBE+2** frames, and transmits to the talkgroup you've selected. When someone replies, it decodes and plays their audio back. It behaves like the DMR side of your shack, only it lives in your pocket or on your second monitor.
+
+VoxDMR is **free to use**.
+
+## What's new in 0.12
+
+This release is a big one. Here are the highlights.
+
+### A friendlier connection screen
+
+Setting up your identity and your server used to be scattered. Now it's a single connection **hero card**: your callsign and DMR ID up top, quick-swap identity cards so you can hop between, say, a personal and a club identity in a tap, and friendly server labels like **"BrandMeister 2682"** instead of raw hostnames.
+
+### Profile backup & restore
+
+You can now **export your profiles to a file and import them back**. Handy when you set up a new phone, want a safety copy, or just like keeping your config tidy. It uses the normal Android share/save dialogs, asks per-conflict what to do on import, and lets you choose whether to include passwords.
+
+Best part: the backup format is **shared with the desktop app**, so your profiles move freely between your phone and your PC. Set up once, run everywhere.
+
+### Per-profile favourites
+
+Your favourite talkgroups are now tied to the active profile rather than being one global list. Different identity or server, different shortlist. Your old global favourites get migrated across automatically.
+
+### Manual gain, if you want it
+
+VoxDMR runs an automatic leveler so you don't have to ride the gain, but if you prefer to do it by hand, 0.12 adds **per-direction AGC toggles**. Turn the auto-leveler off for TX or RX and set a manual gain instead; the sliders show you the actual ±dB you're applying.
+
+### No more doubling: busy-channel lockout
+
+Key up while a call is already coming in and VoxDMR won't stomp on it. Transmit is held until the inbound call finishes, with a clear **"Receiving — wait to transmit"** cue. Proper half-duplex manners, built in.
+
+### It runs on cheap network radios, too
+
+Here's a fun one for the tinkerers. There's a class of inexpensive **PoC radios**: rugged little PTT handsets that are really Android underneath, with a screen, a D-pad, and a channel knob. VoxDMR 0.12 added real support for driving the whole app *without a touchscreen*: visible focus rings on everything, a scroll/select mode for long lists, and the channel knob cycles through your favourite talkgroups (one detent, one step). Hit OK to transmit.
+
+The upshot: you can load VoxDMR onto a sub-€100 network handset and have a pocketable, button-driven DMR radio that talks to BrandMeister over WiFi or mobile data.
+
+### QSO log polish
+
+The call log now pins to the newest call (unless you're scrolling back through history), with a wider source column and callsign-only display on small screens, so you can actually read who's talking at a glance.
+
+## Audio and battery: the unglamorous, important stuff
+
+A lot of 0.12 went into making it sound right and behave on a phone:
+
+- **No more dropouts.** An adaptive jitter buffer smooths out the uneven way audio arrives over the internet, so you stop losing the front of people's overs.
+- **Better battery life.** The speaker amplifier now powers down while idle and during transmit, and wakes back up for the next inbound call. It was quietly draining the battery before.
+- **A hot mic won't trash your audio.** The always-on TX leveler keeps a loud microphone from over-driving the encoder, and the noise gate was retuned so it no longer chops the start of your speech or pumps up room hiss after you stop.
+- **Clean shutdown.** Swipe the app away from recents and the audio actually stops, instead of carrying on in the background.
+- Plus a fix for a reconnect storm that could kick off when your phone switched between WiFi and mobile data.
+
+## Desktop, in lockstep
+
+VoxDMR 0.12 landed on the desktop app at the same time (Linux and Windows, with macOS following shortly), sharing the same audio engine, the same connection screen, the same AGC toggles and busy-channel lockout. And because the profile backup format is shared, you can build your setup on the desktop and carry it to your phone (or the other way round).
+
+## Get it
+
+Pick the download that matches your hardware:
+
+- **Android (phones and tablets)**: install from the **[Google Play Store](https://play.google.com/store/apps/details?id=com.jcalado.voxdmr)**.
+- **Android (PoC radios)**: **do not use the Play Store build.** Those cheap network handsets are 32-bit, so grab the **`armeabi-v7a` (32-bit) APK** from the **[releases page](https://github.com/jcalado/voxdmr-site/releases)** and sideload it. That build carries the fast native vocoder the small CPUs need.
+- **Desktop**: Linux and Windows builds are on the **[releases page](https://github.com/jcalado/voxdmr-site/releases)** too, with an Apple Silicon macOS build on the way.
+
+On first run the app does a one-time download of the two small vocoder files it needs (it'll walk you through it), and after that you're on the air.
+
+Got a bug or an idea? Feedback is always welcome. 73.
+
+<KofiBanner showIcon message="VoxDMR is free to use. If it earned a spot on your radio bag, you can buy me a coffee." />
