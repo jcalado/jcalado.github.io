@@ -1,0 +1,70 @@
+---
+title: "Bringing my ham radio apps to iOS and macOS: help me get there"
+published: 2026-07-05
+draft: false
+description: "VoxDMR and VoxLink run on Android and the desktop today. The one platform I can't reach is Apple's — building for iOS and macOS needs a Mac, an Apple Developer membership, and real iPhone/iPad hardware to test on. I've started a Ko-fi goal to cover it, and there's an EchoLink app waiting in the wings too."
+tags: ["amateur-radio", "voxdmr", "voxlink", "echolink", "ios", "macos", "ptt", "open-source"]
+---
+
+import KofiBanner from '~/components/KofiBanner.astro'
+import GoalTracker from '~/components/GoalTracker.astro'
+
+# Bringing my ham radio apps to iOS and macOS: help me get there
+
+Short version: I want to put **VoxDMR** and **VoxLink** on **iPhone, iPad, and Mac**, and I need a bit of help to get over the one wall I can't just code my way past — Apple's. I've set up a [Ko-fi goal](https://ko-fi.com/jcalado/goal?g=0) to cover it. Here's the honest story of what it takes and why I'm asking.
+
+<GoalTracker
+  percent={0}
+  label="iOS & macOS goal"
+  description="Toward a Mac to build on, the Apple Developer membership, and iPhone/iPad test devices."
+  updated="2026-07-05"
+  href="https://ko-fi.com/jcalado/goal?g=0"
+/>
+
+## Where the apps are today
+
+If you've been following along, you know my ham radio apps already run in a lot of places:
+
+- **[VoxDMR](https://voxdmr.com)** — a software DMR radio that puts a talkgroup on your phone or PC with nothing but a data connection. Android, Linux, and Windows.
+- **[VoxLink](https://voxlink.jcalado.com)** — an SvxLink PTT client with full APRS-IS support. On Android today, with Linux and Windows releases landing soon.
+- **[MAT3](https://mat3.jcalado.com)** (Mobile AnyTi3r) — turns your Anytone radio into a live DMR monitor, putting every call, talkgroup, and data burst right on your phone.
+
+Everything I build ships **free**. The whole point is that you shouldn't need a hotspot, a spare radio, or a paid subscription to get on the air. That's worked out well on Android and the desktop, where I can build, sign, and distribute without anyone standing between me and you.
+
+## The one platform I can't reach
+
+The most common request I get, by a wide margin, is some version of: **"When is this coming to iOS?"** or **"Can I run it on my Mac?"**
+
+I'd love to say "soon." The catch is that Apple's ecosystem is the one place where wanting to build the app isn't enough. To ship for iPhone, iPad, and macOS you need three things I don't currently have:
+
+- **A Mac to build on.** You cannot compile, sign, or notarize an iOS or macOS app without Apple hardware and Xcode. There's no way around it — no Linux box, no CI trick, gets you a legitimate build. This is the big one.
+- **An Apple Developer Program membership.** It's **$99/year**, and without it you can't put anything on the App Store, can't notarize a Mac build, and can't even keep a TestFlight beta running for more than a few days.
+- **Real iPhone/iPad hardware to test on.** A PTT radio app lives and dies on audio routing, background behaviour, Bluetooth, and interruptions from phone calls. The simulator won't tell you any of that. I need actual devices in hand to make sure it works when you key up outdoors, not just when it builds.
+
+None of these are optional, and together they're the reason the Apple ports have stayed on the "someday" list instead of the "shipping" list.
+
+## What your support pays for
+
+This is why I've started a Ko-fi goal. It's not going toward my coffee habit — it's going straight into the concrete, boring, unavoidable costs of Apple development:
+
+1. **A Mac** to build, sign, and notarize the apps on.
+2. The **Apple Developer Program** membership so I can actually ship them and keep betas alive.
+3. **An iPhone/iPad or two** to test on real hardware, the way you'll actually use them.
+
+Once that's in place, the work itself is something I'm genuinely excited to do. My apps are built on a shared, portable core, so a lot of the groundwork for cross-platform already exists — the missing piece has been the Apple-shaped toll booth, not the engineering.
+
+## And one more thing
+
+There's a third app in the pipeline I haven't talked about much yet: an **EchoLink** client, cut from the same cloth as VoxDMR and VoxLink. It's not released yet, but it's coming — and if I'm setting up an Apple build pipeline anyway, it means EchoLink can launch on iOS and macOS alongside Android from much closer to day one, instead of playing catch-up later.
+
+So this goal isn't just about porting two apps. It's about unlocking Apple as a platform for **everything** I build — the apps that exist now and the ones still on the bench.
+
+## How to help
+
+If any of this has earned a spot on your radio bag — or if you just want to see a free set of ham radio apps land on iPhone and Mac — the [Ko-fi goal is here](https://ko-fi.com/jcalado/goal?g=0). Every contribution goes directly toward the Mac, the membership, and the test devices, and I'll keep posting progress as the goal fills up and the first Apple builds start to take shape.
+
+And if you can't chip in, that's completely fine — using the apps, reporting bugs, and telling a friend all genuinely help too. Thank you for being here for it.
+
+73.
+
+<KofiBanner showIcon message="Help bring my ham radio apps to iPhone, iPad, and Mac. Every coffee goes toward the Mac, the Apple Developer membership, and test hardware." />
