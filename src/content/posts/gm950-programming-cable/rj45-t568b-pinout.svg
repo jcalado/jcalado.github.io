@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 760" width="640" height="760" font-family="'DejaVu Sans', Arial, sans-serif">
+  <defs>
+    <pattern id="st-orange" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="24" height="24" fill="#fff"/><rect width="12" height="24" fill="#f47c20"/>
+    </pattern>
+    <pattern id="st-green" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="24" height="24" fill="#fff"/><rect width="12" height="24" fill="#3aaa35"/>
+    </pattern>
+    <pattern id="st-blue" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="24" height="24" fill="#fff"/><rect width="12" height="24" fill="#1f5fa8"/>
+    </pattern>
+    <pattern id="st-brown" width="24" height="24" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="24" height="24" fill="#fff"/><rect width="12" height="24" fill="#7a4a1e"/>
+    </pattern>
+    <clipPath id="wireclip"><rect x="130" y="130" width="380" height="180"/></clipPath>
+  </defs>
+
+  <rect width="640" height="760" fill="#fff"/>
+
+  <!-- Title -->
+  <text x="320" y="48" text-anchor="middle" font-size="34" font-weight="700" fill="#111">RJ45 Pinout</text>
+  <text x="320" y="84" text-anchor="middle" font-size="26" fill="#333">T-568B</text>
+
+  <!-- Plug body (viewed from the contact side, latch away from viewer) -->
+  <path d="M110 118 h420 v300 h-30 v130 h-360 v-130 h-30 z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- pin numbers -->
+  <g font-size="18" fill="#111" text-anchor="middle">
+    <text x="153" y="112">1</text><text x="200" y="112">2</text><text x="247" y="112">3</text><text x="294" y="112">4</text>
+    <text x="341" y="112">5</text><text x="388" y="112">6</text><text x="435" y="112">7</text><text x="482" y="112">8</text>
+  </g>
+
+  <!-- gold contacts -->
+  <g fill="#f5b400" stroke="#111" stroke-width="1.5">
+    <rect x="135" y="130" width="36" height="42"/><rect x="182" y="130" width="36" height="42"/>
+    <rect x="229" y="130" width="36" height="42"/><rect x="276" y="130" width="36" height="42"/>
+    <rect x="323" y="130" width="36" height="42"/><rect x="370" y="130" width="36" height="42"/>
+    <rect x="417" y="130" width="36" height="42"/><rect x="464" y="130" width="36" height="42"/>
+  </g>
+
+  <!-- wires -->
+  <g stroke="#111" stroke-width="1.5">
+    <rect x="135" y="172" width="36" height="220" fill="url(#st-orange)"/>
+    <rect x="182" y="172" width="36" height="220" fill="#f47c20"/>
+    <rect x="229" y="172" width="36" height="220" fill="url(#st-green)"/>
+    <rect x="276" y="172" width="36" height="220" fill="#1f5fa8"/>
+    <rect x="323" y="172" width="36" height="220" fill="url(#st-blue)"/>
+    <rect x="370" y="172" width="36" height="220" fill="#3aaa35"/>
+    <rect x="417" y="172" width="36" height="220" fill="url(#st-brown)"/>
+    <rect x="464" y="172" width="36" height="220" fill="#7a4a1e"/>
+  </g>
+
+  <!-- blue jacket: runs from under the crimp down past the plug -->
+  <rect x="165" y="392" width="310" height="230" fill="#1f5fa8" stroke="#111" stroke-width="2"/>
+  <!-- white crimp / strain-relief bar (part of the plug body) -->
+  <rect x="120" y="390" width="400" height="34" fill="#fff" stroke="#111" stroke-width="2"/>
+
+  <!-- Legend -->
+  <rect x="120" y="640" width="400" height="98" fill="none" stroke="#111" stroke-width="2"/>
+  <g font-size="16" fill="#111">
+    <text x="136" y="664">1. White Orange</text><text x="330" y="664">5. White Blue</text>
+    <text x="136" y="686">2. Orange</text><text x="330" y="686">6. Green</text>
+    <text x="136" y="708">3. White Green</text><text x="330" y="708">7. White Brown</text>
+    <text x="136" y="730">4. Blue</text><text x="330" y="730">8. Brown</text>
+  </g>
+</svg>
