@@ -1,7 +1,7 @@
 # jcalado.com
 
 The source for **[jcalado.com](https://jcalado.com)** — an irregular zine on
-software, amateur radio, and side-projects, by Joel Calado (CS7BLE / PT).
+software, amateur radio, and side-projects, by Joel Calado (CT7BLE / PT).
 
 The site is published as a static zine: a Departure Mono masthead, numbered
 TOC entries on the homepage, a magazine-style index of tags, and a colophon
