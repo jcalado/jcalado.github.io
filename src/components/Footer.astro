@@ -20,15 +20,18 @@ const year = new Date().getFullYear()
     <dt class="text-foreground/45 uppercase tracking-wider">imprint</dt>
     <dd>jcalado.com &middot; self-published &middot; {year}</dd>
     <dt class="text-foreground/45 uppercase tracking-wider">typeset</dt>
-    <dd>JetBrains Mono &middot; built with <a class="underline hover:text-accent" href="https://astro.build">Astro</a></dd>
+    <dd>
+      JetBrains Mono &middot; built with{' '}
+      <a class="underline hover:text-accent" href="https://astro.build">
+        Astro
+      </a>
+    </dd>
     <dt class="text-foreground/45 uppercase tracking-wider">contact</dt>
     <dd class="contact-line">
       {siteConfig.socialLinks && <SocialLinks socialLinks={siteConfig.socialLinks} />}
     </dd>
   </dl>
-  <p class="mt-6 text-foreground/40 text-center">
-    &mdash; thanks for reading &mdash;
-  </p>
+  <p class="mt-6 text-foreground/40 text-center">&mdash; thanks for reading &mdash;</p>
 </footer>
 
 <style>

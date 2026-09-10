@@ -18,7 +18,6 @@ import { getPostSequenceContext } from '~/utils'
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
   return posts.map((post) => {
-    // Get sequence context for the post
     const { prev, next } = getPostSequenceContext(post, posts)
     return {
       params: { slug: post.id },
@@ -39,15 +38,11 @@ function dateISO(d?: Date | string) {
   return date.toISOString().split('T')[0]
 }
 
-const fmRows: [string, string][] = [
-  ['date', dateISO(postData.published)],
-]
+const fmRows: [string, string][] = [['date', dateISO(postData.published)]]
 if (postData.author) fmRows.push(['author', String(postData.author)])
-if (minutesRead)     fmRows.push(['reading_time', minutesRead])
+if (minutesRead) fmRows.push(['reading_time', minutesRead])
 const keyWidth = fmRows.reduce((m, [k]) => Math.max(m, k.length), 0)
-const metaText = fmRows
-  .map(([k, v]) => `# ${k.padEnd(keyWidth, ' ')} : ${v}`)
-  .join('\n')
+const metaText = fmRows.map(([k, v]) => `# ${k.padEnd(keyWidth, ' ')} : ${v}`).join('\n')
 
 const coverFile = postData.coverImage?.src?.src?.split('/').pop() ?? ''
 const addendum = await getCollection('addendum')
@@ -62,14 +57,12 @@ if (addendum.length > 0) {
 
 const sortedPosts = await getSortedPosts()
 
-// Get series posts if this post is part of a series
 let series: Collation<'posts'> | undefined
 let nextPostInSeries: CollectionEntry<'posts'> | undefined
 if (postData.series) {
   const seriesGroup = await SeriesGroup.build(sortedPosts)
   series = seriesGroup.match(postData.series)
   if (!series) {
-    // This should not happen if series data is correct
     throw new Error(`Series "${postData.series}" not found`)
   }
   const sequenceContext = getPostSequenceContext(post, series.entries)
@@ -101,22 +94,20 @@ if (postData.tags && postData.tags.length > 0) {
       </div>
     )}
 
-    {
-      postData.coverImage && (
-        <figure class="my-6">
-          <Image
-            priority
-            layout="constrained"
-            src={postData.coverImage.src}
-            alt={postData.coverImage.alt}
-            class="w-full mb-1 border border-accent/30"
-          />
-          <figcaption class="font-mono text-xs text-foreground/50">
-            inline image: {coverFile || postData.coverImage.alt}
-          </figcaption>
-        </figure>
-      )
-    }
+    {postData.coverImage && (
+      <figure class="my-6">
+        <Image
+          priority
+          layout="constrained"
+          src={postData.coverImage.src}
+          alt={postData.coverImage.alt}
+          class="w-full mb-1 border border-accent/30"
+        />
+        <figcaption class="font-mono text-xs text-foreground/50">
+          inline image: {coverFile || postData.coverImage.alt}
+        </figcaption>
+      </figure>
+    )}
 
     <div class="flex flex-col xl:gap-1 2xl:gap-18 xl:flex-row xl:items-start">
       {postData.toc && headings.length > 0 && <TableOfContents headings={headings} />}
@@ -129,46 +120,38 @@ if (postData.tags && postData.tags.length > 0) {
       ── EOF ── ({words.toLocaleString()} words{minutesRead ? ' · ' + minutesRead : ''})
     </div>
   </article>
-  {
-    nextPostInSeries && (
-      <a
-        href={`/posts/${nextPostInSeries.id}`}
-        class="button font-mono text-sm mb-8 inline-flex"
-      >
-        next: {nextPostInSeries.data.title} →
-      </a>
-    )
-  }
-  {
-    AddendumContent && (
-      <PostAddendum avatarImage={addendumAvatarImage}>
-        <AddendumContent />
-      </PostAddendum>
-    )
-  }
-  {
-    showSeries && series ? (
-      <section>
-        <DividerText text={`${series.title} Series`} />
-        {series.entries.map((seriesPost) => (
-          <PostPreview post={seriesPost} />
-        ))}
-      </section>
-    ) : prev || next ? (
-      <section>
-        <DividerText text="More Posts" />
-        {prev && <PostPreview post={prev} />}
-        {next && <PostPreview post={next} />}
-      </section>
-    ) : null
-  }
-  {
-    siteConfig.giscus && (
-      <section>
-        <DividerText text="Comments" />
-        <GiscusLoader />
-      </section>
-    )
-  }
+  {nextPostInSeries && (
+    <a
+      href={`/posts/${nextPostInSeries.id}`}
+      class="button font-mono text-sm mb-8 inline-flex"
+    >
+      next: {nextPostInSeries.data.title} →
+    </a>
+  )}
+  {AddendumContent && (
+    <PostAddendum avatarImage={addendumAvatarImage}>
+      <AddendumContent />
+    </PostAddendum>
+  )}
+  {showSeries && series ? (
+    <section>
+      <DividerText text={`${series.title} Series`} />
+      {series.entries.map((seriesPost) => (
+        <PostPreview post={seriesPost} />
+      ))}
+    </section>
+  ) : prev || next ? (
+    <section>
+      <DividerText text="More Posts" />
+      {prev && <PostPreview post={prev} />}
+      {next && <PostPreview post={next} />}
+    </section>
+  ) : null}
+  {siteConfig.giscus && (
+    <section>
+      <DividerText text="Comments" />
+      <GiscusLoader />
+    </section>
+  )}
   <ScrollUpButton />
 </Layout>

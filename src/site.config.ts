@@ -6,8 +6,7 @@ const config: SiteConfig = {
   // The name of your site, used in the title and for SEO.
   title: 'jcalado.com',
   // The description of your site, used for SEO and RSS feed.
-  description:
-    'pushing code',
+  description: 'pushing code',
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'Joel Calado',
   // Keywords for SEO, used in the meta tags.

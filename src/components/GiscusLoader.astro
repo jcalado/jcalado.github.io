@@ -1,6 +1,5 @@
 ---
 import siteConfig from '~/site.config'
-// This will be localhost during development, site URL in prod
 const origin = Astro.url.origin
 const giscusConfig = siteConfig.giscus
 if (!giscusConfig) {
@@ -21,8 +20,7 @@ const reactionsEnabled = giscusConfig.reactionsEnabled ? '1' : '0'
   data-category={category}
   data-category-id={categoryId}
   data-reactions-enabled={reactionsEnabled}
->
-</div>
+></div>
 <script>
   function loadGiscus() {
     const giscusDiv = document.querySelector('.giscus')

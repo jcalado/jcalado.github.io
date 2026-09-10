@@ -21,9 +21,7 @@ const num = index !== undefined ? String(index + 1).padStart(2, '0') : null
 const tags = post.data.tags ?? []
 ---
 
-<article
-  class="py-3 group [&+&]:border-t [&+&]:border-dashed [&+&]:border-foreground/15"
->
+<article class="py-3 group [&+&]:border-t [&+&]:border-dashed [&+&]:border-foreground/15">
   <a href={link} class="block no-underline">
     <div class="flex items-baseline gap-3 font-mono text-sm">
       {num && <span class="text-accent shrink-0">[{num}]</span>}
@@ -32,31 +30,28 @@ const tags = post.data.tags ?? []
       </span>
       <span
         class="flex-1 hidden sm:block border-b border-dotted border-foreground/25 -translate-y-[3px]"
-        aria-hidden="true"></span>
+        aria-hidden="true"
+      ></span>
       <span class="text-foreground/55 shrink-0 hidden sm:flex gap-3 text-xs uppercase tracking-wider">
         {date && <span>{date}</span>}
         <span class="text-yellow">{sizeStr}</span>
       </span>
     </div>
-    {
-      description && (
-        <p class="mt-1 text-foreground/75 text-sm sm:pl-[3.5ch] max-w-prose">
-          {description}
-        </p>
-      )
-    }
-    {
-      tags.length > 0 && (
-        <p class="mt-1 text-foreground/45 font-mono text-xs sm:pl-[3.5ch]">
-          <span class="text-accent/70">&gt;</span>{' '}
-          {tags.map((t, i) => (
-            <>
-              {i > 0 && <span class="text-foreground/25">  ·  </span>}
-              <span>{t}</span>
-            </>
-          ))}
-        </p>
-      )
-    }
+    {description && (
+      <p class="mt-1 text-foreground/75 text-sm sm:pl-[3.5ch] max-w-prose">
+        {description}
+      </p>
+    )}
+    {tags.length > 0 && (
+      <p class="mt-1 text-foreground/45 font-mono text-xs sm:pl-[3.5ch]">
+        <span class="text-accent/70">&gt;</span>{' '}
+        {tags.map((t, i) => (
+          <>
+            {i > 0 && <span class="text-foreground/25"> · </span>}
+            <span>{t}</span>
+          </>
+        ))}
+      </p>
+    )}
   </a>
 </article>

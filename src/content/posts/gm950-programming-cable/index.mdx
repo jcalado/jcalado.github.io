@@ -16,12 +16,12 @@ It speaks a simple single-wire serial protocol, so you can build a working cable
 
 ![DIY programming cable schematic for the Motorola GM950](./cable-schematic.svg)
 
-| From | To | Notes |
-| --- | --- | --- |
-| RJ45 pin 2 (DATA) | TTL `RXD` | Direct |
-| RJ45 pin 2 (DATA) | TTL `TXD` | Through D1 (1N4148), **anode on the radio side** |
-| RJ45 pin 5 | TTL `GND` | Common ground |
-| RJ45 pin 6 | RJ45 pin 8 | Through R1 (1K) — puts the radio in programming mode |
+| From              | To         | Notes                                                |
+| ----------------- | ---------- | ---------------------------------------------------- |
+| RJ45 pin 2 (DATA) | TTL `RXD`  | Direct                                               |
+| RJ45 pin 2 (DATA) | TTL `TXD`  | Through D1 (1N4148), **anode on the radio side**     |
+| RJ45 pin 5        | TTL `GND`  | Common ground                                        |
+| RJ45 pin 6        | RJ45 pin 8 | Through R1 (1K) — puts the radio in programming mode |
 
 Pins 1, 3, 4 and 7 stay unconnected, as do `3V3`, `5V` and `DTR` on the module. The radio powers itself.
 
@@ -46,12 +46,12 @@ The easiest source of an RJ45 connector is a patch cable with one end cut off. A
 
 Which gives us the four wires we care about:
 
-| Pin | T568B colour | Function |
-| --- | --- | --- |
-| 2 | Orange | DATA |
-| 5 | White/Blue | GND |
-| 6 | Green | Bridge via 1K |
-| 8 | Brown | Bridge via 1K |
+| Pin | T568B colour | Function      |
+| --- | ------------ | ------------- |
+| 2   | Orange       | DATA          |
+| 5   | White/Blue   | GND           |
+| 6   | Green        | Bridge via 1K |
+| 8   | Brown        | Bridge via 1K |
 
 Two things to watch. The view above is from the **contact side with the latch facing away** — flip the plug over and the numbering reverses. And T568**A** swaps the orange and green pairs, so pins 2 and 6 land on different colours. Buzz it out with a meter before you commit; it takes a minute.
 
@@ -72,7 +72,7 @@ Pin order on USB-TTL modules isn't standardised and clone silkscreens sometimes 
 
 ## Drivers
 
-I used a **Prolific PL2303** module, and it didn't come up on Windows 11 — the in-box driver refuses to load for older and counterfeit PL2303 chips, so the port shows up flagged in Device Manager and never enumerates. The fix is the legacy driver collection at [theAmberLion/Prolific](https://github.com/theAmberLion/Prolific): v3.8.38.2 for newer (usually black) cables, v3.3.2.105 for older (usually grey) ones. Extract it, then point Device Manager's *Update driver → Have disk...* at the folder.
+I used a **Prolific PL2303** module, and it didn't come up on Windows 11 — the in-box driver refuses to load for older and counterfeit PL2303 chips, so the port shows up flagged in Device Manager and never enumerates. The fix is the legacy driver collection at [theAmberLion/Prolific](https://github.com/theAmberLion/Prolific): v3.8.38.2 for newer (usually black) cables, v3.3.2.105 for older (usually grey) ones. Extract it, then point Device Manager's _Update driver → Have disk..._ at the folder.
 
 If you'd rather skip the hassle, a CP2102 or FTDI module works just as well here and both are still supported out of the box.
 

@@ -17,15 +17,13 @@ const { tags } = Astro.props
     ></span>
   </div>
   <p class="text-foreground/85">
-    {
-      tags.map((tag, i) => (
-        <>
-          {i > 0 && <span class="text-foreground/30">  ·  </span>}
-          <a href={tag.url} class="hover:text-accent no-underline">
-            {tag.title}
-          </a>
-        </>
-      ))
-    }
+    {tags.map((tag, i) => (
+      <>
+        {i > 0 && <span class="text-foreground/30"> · </span>}
+        <a href={tag.url} class="hover:text-accent no-underline">
+          {tag.title}
+        </a>
+      </>
+    ))}
   </p>
 </aside>
