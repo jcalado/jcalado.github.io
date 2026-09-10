@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
 import sitemap from '@astrojs/sitemap'
 import mdx from '@astrojs/mdx'
-import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import { unified, rehypeHeadingIds } from '@astrojs/markdown-remark'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import expressiveCode from 'astro-expressive-code'
 import siteConfig from './src/site.config'
@@ -30,46 +30,48 @@ export default defineConfig({
   trailingSlash: siteConfig.trailingSlashes ? 'always' : 'never',
   prefetch: true,
   markdown: {
-    remarkPlugins: [
-      [remarkDescription, { maxChars: 200 }],
-      remarkReadingTime,
-      remarkDirective,
-      remarkGithubCard,
-      remarkAdmonitions,
-      [remarkCharacterDialogue, { characters: siteConfig.characters }],
-      remarkUnknownDirectives,
-      remarkMath,
-      remarkGemoji,
-    ],
-    rehypePlugins: [
-      [rehypeHeadingIds, { headingIdCompat: true }],
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: 'append',
-          properties: {
-            className: ['heading-anchor'],
-            ariaHidden: 'true',
-            tabIndex: -1,
+    processor: unified({
+      remarkPlugins: [
+        [remarkDescription, { maxChars: 200 }],
+        remarkReadingTime,
+        remarkDirective,
+        remarkGithubCard,
+        remarkAdmonitions,
+        [remarkCharacterDialogue, { characters: siteConfig.characters }],
+        remarkUnknownDirectives,
+        remarkMath,
+        remarkGemoji,
+      ],
+      rehypePlugins: [
+        [rehypeHeadingIds, { headingIdCompat: true }],
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: 'append',
+            properties: {
+              className: ['heading-anchor'],
+              ariaHidden: 'true',
+              tabIndex: -1,
+            },
+            content: (node) => ({
+              type: 'text',
+              value: `  # ${node.properties.id}`,
+            }),
           },
-          content: (node) => ({
-            type: 'text',
-            value: `  # ${node.properties.id}`,
-          }),
-        },
+        ],
+        rehypeTitleFigure,
+        [
+          rehypeExternalLinks,
+          {
+            rel: ['noreferrer', 'noopener'],
+            target: '_blank',
+          },
+        ],
+        rehypeUnwrapImages,
+        rehypePixelated,
+        rehypeKatex,
       ],
-      rehypeTitleFigure,
-      [
-        rehypeExternalLinks,
-        {
-          rel: ['noreferrer', 'noopener'],
-          target: '_blank',
-        },
-      ],
-      rehypeUnwrapImages,
-      rehypePixelated,
-      rehypeKatex,
-    ],
+    }),
   },
   image: {
     responsiveStyles: true,
