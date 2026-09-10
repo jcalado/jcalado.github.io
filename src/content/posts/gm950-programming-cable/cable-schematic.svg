@@ -107,5 +107,5 @@
   <line x1="20" y1="355" x2="880" y2="355" class="comp" stroke-width="1"/>
   <text x="30" y="380" class="title">Motorola GM950 Programming Cable</text>
   <text x="30" y="400" class="txt">RJ45 pin 2 → RXD · pin 2 → D1 → TXD · pin 5 → GND · pin 6 → 1K → pin 8</text>
-  <text x="870" y="400" class="txt" text-anchor="end">CS7BLE (Thanks CR7BPM)</text>
+  <text x="870" y="400" class="txt" text-anchor="end">CT7BLE (Thanks CR7BPM)</text>
 </svg>
