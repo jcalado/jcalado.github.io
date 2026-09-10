@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { title, description, tags, author } = Astro.props
-const pageUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '') // Remove trailing slash for consistency
+const pageUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, '')
 const pageType = Astro.url.pathname.startsWith('/posts') ? 'article' : 'website'
 const pageTitle = title ? `${title} - ${siteConfig.title}` : siteConfig.title
 const pageDescription = description || siteConfig.description
@@ -64,12 +64,11 @@ if (
 let lightTheme = themeMode === 'light-dark-auto' ? includedThemes[0] : undefined
 let darkTheme = themeMode === 'light-dark-auto' ? includedThemes[1] : undefined
 
-// Generate a hash to use for cache busting the theme settings in localStorage.
 const themeHash = crypto
   .createHash('md5')
   .update(themeMode + defaultTheme + includedThemes.join(''))
   .digest('hex')
-  .slice(0, 8) // Truncate to the first 8 characters
+  .slice(0, 8)
 
 const resolvedThemes = await resolveThemeColorStyles(
   siteConfig.themes.include,

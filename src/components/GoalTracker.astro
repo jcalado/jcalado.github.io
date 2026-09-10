@@ -2,17 +2,11 @@
 import { dateString } from '~/utils'
 
 interface Props {
-  /** Completion, 0–100. Clamped and rounded for display. */
   percent: number
-  /** Heading shown above the bar. */
   label?: string
-  /** Optional line of context under the heading. */
   description?: string
-  /** When the figure was last updated. Accepts a Date or an ISO string. */
   updated?: Date | string
-  /** Donation link — renders the DONATE call-to-action button when set. */
   href?: string
-  /** Text for the call-to-action button. */
   cta?: string
 }
 
@@ -27,7 +21,6 @@ const {
 
 const pct = Math.max(0, Math.min(100, Math.round(percent)))
 
-// Accept a Date, an ISO string, or a pre-formatted string; render as YYYY-MM-DD when possible.
 let updatedLabel: string | undefined
 if (updated instanceof Date) {
   updatedLabel = dateString(updated)
@@ -43,18 +36,13 @@ if (updated instanceof Date) {
   aria-label={`${label}: ${pct}% complete`}
 >
   <div class="flex items-baseline justify-between gap-3">
-    <span
-      class="text-accent font-semibold tracking-widest uppercase whitespace-nowrap"
-      >{label}</span
-    >
+    <span class="text-accent font-semibold tracking-widest uppercase whitespace-nowrap">
+      {label}
+    </span>
     <span class="text-accent font-semibold tabular-nums">{pct}%</span>
   </div>
 
-  {
-    description && (
-      <p class="mt-1.5 text-foreground/70 leading-snug">{description}</p>
-    )
-  }
+  {description && <p class="mt-1.5 text-foreground/70 leading-snug">{description}</p>}
 
   <div
     class="mt-2.5 h-3 w-full border border-accent/30 bg-foreground/5 p-[2px]"
@@ -66,35 +54,28 @@ if (updated instanceof Date) {
     <div
       class="h-full bg-accent transition-[width] duration-500 ease-out"
       style={`width: ${pct}%`}
-    >
-    </div>
+    ></div>
   </div>
 
-  <div
-    class="mt-3 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between"
-  >
-    {
-      updatedLabel ? (
-        <p class="text-foreground/45 text-[0.7rem] sm:text-xs">
-          Last updated {updatedLabel}
-        </p>
-      ) : (
-        <span />
-      )
-    }
+  <div class="mt-3 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+    {updatedLabel ? (
+      <p class="text-foreground/45 text-[0.7rem] sm:text-xs">
+        Last updated {updatedLabel}
+      </p>
+    ) : (
+      <span />
+    )}
 
-    {
-      href && (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap border border-accent bg-accent px-4 py-1.5 font-semibold tracking-widest uppercase text-background! no-underline! transition-colors hover:bg-transparent hover:text-accent!"
-        >
-          {cta}
-          <span aria-hidden="true">&rarr;</span>
-        </a>
-      )
-    }
+    {href && (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-1.5 whitespace-nowrap border border-accent bg-accent px-4 py-1.5 font-semibold tracking-widest uppercase text-background! no-underline! transition-colors hover:bg-transparent hover:text-accent!"
+      >
+        {cta}
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    )}
   </div>
 </div>

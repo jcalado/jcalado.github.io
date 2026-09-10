@@ -96,19 +96,15 @@ function fillHoles(activities: Array<GitHubActivityDay>): Array<GitHubActivityDa
 
 function groupByWeeks(
   activities: Array<GitHubActivityDay>,
-  weekStart: WeekdayIndex = 0, // 0 = Sunday
+  weekStart: WeekdayIndex = 0,
 ): Array<GitHubActivityWeek> {
   const normalizedActivities = fillHoles(activities)
-  // Determine the first date of the calendar. If the first date is not the
-  // passed weekday, the respective weekday one week earlier is used.
   const firstActivity = normalizedActivities[0] as GitHubActivityDay
   const firstDate = parseISO(firstActivity.date)
   const firstCalendarDate =
     getDay(firstDate) === weekStart
       ? firstDate
       : subWeeks(nextDay(firstDate, weekStart), 1)
-  // To correctly group activities by week, it is necessary to left-pad the list
-  // because the first date might not be set start weekday.
   const paddedActivities = [
     ...(Array(differenceInCalendarDays(firstDate, firstCalendarDate)).fill(
       undefined,
@@ -117,7 +113,6 @@ function groupByWeeks(
   ]
   const numberOfWeeks = Math.ceil(paddedActivities.length / 7)
 
-  // Finally, group activities by week
   return [...Array(numberOfWeeks).keys()].map((weekIndex) =>
     paddedActivities.slice(weekIndex * 7, weekIndex * 7 + 7),
   )
@@ -148,11 +143,9 @@ function getMonthLabels(
     }, [])
     .filter(({ weekIndex }, index, labels) => {
       const minWeeks = 3
-      // Skip the first month label if there is not enough space to the next one.
       if (index === 0) {
         return labels[1] && labels[1].weekIndex - weekIndex >= minWeeks
       }
-      // Skip the last month label if there is not enough data in that month
       if (index === labels.length - 1) {
         return weeks.slice(weekIndex).length >= minWeeks
       }
@@ -179,7 +172,7 @@ const fontSize = 14
 const hideColorLegend = false
 const hideMonthLabels = false
 const hideTotalCount = false
-const weekStart = 0 // 0 = Sunday, 1 = Monday, etc.
+const weekStart = 0
 
 const colorScale = calcColorScale(themeFromColorscheme, maxLevel + 1)
 const activities = data.contributions
@@ -230,78 +223,72 @@ const height = labelHeight + (blockSize + blockMargin) * 7 - blockMargin
       height={height}
       viewBox={`0 0 ${width} ${height}`}
     >
-      {
-        !hideMonthLabels && (
-          <g>
-            {getMonthLabels(weeks, labels.months).map(({ label, weekIndex }) => (
-              <text
-                x={(blockSize + blockMargin) * weekIndex}
-                y={0}
-                dominant-baseline="hanging"
-                fill="currentColor"
-              >
-                {label}
-              </text>
-            ))}
-          </g>
-        )
-      }
-      {
-        weeks.map((week, weekIndex) => (
-          <g transform={`translate(${(blockSize + blockMargin) * weekIndex}, 0)`}>
-            {week.map((activity, dayIndex) => {
-              if (!activity) return null
-              return (
-                <rect
-                  class="stroke-foreground/10"
-                  x={0}
-                  y={labelHeight + (blockSize + blockMargin) * dayIndex}
-                  width={blockSize}
-                  height={blockSize}
-                  rx={blockRadius}
-                  ry={blockRadius}
-                  fill={colorScale[activity.level]}
-                  data-date={activity.date}
-                  data-level={activity.level}
-                />
-              )
-            })}
-          </g>
-        ))
-      }
+      {!hideMonthLabels && (
+        <g>
+          {getMonthLabels(weeks, labels.months).map(({ label, weekIndex }) => (
+            <text
+              x={(blockSize + blockMargin) * weekIndex}
+              y={0}
+              dominant-baseline="hanging"
+              fill="currentColor"
+            >
+              {label}
+            </text>
+          ))}
+        </g>
+      )}
+      {weeks.map((week, weekIndex) => (
+        <g transform={`translate(${(blockSize + blockMargin) * weekIndex}, 0)`}>
+          {week.map((activity, dayIndex) => {
+            if (!activity) return null
+            return (
+              <rect
+                class="stroke-foreground/10"
+                x={0}
+                y={labelHeight + (blockSize + blockMargin) * dayIndex}
+                width={blockSize}
+                height={blockSize}
+                rx={blockRadius}
+                ry={blockRadius}
+                fill={colorScale[activity.level]}
+                data-date={activity.date}
+                data-level={activity.level}
+              />
+            )
+          })}
+        </g>
+      ))}
     </svg>
   </div>
-  {
-    !(hideTotalCount && hideColorLegend) && (
-      <footer class="flex flex-col sm:flex-row sm:justify-between gap-x-1 gap-y-2">
-        {!hideTotalCount && (
-          <div>
-            {labels.totalCount
-              ? labels.totalCount
-                  .replace('{{count}}', String(totalCount))
-                  .replace('{{year}}', String(activityYear))
-              : `${totalCount} activities in ${activityYear}`}
-          </div>
-        )}
-        {!hideColorLegend && (
-          <div class="flex items-center gap-[3px]">
-            <span class="mr-1.5">{labels.legend.less}</span>
-            {range(maxLevel + 1).map((level) => (
-              <svg width={blockSize} height={blockSize}>
-                <rect
-                  class="stroke-foreground/10"
-                  width={blockSize}
-                  height={blockSize}
-                  fill={colorScale[level]}
-                  rx={blockRadius}
-                  ry={blockRadius}
-                />
-              </svg>
-            ))}
-            <span class="ml-1.5">{labels.legend.more}</span>
-          </div>
-        )}
-      </footer>
-    )
-  }
+  {!(hideTotalCount && hideColorLegend) && (
+    <footer class="flex flex-col sm:flex-row sm:justify-between gap-x-1 gap-y-2">
+      {!hideTotalCount && (
+        <div>
+          {labels.totalCount
+            ? labels.totalCount
+                .replace('{{count}}', String(totalCount))
+                .replace('{{year}}', String(activityYear))
+            : `${totalCount} activities in ${activityYear}`}
+        </div>
+      )}
+      {!hideColorLegend && (
+        <div class="flex items-center gap-[3px]">
+          <span class="mr-1.5">{labels.legend.less}</span>
+          {range(maxLevel + 1).map((level) => (
+            <svg width={blockSize} height={blockSize}>
+              <rect
+                class="stroke-foreground/10"
+                width={blockSize}
+                height={blockSize}
+                fill={colorScale[level]}
+                rx={blockRadius}
+                ry={blockRadius}
+              />
+            </svg>
+          ))}
+          <span class="ml-1.5">{labels.legend.more}</span>
+        </div>
+      )}
+    </footer>
+  )}
 </article>

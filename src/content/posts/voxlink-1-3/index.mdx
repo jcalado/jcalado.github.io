@@ -65,7 +65,7 @@ Other small additions: a **Keep screen on** toggle (wired to wakelock), an **APR
 
 ## Audio
 
-- **Bluetooth audio routing fix** — the comm-device session lifecycle is now handled properly, which resolves a long-standing class of routing issues with BT headsets. A live audio output picker enumerates devices in real time, auto-reroutes on connect/disconnect when set to *Auto*, and surfaces a fallback toast when a chosen device disappears.
+- **Bluetooth audio routing fix** — the comm-device session lifecycle is now handled properly, which resolves a long-standing class of routing issues with BT headsets. A live audio output picker enumerates devices in real time, auto-reroutes on connect/disconnect when set to _Auto_, and surfaces a fallback toast when a chosen device disappears.
 - **User-selectable BT audio mode** — pick whether the Bluetooth path uses the voice-call (SCO) profile or the media profile, depending on what your headset does well.
 - **48 kHz Opus** — the encoder and decoder now run at 48 kHz, improving audio quality.
 - **RX hardening for background and locked-screen wake-ups**, including keeping the RX path warm across QSOs and surviving fast keyup → keydown patterns without missing the start of the next over.

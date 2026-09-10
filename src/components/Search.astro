@@ -24,20 +24,18 @@ const { trailingSlashes = false } = Astro.props
       <button class="cursor-pointer fixed top-2 right-2 rounded-full" data-close-modal>
         <IconCircleX class="size-6 text-accent/50" />
       </button>
-      {
-        import.meta.env.DEV ? (
-          <div class="mx-auto text-center">
-            <p>
-              Search is only available in production builds. <br />
-              Try building and previewing the site to test it out locally.
-            </p>
-          </div>
-        ) : (
-          <div class="search-container">
-            <div id="pagefind-search" class="max-w-full" />
-          </div>
-        )
-      }
+      {import.meta.env.DEV ? (
+        <div class="mx-auto text-center">
+          <p>
+            Search is only available in production builds. <br />
+            Try building and previewing the site to test it out locally.
+          </p>
+        </div>
+      ) : (
+        <div class="search-container">
+          <div id="pagefind-search" class="max-w-full" />
+        </div>
+      )}
     </div>
   </dialog>
 </site-search>

@@ -14,18 +14,14 @@ const { frontmatter } = Astro.props
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
   <div class="max-w-full py-7.5">
-    <h1 class="md:mx-2 mb-3 text-heading1">
-      # {frontmatter.title}
-    </h1>
+    <h1 class="md:mx-2 mb-3 text-heading1"># {frontmatter.title}</h1>
     <div class="mb-5 prose">
       <slot />
     </div>
-    {
-      frontmatter.githubCalendar && (
-        <div class="mt-8">
-          <GitHubActivityCalendar username={frontmatter.githubCalendar} />
-        </div>
-      )
-    }
+    {frontmatter.githubCalendar && (
+      <div class="mt-8">
+        <GitHubActivityCalendar username={frontmatter.githubCalendar} />
+      </div>
+    )}
   </div>
 </Layout>

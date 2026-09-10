@@ -7,11 +7,9 @@ import siteConfig from '~/site.config'
 import PostPreview from '~/components/PostPreview.astro'
 import PageHeader from '~/components/PageHeader.astro'
 
-// Note: Pagination like '/', '/2', '/3' only works with spread param like [...page]
 export const getStaticPaths = (async ({ paginate }) => {
   const tagsGroup = await TagsGroup.build()
   const pages = tagsGroup.collations.flatMap((tags) => {
-    // Use flatMap to lift the posts for each tag into a single array
     return paginate(tags.entries.reverse(), {
       props: { tagTitle: tags.title },
       params: { tag: tags.titleSlug },
@@ -29,7 +27,9 @@ const pageTitle =
 <Layout title={pageTitle} description={`All posts tagged with ${tagTitle}`}>
   <div class="mt-2 sm:mt-0">
     <PageHeader titlePieces={['tags', tagTitle]} />
-    {page.data.map((post) => <PostPreview post={post} />)}
+    {page.data.map((post) => (
+      <PostPreview post={post} />
+    ))}
     <Pagination
       prevLink={page.url.prev ? encodeURI(page.url.prev) : undefined}
       prevText="Newer Posts"

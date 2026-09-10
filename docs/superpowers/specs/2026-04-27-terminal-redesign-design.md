@@ -91,23 +91,23 @@ Astro stays. No SPA. The "terminal" is a layout + small client island.
 
 ## Commands
 
-| Command | Behavior |
-|---|---|
-| `help` | Print command list and key bindings. |
-| `ls` | List contents of current path (posts in `/posts`, etc.). |
-| `cd <path>` | Navigate. Accepts `/`, `..`, `~`, `posts`, `posts/<slug>`. |
-| `cat <slug>` | Navigate to post by slug. |
-| `posts` | Alias for `cd /posts`. |
-| `about` | Alias for `cd /about`. |
-| `archive` | Alias for `cd /posts`. |
-| `tags` | List all tags. |
-| `tag <name>` | Filter posts by tag. |
-| `search <q>` | Open search dialog with prefilled query. |
-| `theme <name>` | Switch theme; persists via existing theme system. |
-| `clear` | Clear transient output region. |
-| `whoami` | Print `visitor`. |
-| `github`, `mastodon`, `rss` | Open corresponding social link. |
-| _unknown_ | `bash: <cmd>: command not found` + suggestion. |
+| Command                     | Behavior                                                   |
+| --------------------------- | ---------------------------------------------------------- |
+| `help`                      | Print command list and key bindings.                       |
+| `ls`                        | List contents of current path (posts in `/posts`, etc.).   |
+| `cd <path>`                 | Navigate. Accepts `/`, `..`, `~`, `posts`, `posts/<slug>`. |
+| `cat <slug>`                | Navigate to post by slug.                                  |
+| `posts`                     | Alias for `cd /posts`.                                     |
+| `about`                     | Alias for `cd /about`.                                     |
+| `archive`                   | Alias for `cd /posts`.                                     |
+| `tags`                      | List all tags.                                             |
+| `tag <name>`                | Filter posts by tag.                                       |
+| `search <q>`                | Open search dialog with prefilled query.                   |
+| `theme <name>`              | Switch theme; persists via existing theme system.          |
+| `clear`                     | Clear transient output region.                             |
+| `whoami`                    | Print `visitor`.                                           |
+| `github`, `mastodon`, `rss` | Open corresponding social link.                            |
+| _unknown_                   | `bash: <cmd>: command not found` + suggestion.             |
 
 Tab-complete sources: command names + post slugs + tag names. Slugs and tags
 emitted at build time as a JSON `<script id="completions" type="application/json">`.

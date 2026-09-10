@@ -10,7 +10,7 @@ tags: ["amateur-radio", "svxlink", "android", "flutter", "open-source", "ptt", "
 
 VoxLink 1.2 is out. The headline feature is **audio file playback** — you can now transmit a pre-recorded clip over the air directly from the PTT screen — and it brings a stack of smaller workflow improvements on top.
 
-![[phone] File-playback progress card](./playlist_progress.png "The file-playback progress card on the PTT screen while a clip streams over the air.")
+![[phone] File-playback progress card](./playlist_progress.png 'The file-playback progress card on the PTT screen while a clip streams over the air.')
 
 ## Audio file playback
 
@@ -33,7 +33,7 @@ Managing presets used to mean diving into the server edit form. Several changes 
 - **Monitor another TG…** in the picker — drop into any arbitrary talkgroup for monitoring without first turning it into a preset.
 - **Per-preset "Monitor by default" flag** in the talkgroup presets screen — pin specific talkgroups to always be monitored when you connect.
 
-![[phone] Talkgroup presets with Monitor-by-default](./talkgroup_presets.png "The talkgroup presets screen, with the new Monitor-by-default toggle.")
+![[phone] Talkgroup presets with Monitor-by-default](./talkgroup_presets.png 'The talkgroup presets screen, with the new Monitor-by-default toggle.')
 
 ## voxlink:// deep links and QR codes
 
@@ -50,7 +50,7 @@ Open one (or scan a QR code that encodes one) and VoxLink launches with the new-
 Two changes that fix a long-standing pain point:
 
 - **The audio output picker in Settings is now live** — it lists the actual devices currently available (built-in speaker, wired headset, paired Bluetooth device, etc.) instead of a fixed enum that didn't always match reality.
-- **Auto-rerouting** — when *Audio output* is set to *Auto*, plugging in or removing a headset or Bluetooth device switches the route on the fly. If your selected device disappears mid-session, a toast tells you what happened.
+- **Auto-rerouting** — when _Audio output_ is set to _Auto_, plugging in or removing a headset or Bluetooth device switches the route on the fly. If your selected device disappears mid-session, a toast tells you what happened.
 
 The Settings rows for audio output and audio input also stack the device or source name below the label, so a long Bluetooth name no longer wraps awkwardly.
 
@@ -62,7 +62,7 @@ The Settings rows for audio output and audio input also stack the device or sour
 
 - Snackbars on the **Servers** and **Recordings** screens now auto-dismiss when an Android accessibility service is active. Previously they could sit on screen indefinitely, and recordings deleted via the snackbar were never actually cleaned from disk.
 - The **"Connection timed out"** warning no longer lingers on the PTT screen after a successful auto-reconnect.
-- The reflector connection no longer **reconnects in a loop** after a protocol-level error like *Access denied*.
+- The reflector connection no longer **reconnects in a loop** after a protocol-level error like _Access denied_.
 
 ## Get it
 

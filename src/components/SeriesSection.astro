@@ -12,23 +12,21 @@ const items = seriesGroup.sortCollationsMostRecent()
 ---
 
 <ul class="font-mono text-sm grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
-  {
-    items.map((series) => (
-      <li class="flex items-baseline">
-        <a
-          href={series.url}
-          class="text-foreground hover:text-accent no-underline whitespace-nowrap"
-        >
-          {series.title}
-        </a>
-        <span
-          class="flex-1 mx-2 border-b border-dotted border-foreground/25 -translate-y-[3px]"
-          aria-hidden="true"
-        />
-        <span class="text-foreground/50 tabular-nums shrink-0">
-          {series.entries.length.toString().padStart(2, '0')}
-        </span>
-      </li>
-    ))
-  }
+  {items.map((series) => (
+    <li class="flex items-baseline">
+      <a
+        href={series.url}
+        class="text-foreground hover:text-accent no-underline whitespace-nowrap"
+      >
+        {series.title}
+      </a>
+      <span
+        class="flex-1 mx-2 border-b border-dotted border-foreground/25 -translate-y-[3px]"
+        aria-hidden="true"
+      />
+      <span class="text-foreground/50 tabular-nums shrink-0">
+        {series.entries.length.toString().padStart(2, '0')}
+      </span>
+    </li>
+  ))}
 </ul>

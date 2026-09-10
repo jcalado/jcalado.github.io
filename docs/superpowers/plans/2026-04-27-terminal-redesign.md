@@ -15,6 +15,7 @@
 ## File Structure
 
 **New files:**
+
 - `src/scripts/commands.ts` — pure command registry + Levenshtein helper
 - `src/scripts/commands.test.ts` — vitest unit tests
 - `src/scripts/terminal.ts` — DOM client island for prompt
@@ -25,6 +26,7 @@
 - `vitest.config.ts` — vitest config
 
 **Modified files:**
+
 - `package.json` — add `vitest`, `test` script
 - `src/site.config.ts` — default theme → `vitesse-black`
 - `src/layouts/Layout.astro` — wrap children in `TerminalFrame`, mount islands
@@ -41,12 +43,14 @@
 ## Task 1: Add vitest
 
 **Files:**
+
 - Modify: `package.json`
 - Create: `vitest.config.ts`
 
 - [ ] **Step 1: Install vitest as a dev dependency**
 
 Run:
+
 ```bash
 yarn add -D vitest@^2.1.0
 ```
@@ -54,6 +58,7 @@ yarn add -D vitest@^2.1.0
 - [ ] **Step 2: Add test script to package.json**
 
 Edit `package.json` `scripts` block to include:
+
 ```json
 "test": "vitest run",
 "test:watch": "vitest"
@@ -94,12 +99,14 @@ git commit -m "chore: add vitest for unit tests"
 ## Task 2: Levenshtein helper (TDD)
 
 **Files:**
+
 - Create: `src/scripts/commands.ts`
 - Create: `src/scripts/commands.test.ts`
 
 - [ ] **Step 1: Write failing test for levenshtein**
 
 Create `src/scripts/commands.test.ts`:
+
 ```ts
 import { describe, it, expect } from 'vitest'
 import { levenshtein, suggest } from './commands'
@@ -134,6 +141,7 @@ Expected: FAIL — "Cannot find module './commands'".
 - [ ] **Step 3: Implement minimal commands.ts**
 
 Create `src/scripts/commands.ts`:
+
 ```ts
 export function levenshtein(a: string, b: string): number {
   const m = a.length, n = b.length
@@ -181,12 +189,14 @@ git commit -m "feat(terminal): add levenshtein + suggest helpers"
 ## Task 3: Command Action types and dispatch
 
 **Files:**
+
 - Modify: `src/scripts/commands.ts`
 - Modify: `src/scripts/commands.test.ts`
 
 - [ ] **Step 1: Append failing tests for dispatch**
 
 Append to `src/scripts/commands.test.ts`:
+
 ```ts
 import { dispatch } from './commands'
 
@@ -242,6 +252,7 @@ Expected: FAIL — `dispatch` not exported.
 - [ ] **Step 3: Implement dispatch + Action types**
 
 Append to `src/scripts/commands.ts`:
+
 ```ts
 export type Action =
   | { type: 'navigate'; url: string }
@@ -365,11 +376,13 @@ git commit -m "feat(terminal): command dispatcher with help/cd/cat/theme/social"
 ## Task 4: Switch default theme
 
 **Files:**
+
 - Modify: `src/site.config.ts:55`
 
 - [ ] **Step 1: Change default theme**
 
 Edit line 55 of `src/site.config.ts`:
+
 - Old: `default: 'catppuccin-mocha',`
 - New: `default: 'vitesse-black',`
 
@@ -392,6 +405,7 @@ git commit -m "feat: default theme vitesse-black for terminal aesthetic"
 ## Task 5: TerminalFrame component (markup only, no behavior)
 
 **Files:**
+
 - Create: `src/components/TerminalFrame.astro`
 
 - [ ] **Step 1: Create TerminalFrame.astro**
@@ -479,11 +493,13 @@ git commit -m "feat(terminal): TerminalFrame component shell"
 ## Task 6: Wire TerminalFrame into Layout
 
 **Files:**
+
 - Modify: `src/layouts/Layout.astro:157-167`
 
 - [ ] **Step 1: Replace body content**
 
 Replace the body block (lines 157-167) with:
+
 ```astro
   <body class="w-full m-0 bg-background text-foreground">
     <TerminalFrame path={Astro.url.pathname}>
@@ -501,6 +517,7 @@ Replace the body block (lines 157-167) with:
 - [ ] **Step 2: Add import at top of frontmatter**
 
 Add to imports block near line 3:
+
 ```ts
 import TerminalFrame from '~/components/TerminalFrame.astro'
 ```
@@ -528,6 +545,7 @@ git commit -m "feat(terminal): wrap site in TerminalFrame"
 ## Task 7: Generate completions JSON at build time
 
 **Files:**
+
 - Create: `src/components/CompletionsData.astro`
 - Modify: `src/components/TerminalFrame.astro`
 
@@ -549,9 +567,11 @@ const data = {
 - [ ] **Step 2: Mount inside TerminalFrame**
 
 In `src/components/TerminalFrame.astro`, add to the frontmatter imports:
+
 ```ts
 import CompletionsData from '~/components/CompletionsData.astro'
 ```
+
 And render `<CompletionsData />` just inside the outer `<div class="terminal-frame ...">` (before the titlebar).
 
 - [ ] **Step 3: Verify build emits the script tag**
@@ -571,6 +591,7 @@ git commit -m "feat(terminal): emit posts/tags completion data at build time"
 ## Task 8: Terminal client island
 
 **Files:**
+
 - Create: `src/scripts/terminal.ts`
 - Modify: `src/components/TerminalFrame.astro`
 
@@ -761,6 +782,7 @@ if (typeof document !== 'undefined') {
 - [ ] **Step 2: Mount the script in TerminalFrame**
 
 In `src/components/TerminalFrame.astro`, append at the bottom of the file:
+
 ```astro
 <script>
   import '~/scripts/terminal'
@@ -773,6 +795,7 @@ Run: `yarn test && yarn build`
 Expected: tests pass, build succeeds.
 
 Then `yarn dev`. Verify:
+
 - typing `posts` + Enter navigates to `/posts`.
 - typing `theme dracula` + Enter switches the theme; reload — theme persists.
 - `/` focuses the prompt; `Esc` blurs.
@@ -794,6 +817,7 @@ git commit -m "feat(terminal): client island with prompt, history, tab-complete,
 ## Task 9: Boot sequence
 
 **Files:**
+
 - Create: `src/scripts/boot.ts`
 - Create: `src/components/BootSequence.astro`
 - Modify: `src/components/TerminalFrame.astro`
@@ -874,14 +898,17 @@ if (typeof document !== 'undefined') {
 - [ ] **Step 3: Mount in TerminalFrame**
 
 In `src/components/TerminalFrame.astro` frontmatter add:
+
 ```ts
 import BootSequence from '~/components/BootSequence.astro'
 ```
+
 Then render `<BootSequence />` immediately after `<CompletionsData />`.
 
 - [ ] **Step 4: Smoke test**
 
 Run: `yarn dev`. Open in private window. Verify:
+
 - Boot lines appear once, then disappear (~1.5s total).
 - Reload — boot does NOT replay (sessionStorage gate).
 - New private window — replays.
@@ -899,6 +926,7 @@ git commit -m "feat(terminal): once-per-session skippable boot sequence"
 ## Task 10: ASCII banner + motd home
 
 **Files:**
+
 - Create: `src/components/AsciiBanner.astro`
 - Modify: `src/components/HomeBanner.astro`
 
@@ -921,6 +949,7 @@ const banner = String.raw`
 - [ ] **Step 2: Rewrite HomeBanner.astro to motd**
 
 Replace the entire file with:
+
 ```astro
 ---
 import AsciiBanner from '~/components/AsciiBanner.astro'
@@ -964,11 +993,13 @@ git commit -m "feat(terminal): motd home banner with ascii art"
 ## Task 11: ls -la post list rows
 
 **Files:**
+
 - Modify: `src/components/PostPreview.astro`
 
 - [ ] **Step 1: Replace component body**
 
 Replace `src/components/PostPreview.astro` with:
+
 ```astro
 ---
 import type { CollectionEntry } from 'astro:content'
@@ -1016,16 +1047,19 @@ git commit -m "feat(terminal): post list rendered as ls -la rows"
 ## Task 12: Tag rendering as flags
 
 **Files:**
+
 - Modify: `src/components/Tags.astro`
 
 - [ ] **Step 1: Read existing Tags.astro and replace its rendered output**
 
 Run: `cat src/components/Tags.astro` to confirm structure, then update the component so each tag renders as `--tag=<name>`. The existing iteration logic stays; only the per-tag link template changes. For each tag, render:
+
 ```astro
 <a href={`/tags/${tag.id}`} class="text-magenta hover:underline mr-3 font-mono text-sm">
   --tag={tag.id}
 </a>
 ```
+
 Wrap them in a flex/inline container (use existing wrapper if there is one).
 
 If the component currently uses pill/button styling classes, remove those classes; do not introduce new ones beyond what is shown above.
@@ -1046,11 +1080,13 @@ git commit -m "feat(terminal): tags render as --tag=name flags"
 ## Task 13: 404 page
 
 **Files:**
+
 - Modify: `src/pages/404.astro`
 
 - [ ] **Step 1: Replace 404.astro content**
 
 Replace with:
+
 ```astro
 ---
 import Layout from '~/layouts/Layout.astro'
@@ -1108,16 +1144,19 @@ git commit -m "feat(terminal): bash-style 404 with did-you-mean"
 ## Task 14: About page header
 
 **Files:**
+
 - Modify: `src/pages/about.md`
 
 - [ ] **Step 1: Prepend a cat header line**
 
 Read the current `about.md`. Insert this as the very first content line under the existing frontmatter (do not modify frontmatter):
-```markdown
+
+````markdown
 ```text
 $ cat about.md
-```
-```
+````
+
+````
 (That is a fenced `text` block containing one line.)
 
 - [ ] **Step 2: Verify**
@@ -1129,13 +1168,14 @@ Run: `yarn dev`, open `/about`. Confirm the `$ cat about.md` line shows above ex
 ```bash
 git add src/pages/about.md
 git commit -m "feat(terminal): add cat header to about page"
-```
+````
 
 ---
 
 ## Task 15: Header collapse + bracket buttons
 
 **Files:**
+
 - Modify: `src/components/Header.astro`
 - Modify: `src/styles/global.css`
 
@@ -1164,12 +1204,15 @@ Remove the mobile `<nav id="nav-mobile">` block and its associated `<script>` at
 - [ ] **Step 2: Sharpen chrome in global.css**
 
 In `src/styles/global.css`, change line 96 (`a.button` rule). Replace:
+
 ```css
 a.button {
   @apply inline-flex text-accent border-3 border-accent/30 border-double py-1.5 px-3 whitespace-nowrap hover:bg-accent/8 rounded-xl transition-colors;
 }
 ```
+
 With:
+
 ```css
 a.button {
   @apply inline-flex text-accent py-1 px-2 whitespace-nowrap hover:bg-accent/10 transition-colors;
@@ -1208,6 +1251,7 @@ Expected: build succeeds with no errors.
 - [ ] **Step 3: Manual smoke checklist (`yarn dev`)**
 
 Walk through each of these. Tick only after personally verifying:
+
 - [ ] Boot sequence plays once per session, skippable on key.
 - [ ] `/` focuses prompt; `Esc` blurs.
 - [ ] `?` toggles help overlay; clicking outside the panel closes it.

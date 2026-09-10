@@ -76,11 +76,6 @@
   resolved "https://registry.npmjs.org/@astrojs/compiler/-/compiler-2.13.1.tgz"
   integrity sha512-f3FN83d2G/v32ipNClRKgYv30onQlMZX1vCeZMjPsMMPl1mDpmbl0+N5BYo4S/ofzqJyS5hvwacEo0CCVDn/Qg==
 
-"@astrojs/compiler@^2.9.1":
-  version "2.12.2"
-  resolved "https://registry.npmjs.org/@astrojs/compiler/-/compiler-2.12.2.tgz"
-  integrity sha512-w2zfvhjNCkNMmMMOn5b0J8+OmUaBL1o40ipMvqcG6NRpdC+lKxmTi48DT8Xw0SzJ3AfmeFLB45zXZXtmbsjcgw==
-
 "@astrojs/internal-helpers@0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@astrojs/internal-helpers/-/internal-helpers-0.11.0.tgz#e5b6119e7cc1a3520fe43e30d25a30b61576bb49"
@@ -1064,6 +1059,11 @@
     "@parcel/watcher-win32-arm64" "2.5.1"
     "@parcel/watcher-win32-ia32" "2.5.1"
     "@parcel/watcher-win32-x64" "2.5.1"
+
+"@prettier/parse-srcset@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@prettier/parse-srcset/-/parse-srcset-3.1.0.tgz#10a6785b84812b5ec506c16812fc2e3c6bb10b9e"
+  integrity sha512-FIRv2rZotO9NP/r66taYqD1zICpPiBbrECqjKV/xqNotqDxF7fLzzUeK+1RSRx9Tenk0DajR/GcRmTJ2qtHaKQ==
 
 "@resvg/resvg-js-android-arm-eabi@2.6.2":
   version "2.6.2"
@@ -3882,16 +3882,16 @@ postcss@^8.5.28:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
-prettier-plugin-astro@0.14.1:
-  version "0.14.1"
-  resolved "https://registry.npmjs.org/prettier-plugin-astro/-/prettier-plugin-astro-0.14.1.tgz"
-  integrity sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw==
+prettier-plugin-astro@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-astro/-/prettier-plugin-astro-1.0.0.tgz#7d0f9c05abbd19444934fa5f4cf1ee8329e100da"
+  integrity sha512-xOlwKNSaPkPPiJeOhiFk8/MA2eH5A+in99dID+weTJhPcq+FBdIaB/3UNFdy9ckmc8/bT7QNyxSb78cnopgElQ==
   dependencies:
-    "@astrojs/compiler" "^2.9.1"
-    prettier "^3.0.0"
-    sass-formatter "^0.7.6"
+    "@astrojs/compiler-rs" "^0.4.0"
+    "@prettier/parse-srcset" "^3.1.0"
+    sass-formatter "^0.8.0"
 
-prettier@3.6.2, prettier@^3.0.0:
+prettier@3.6.2:
   version "3.6.2"
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.6.2.tgz"
   integrity sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==
@@ -4378,10 +4378,10 @@ sass-embedded@^1.92.1:
     sass-embedded-win32-arm64 "1.92.1"
     sass-embedded-win32-x64 "1.92.1"
 
-sass-formatter@^0.7.6:
-  version "0.7.9"
-  resolved "https://registry.npmjs.org/sass-formatter/-/sass-formatter-0.7.9.tgz"
-  integrity sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==
+sass-formatter@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/sass-formatter/-/sass-formatter-0.8.0.tgz#bd1df0d141e628c567194a28b283ede3fed80987"
+  integrity sha512-Nf4eMGE2O5vnJG7KPCRyksWS9gVKSYoUWtPeMXRRxwZSPVQhSGtL602xVYS65LvMkHmkvKa7xpauF0+/5pPwrg==
   dependencies:
     suf-log "^2.5.3"
 

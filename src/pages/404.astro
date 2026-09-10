@@ -2,7 +2,8 @@
 import Layout from '~/layouts/Layout.astro'
 
 function lev(a: string, b: string): number {
-  const m = a.length, n = b.length
+  const m = a.length,
+    n = b.length
   const dp: number[][] = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0))
   for (let i = 0; i <= m; i++) dp[i][0] = i
   for (let j = 0; j <= n; j++) dp[0][j] = j
@@ -41,5 +42,9 @@ bash: {path}: No such file or directory
 
 $ exit 1
 </pre>
-  {suggestion && <a class="text-link underline" href={`/${suggestion}`}>cd /{suggestion}</a>}
+  {suggestion && (
+    <a class="text-link underline" href={`/${suggestion}`}>
+      cd /{suggestion}
+    </a>
+  )}
 </Layout>

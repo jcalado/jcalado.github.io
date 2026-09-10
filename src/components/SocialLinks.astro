@@ -16,90 +16,76 @@ const { socialLinks } = Astro.props
 ---
 
 <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
-  {
-    socialLinks.github && (
-      <a
-        href={socialLinks.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span class="sr-only">GitHub</span>
-        <IconGithub class="size-4" />
-      </a>
-    )
-  }
-  {
-    socialLinks.mastodon && (
-      <a
-        href={socialLinks.mastodon}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span class="sr-only">Mastodon</span>
-        <IconMastodon class="size-4" />
-      </a>
-    )
-  }
-  {
-    socialLinks.twitter && (
-      <a
-        href={socialLinks.twitter}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span class="sr-only">Twitter</span>
-        <IconTwitter class="size-4" />
-      </a>
-    )
-  }
-  {
-    socialLinks.linkedin && (
-      <a
-        href={socialLinks.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span class="sr-only">LinkedIn</span>
-        <IconLinkedin class="size-4" />
-      </a>
-    )
-  }
-  {
-    socialLinks.bluesky && (
-      <a
-        href={socialLinks.bluesky}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span class="sr-only">Bluesky</span>
-        <IconBluesky class="size-4" />
-      </a>
-    )
-  }
-  {
-    socialLinks.email && (
-      <a
-        href={`mailto:${socialLinks.email}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="social-link"
-      >
-        <span class="sr-only">Email</span>
-        <IconEmail class="size-4" />
-      </a>
-    )
-  }
-  {
-    socialLinks.rss && (
-      <a href="/rss.xml" class="social-link">
-        <span class="sr-only">RSS</span>
-        <IconRss class="size-4" />
-      </a>
-    )
-  }
+  {socialLinks.github && (
+    <a
+      href={socialLinks.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link"
+    >
+      <span class="sr-only">GitHub</span>
+      <IconGithub class="size-4" />
+    </a>
+  )}
+  {socialLinks.mastodon && (
+    <a
+      href={socialLinks.mastodon}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link"
+    >
+      <span class="sr-only">Mastodon</span>
+      <IconMastodon class="size-4" />
+    </a>
+  )}
+  {socialLinks.twitter && (
+    <a
+      href={socialLinks.twitter}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link"
+    >
+      <span class="sr-only">Twitter</span>
+      <IconTwitter class="size-4" />
+    </a>
+  )}
+  {socialLinks.linkedin && (
+    <a
+      href={socialLinks.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link"
+    >
+      <span class="sr-only">LinkedIn</span>
+      <IconLinkedin class="size-4" />
+    </a>
+  )}
+  {socialLinks.bluesky && (
+    <a
+      href={socialLinks.bluesky}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link"
+    >
+      <span class="sr-only">Bluesky</span>
+      <IconBluesky class="size-4" />
+    </a>
+  )}
+  {socialLinks.email && (
+    <a
+      href={`mailto:${socialLinks.email}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="social-link"
+    >
+      <span class="sr-only">Email</span>
+      <IconEmail class="size-4" />
+    </a>
+  )}
+  {socialLinks.rss && (
+    <a href="/rss.xml" class="social-link">
+      <span class="sr-only">RSS</span>
+      <IconRss class="size-4" />
+    </a>
+  )}
 </div>
