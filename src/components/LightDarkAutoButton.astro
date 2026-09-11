@@ -18,6 +18,8 @@ let darkTheme = siteConfig.themes.include[1]
 </button>
 
 <script>
+  import { motionDisabled } from '~/scripts/motion'
+
   const themeButton = document.getElementById('theme-change-button')
   const lightThemeId = themeButton?.getAttribute('data-light')
   const darkThemeId = themeButton?.getAttribute('data-dark')
@@ -51,8 +53,28 @@ let darkTheme = siteConfig.themes.include[1]
     const active = resolveActive()
     const newTheme = active === lightThemeId ? darkThemeId : lightThemeId
     if (!newTheme) return
-    localStorage.setItem('data-theme', newTheme)
-    document.documentElement.setAttribute('data-theme', newTheme)
-    updateIcons(newTheme)
+
+    const apply = () => {
+      localStorage.setItem('data-theme', newTheme)
+      document.documentElement.setAttribute('data-theme', newTheme)
+      updateIcons(newTheme)
+    }
+
+    if (!document.startViewTransition || motionDisabled()) {
+      apply()
+      return
+    }
+
+    // Origin of the circular wipe, read by the `vt-theme-wipe` keyframes.
+    const { top, left, width, height } = themeButton.getBoundingClientRect()
+    document.documentElement.style.setProperty('--vt-x', `${left + width / 2}px`)
+    document.documentElement.style.setProperty('--vt-y', `${top + height / 2}px`)
+
+    const transition = document.startViewTransition({ update: apply, types: ['theme'] })
+    // `ready` rejects with "Transition was skipped" whenever the browser drops
+    // the animation (another transition already running, tab hidden, …). The
+    // theme still applies, so swallow it rather than leaking an unhandled
+    // rejection into the console.
+    transition.ready.catch(() => {})
   })
 </script>

@@ -1,0 +1,63 @@
+---
+---
+
+<script is:inline>
+  ;(function () {
+    const root = document.documentElement
+
+    try {
+      if (localStorage.getItem('animations') === 'off') {
+        root.setAttribute('data-animations', 'off')
+      }
+    } catch {}
+
+    const motionOff = () =>
+      root.getAttribute('data-animations') === 'off' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // Paginated routes look like /posts, /posts/2, /tags/foo, /tags/foo/2.
+    const pageNum = (path) => Number((path.match(/\/(\d+)\/?$/) || [])[1] || 1)
+    const section = (path) => path.replace(/\/\d+\/?$/, '') || '/'
+
+    function direction(fromUrl, toUrl) {
+      try {
+        const from = new URL(fromUrl)
+        const to = new URL(toUrl)
+        if (section(from.pathname) !== section(to.pathname)) return null
+        const a = pageNum(from.pathname)
+        const b = pageNum(to.pathname)
+        return a === b ? null : b > a ? 'older' : 'newer'
+      } catch {
+        return null
+      }
+    }
+
+    // Both documents must add the type independently, so the same decision is
+    // made on the way out and on the way in.
+    function tag(viewTransition, fromUrl, toUrl) {
+      if (!viewTransition) return
+      // `ready` rejects with "Transition was skipped" whenever the transition
+      // is dropped -- by skipTransition() below, or by the browser itself.
+      // Nothing awaits it, so catch it rather than leaking an unhandled
+      // rejection into the console on every such navigation.
+      viewTransition.ready.catch(function () {})
+      if (motionOff()) return viewTransition.skipTransition()
+      if (!fromUrl || !toUrl) return
+      const d = direction(fromUrl, toUrl)
+      if (d) viewTransition.types.add(d)
+    }
+
+    window.addEventListener('pageswap', (e) => {
+      const from = e.activation && e.activation.from
+      tag(e.viewTransition, from && from.url, e.activation && e.activation.entry.url)
+    })
+
+    window.addEventListener('pagereveal', (e) => {
+      // Navigation API; absent in some engines, in which case we simply fall
+      // back to the undirected default animation.
+      const act = window.navigation && window.navigation.activation
+      const from = act && act.from
+      tag(e.viewTransition, from && from.url, act && act.entry.url)
+    })
+  })()
+</script>

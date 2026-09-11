@@ -40,7 +40,7 @@ const postsHaveSeries = sortedPosts.some((post) => post.data.series)
   <section>
     <SectionHeader title="Headlines" number="01" />
     {headlinePosts.map((post, i) => (
-      <PostPreview post={post} index={i} />
+      <PostPreview post={post} index={i} shareTitle />
     ))}
     <div class="mt-4">
       <Pagination nextLink="/posts" nextText="Read the archive" />

@@ -1,0 +1,54 @@
+---
+import IconZap from '~/icons/zap.svg'
+import IconZapOff from '~/icons/zap-off.svg'
+---
+
+<button
+  id="animations-toggle"
+  class="motion-toggle block cursor-pointer"
+  aria-label="Toggle animations"
+>
+  <IconZap class="icon-motion-on size-6 text-accent" />
+  <IconZapOff class="icon-motion-off size-6 text-accent" />
+  <span class="sr-only">Toggle animations</span>
+</button>
+
+<style>
+  /* Driven by the root attribute rather than JS so the correct icon is up at
+     first paint — the preference is restored before the page renders, and a
+     script-toggled icon would flash the wrong state. */
+  .icon-motion-off {
+    display: none;
+  }
+
+  :root[data-animations='off'] .icon-motion-on {
+    display: none;
+  }
+
+  :root[data-animations='off'] .icon-motion-off {
+    display: block;
+  }
+</style>
+
+<script>
+  const button = document.getElementById('animations-toggle')
+  const root = document.documentElement
+  const isOff = () => root.getAttribute('data-animations') === 'off'
+
+  const sync = () => {
+    button?.setAttribute('aria-pressed', isOff() ? 'false' : 'true')
+    button?.setAttribute('title', isOff() ? 'Animations off' : 'Animations on')
+  }
+
+  sync()
+
+  button?.addEventListener('click', () => {
+    const next = isOff() ? 'on' : 'off'
+    if (next === 'off') root.setAttribute('data-animations', 'off')
+    else root.removeAttribute('data-animations')
+    try {
+      localStorage.setItem('animations', next)
+    } catch {}
+    sync()
+  })
+</script>

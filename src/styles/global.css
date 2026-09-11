@@ -53,12 +53,158 @@
   --default-mono-font-family: var(--theme-font), monospace;
 }
 
-header {
-  view-transition-name: none;
-}
+/* ── View transitions ────────────────────────────────────────────────────
+   Cross-document (MPA) transitions. No client router involved: the pages
+   stay static, `prefetch: true` keeps the next document warm, and browsers
+   without support simply do a plain navigation. */
 
 @view-transition {
   navigation: auto;
+}
+
+/* The masthead is byte-identical on every page. Naming it makes it a shared
+   element, so it holds perfectly still instead of crossfading out and back. */
+.masthead {
+  view-transition-name: masthead;
+}
+
+/* Only the content area actually moves. */
+.page-frame > main {
+  view-transition-name: page-content;
+}
+
+::view-transition-old(page-content) {
+  animation: 110ms cubic-bezier(0.4, 0, 1, 1) both vt-content-out;
+}
+
+::view-transition-new(page-content) {
+  animation: 220ms cubic-bezier(0, 0, 0.2, 1) 60ms both vt-content-in;
+}
+
+@keyframes vt-content-out {
+  to {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes vt-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Post titles morph from their listing entry into the article <h1>.
+   The names are per-post and set inline; this tunes the whole class. */
+::view-transition-group(*.post-title) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Tag pills morph into the breadcrumb label on the tag page. */
+::view-transition-group(*.tag-label) {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Breadcrumb header is identical while paging an archive, so naming it lifts
+   it out of the content snapshot and holds it still. */
+.page-header {
+  view-transition-name: page-header;
+}
+
+/* Direction-aware paging. The types are added by ViewTransitionLoader on both
+   the outgoing and incoming document; without them paging falls back to the
+   undirected slide above. */
+:root:active-view-transition-type(older)::view-transition-old(page-content) {
+  animation: 140ms cubic-bezier(0.4, 0, 1, 1) both vt-exit-left;
+}
+:root:active-view-transition-type(older)::view-transition-new(page-content) {
+  animation: 240ms cubic-bezier(0, 0, 0.2, 1) 40ms both vt-enter-right;
+}
+:root:active-view-transition-type(newer)::view-transition-old(page-content) {
+  animation: 140ms cubic-bezier(0.4, 0, 1, 1) both vt-exit-right;
+}
+:root:active-view-transition-type(newer)::view-transition-new(page-content) {
+  animation: 240ms cubic-bezier(0, 0, 0.2, 1) 40ms both vt-enter-left;
+}
+
+@keyframes vt-exit-left {
+  to {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+}
+@keyframes vt-enter-right {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+@keyframes vt-exit-right {
+  to {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+@keyframes vt-enter-left {
+  from {
+    opacity: 0;
+    transform: translateX(-2rem);
+  }
+}
+
+/* Theme toggle: circular wipe out from the button (same-document).
+   The named elements above would otherwise get their own snapshot groups and
+   punch un-clipped rectangles through the wipe, so switch them off. */
+:root:active-view-transition-type(theme) .masthead,
+:root:active-view-transition-type(theme) .page-frame > main {
+  view-transition-name: none;
+}
+
+:root:active-view-transition-type(theme)::view-transition-old(root) {
+  animation: none;
+}
+
+:root:active-view-transition-type(theme)::view-transition-new(root) {
+  animation: 1s cubic-bezier(0.4, 0, 0.2, 1) both vt-theme-wipe;
+  mix-blend-mode: normal;
+}
+
+@keyframes vt-theme-wipe {
+  from {
+    clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+  to {
+    clip-path: circle(150vmax at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+}
+
+/* Cross-document transitions are not suppressed automatically. */
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* The masthead motion toggle. `@view-transition` is document-level and cannot
+   be scoped to a selector, so the navigation transitions themselves are
+   skipped from JS in ViewTransitionLoader; this covers same-document ones
+   (the theme wipe) and acts as a backstop if that script fails to load. */
+:root[data-animations='off']::view-transition-group(*),
+:root[data-animations='off']::view-transition-old(*),
+:root[data-animations='off']::view-transition-new(*) {
+  animation: none !important;
+}
+
+:root[data-animations='off'] *,
+:root[data-animations='off'] *::before,
+:root[data-animations='off'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }
 
 * {

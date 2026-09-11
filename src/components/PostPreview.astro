@@ -2,12 +2,14 @@
 import type { CollectionEntry } from 'astro:content'
 import { render } from 'astro:content'
 import { format } from 'date-fns'
+import { postTransitionName } from '~/utils'
 
 interface Props {
   post: CollectionEntry<'posts'>
   index?: number
+  shareTitle?: boolean
 }
-const { post, index } = Astro.props
+const { post, index, shareTitle = false } = Astro.props
 const { remarkPluginFrontmatter } = await render(post)
 const description = remarkPluginFrontmatter.description || post.data.description
 const words = remarkPluginFrontmatter.words ?? 0
@@ -25,7 +27,14 @@ const tags = post.data.tags ?? []
   <a href={link} class="block no-underline">
     <div class="flex items-baseline gap-3 font-mono text-sm">
       {num && <span class="text-accent shrink-0">[{num}]</span>}
-      <span class="text-foreground group-hover:text-accent font-semibold">
+      <span
+        class="text-foreground group-hover:text-accent font-semibold"
+        style={
+          shareTitle
+            ? `view-transition-name:${postTransitionName(post.id)};view-transition-class:post-title`
+            : undefined
+        }
+      >
         {post.data.title || post.id}
       </span>
       <span

@@ -1,5 +1,6 @@
 ---
 import type { Collation } from '~/types'
+import { tagTransitionName } from '~/utils'
 
 interface Props {
   tags: Collation<'posts'>[]
@@ -20,7 +21,11 @@ const { tags } = Astro.props
     {tags.map((tag, i) => (
       <>
         {i > 0 && <span class="text-foreground/30"> · </span>}
-        <a href={tag.url} class="hover:text-accent no-underline">
+        <a
+          href={tag.url}
+          class="hover:text-accent no-underline"
+          style={`view-transition-name:${tagTransitionName(tag.titleSlug)};view-transition-class:tag-label`}
+        >
           {tag.title}
         </a>
       </>
