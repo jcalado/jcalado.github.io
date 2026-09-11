@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro'
 import Layout from '~/layouts/Layout.astro'
-import { TagsGroup } from '~/utils'
+import { TagsGroup, tagTransitionName } from '~/utils'
 import Pagination from '~/components/Pagination.astro'
 import siteConfig from '~/site.config'
 import PostPreview from '~/components/PostPreview.astro'
@@ -11,7 +11,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const tagsGroup = await TagsGroup.build()
   const pages = tagsGroup.collations.flatMap((tags) => {
     return paginate(tags.entries.reverse(), {
-      props: { tagTitle: tags.title },
+      props: { tagTitle: tags.title, tagSlug: tags.titleSlug },
       params: { tag: tags.titleSlug },
       pageSize: siteConfig.pageSize,
     })
@@ -19,16 +19,19 @@ export const getStaticPaths = (async ({ paginate }) => {
   return pages
 }) satisfies GetStaticPaths
 
-const { page, tagTitle } = Astro.props
+const { page, tagTitle, tagSlug } = Astro.props
 const pageTitle =
   `Tag: ${tagTitle}` + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
 ---
 
 <Layout title={pageTitle} description={`All posts tagged with ${tagTitle}`}>
   <div class="mt-2 sm:mt-0">
-    <PageHeader titlePieces={['tags', tagTitle]} />
+    <PageHeader
+      titlePieces={['tags', tagTitle]}
+      transitionName={tagTransitionName(tagSlug)}
+    />
     {page.data.map((post) => (
-      <PostPreview post={post} />
+      <PostPreview post={post} shareTitle />
     ))}
     <Pagination
       prevLink={page.url.prev ? encodeURI(page.url.prev) : undefined}

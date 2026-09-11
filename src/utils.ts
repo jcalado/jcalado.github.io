@@ -329,3 +329,22 @@ export function getPostSequenceContext(
   const next = index < posts.length - 1 ? posts[index + 1] : undefined
   return { index, prev, next }
 }
+
+/**
+ * Stable `view-transition-name`s, shared between an element in a listing and
+ * its counterpart on the destination page so the two morph across the
+ * navigation. The prefixes also keep the ident valid for slugs that start
+ * with a digit.
+ *
+ * A name must be unique within a document: two elements sharing one aborts
+ * the entire transition, so only name a post or tag once per page.
+ */
+const transitionIdent = (value: string) => value.replace(/[^a-zA-Z0-9_-]/g, '-')
+
+export function postTransitionName(id: string) {
+  return `post-${transitionIdent(id)}`
+}
+
+export function tagTransitionName(titleSlug: string) {
+  return `tag-${transitionIdent(titleSlug)}`
+}

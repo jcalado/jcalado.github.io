@@ -13,7 +13,7 @@ import siteConfig from '~/site.config'
 import Tags from '~/components/Tags.astro'
 import ScrollUpButton from '~/components/ScrollUpButton.astro'
 import type { Collation } from '~/types'
-import { getPostSequenceContext } from '~/utils'
+import { getPostSequenceContext, postTransitionName } from '~/utils'
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts()
@@ -84,7 +84,11 @@ if (postData.tags && postData.tags.length > 0) {
   tags={postData.tags}
 >
   <article class="max-w-full py-7.5" data-pagefind-body>
-    <h1 id={post.id} class="text-heading1 mt-2 mb-3">
+    <h1
+      id={post.id}
+      class="text-heading1 mt-2 mb-3"
+      style={`view-transition-name:${postTransitionName(post.id)};view-transition-class:post-title`}
+    >
       {postData.title}
     </h1>
     <pre class="font-mono text-xs leading-5 mb-3 text-foreground/45 whitespace-pre-wrap">{metaText}</pre>
@@ -124,6 +128,7 @@ if (postData.tags && postData.tags.length > 0) {
     <a
       href={`/posts/${nextPostInSeries.id}`}
       class="button font-mono text-sm mb-8 inline-flex"
+      style={`view-transition-name:${postTransitionName(nextPostInSeries.id)};view-transition-class:post-title`}
     >
       next: {nextPostInSeries.data.title} →
     </a>
@@ -137,14 +142,17 @@ if (postData.tags && postData.tags.length > 0) {
     <section>
       <DividerText text={`${series.title} Series`} />
       {series.entries.map((seriesPost) => (
-        <PostPreview post={seriesPost} />
+        <PostPreview
+          post={seriesPost}
+          shareTitle={seriesPost.id !== post.id && seriesPost.id !== nextPostInSeries?.id}
+        />
       ))}
     </section>
   ) : prev || next ? (
     <section>
       <DividerText text="More Posts" />
-      {prev && <PostPreview post={prev} />}
-      {next && <PostPreview post={next} />}
+      {prev && <PostPreview post={prev} shareTitle />}
+      {next && <PostPreview post={next} shareTitle />}
     </section>
   ) : null}
   {siteConfig.giscus && (

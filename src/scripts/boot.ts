@@ -1,3 +1,5 @@
+import { motionDisabled } from '~/scripts/motion'
+
 const LINES = [
   '[    0.000000] Linux version 6.19 (jcalado@blog) 2026',
   '[    0.001234] BIOS-provided physical RAM map:',
@@ -12,7 +14,7 @@ const LINES = [
 export function runBoot() {
   if (typeof sessionStorage === 'undefined') return
   if (sessionStorage.getItem('booted')) return
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (motionDisabled()) {
     sessionStorage.setItem('booted', '1')
     return
   }
