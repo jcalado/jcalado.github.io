@@ -1,0 +1,106 @@
+---
+title: "Getting Started with D-STAR: Hotspot, Reflectors, and the Four Callsign Fields"
+published: 2026-10-23
+draft: false
+description: "A quick, practical intro to D-STAR: what the MY, UR, RPT1 and RPT2 fields actually do, how a hotspot gets you onto a reflector, and the one radio setting that kept me talking to nobody."
+tags: ["amateur-radio", "dstar", "hotspot", "raspberry-pi", "icom"]
+---
+
+# Getting Started with D-STAR
+
+D-STAR has a well-earned reputation for being finicky. Most of that frustration boils down to four fields on the radio's screen that manuals rarely explain in plain English. But once those click, the rest is surprisingly simple. This post covers the bare minimum you need to go from unboxing a new radio to actually being heard on a reflector.
+
+## What D-STAR is
+
+D-STAR is the JARL's digital voice standard, mostly found on Icom radios like the ID-52, ID-50, ID-5100, IC-705, and IC-9700. When you transmit, your audio is encoded with AMBE and bundled into packets alongside a small **header**. That header holds four callsigns, acting as a routing slip that tells every repeater and gateway on the network exactly where to send your voice.
+
+Unlike DMR, there are no talkgroups to memorize and no complex codeplugs to build. The routing lives entirely in that header—get the header right, and you've won the game.
+
+## The four fields
+
+| Field    | What it means                            | Typical value                          |
+| -------- | ---------------------------------------- | -------------------------------------- |
+| **MY**   | You                                      | `CT7BLE` (+ a 4-char note, e.g. `/73`) |
+| **UR**   | Who you're calling, or a command         | `CQCQCQ`                               |
+| **RPT1** | The repeater/hotspot module you're using | `CT7BLE B`                             |
+| **RPT2** | Where it goes next                       | `CT7BLE G` (the gateway)               |
+
+Callsigns are strictly 8 characters long: your call padded with spaces, leaving the **8th character** to do the heavy lifting. In RPT1, it's the module letter (`A` for 23 cm, `B` for 70 cm, and `C` for 2 m, by convention). In RPT2, `G` means "send this to the gateway"—in other words, out to the internet.
+
+That last part is crucial. **If RPT2 doesn't end in `G`, your transmission never leaves the neighborhood.** The repeater or hotspot will happily retransmit your signal over RF, but it won't hit the wider network.
+
+## Hotspots
+
+If you don't have a local D-STAR repeater, a hotspot is your front door. I use a Raspberry Pi Zero 2 W with an MMDVM hat running [QnetGateway](https://github.com/n7tae/QnetGateway) on a 70 cm simplex frequency. Think of the hotspot as your own personal mini-repeater: it operates as module `B` under your callsign, with a gateway (`G`) right behind it.
+
+Just be sure to pick a simplex frequency allocated for digital or hotspot use in your national band plan, and stay far away from the satellite segments.
+
+## Reflectors
+
+Think of reflectors as massive conference rooms. You link your hotspot to a specific reflector module, and everyone in that room hears each other. There are three main families:
+
+- **REF** (DPlus): The originals. To use these, your callsign must be registered with the US Trust gateway system.
+- **XRF** (DExtra) and **DCS**: No registration needed.
+- **XLX**: These reflectors can speak all three protocols, and many also bridge directly to DMR and YSF.
+
+Here in Portugal, **XRF268 E** sees plenty of traffic, often with DMR bridged in, making it a great place to start listening.
+
+You can link right from the radio by dropping a command into the **UR** field and keying the mic for a second:
+
+| UR         | What it does                                 |
+| ---------- | -------------------------------------------- |
+| `XRF268EL` | Link to XRF268 module E                      |
+| `       U` | Unlink                                       |
+| `       I` | Speak the current link status                |
+| `       E` | Echo test: talk, release, hear yourself back |
+
+The reflector callsign gets padded to 6 characters, followed by the module letter, and ending in `L`. For a 6-character call like `XRF268`, that makes `XRF268EL`. Honestly, most hotspot software can link you automatically at startup, which is exactly how I have mine set up.
+
+## Simplex mode vs. repeater mode
+
+Icom radios give you two ways to drive all of this:
+
+- **DV mode (VFO)**: You set UR, RPT1, and RPT2 entirely by hand.
+- **DR mode**: You pick a repeater (FROM) and a destination (TO) from a list, and the radio builds the header for you.
+
+A **simplex** repeater-list entry sends `DIRECT` to both RPT1 and RPT2. Fortunately, smart hotspot software like QnetGateway catches this and rewrites it to `CT7BLE B` / `CT7BLE G` on the fly. Simplex entries are very forgiving.
+
+A **repeater (duplex)** entry with a 0 MHz offset also works perfectly on a simplex hotspot. The frequency shift isn't the problem—the **TO** setting is.
+
+## The mistake I made: Local CQ
+
+My hotspot dashboard lit up with **RF in** every time I keyed the mic. It clearly said **linked to XRF268 E**. Yet nobody replied, and my call never popped up on the reflector's last-heard list.
+
+I had `CT7BLE G` set as the gateway callsign in the repeater entry, so the header *should* have been fine. Frustrated, I turned on QSO logging (`log_qso=true` in QnetGateway's `qn.cfg`) and keyed up to see what was actually happening under the hood:
+
+```text
+ur=CQCQCQ   r1=CT7BLE B r2=CT7BLE B   my=CT7BLE  /73
+```
+
+There it was. RPT2 was `CT7BLE B`, not `CT7BLE G`. Because I had my DR mode TO field set to **Local CQ**, I was essentially telling the radio, "Call CQ on this repeater only." The radio stripped the gateway callsign out entirely. My hotspot happily repeated my voice locally to an audience of zero.
+
+Switching TO from Local CQ back to **Gateway CQ** (which my radio displays as the "use repeater" path) fixed it instantly:
+
+```text
+ur=CQCQCQ   r1=CT7BLE B r2=CT7BLE G   my=CT7BLE  /73
+```
+
+The takeaway? If you're hitting the hotspot but no one is answering, check RPT2 first.
+
+## A short checklist
+
+1. **MY** = Your callsign. Set it once and forget it.
+2. Ensure your hotspot is on a simplex frequency and linked to a reflector (start with a busy one so you know the lights are on).
+3. Put the radio in **DR mode** and set FROM to your hotspot entry using either:
+   - A simplex entry, **or**
+   - A repeater entry with Call Sign `YOURCALL B` and Gateway `YOURCALL G`.
+4. Set TO to **Gateway CQ**, absolutely *not* Local CQ.
+5. Try an echo test (`       E`) first to check your audio, then call CQ on the reflector.
+6. Still unheard? Get the hotspot to log the header and double-check that RPT2 ends in `G`.
+
+That's really all there is to it. D-STAR's fields look intimidating at first glance, but each one has a single job. Once RPT2 points at the gateway, the whole network opens up.
+
+Hope to hear you on XRF268 E!
+
+**73 de CT7BLE,**<br />
+Joel Calado
